@@ -5,7 +5,7 @@
     @include('frontend_view.layouts.breadcrumb_nav')
     <section class="zero_padding">
         <div class="row ">
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Header" style="width:100%; height:450px;"/>
                 <div class="top-left">
                     <div class="row justify-content-center align-items-center">
@@ -18,7 +18,19 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+            <div class="carousel-item active">
+                    <img class="d-block w-100 carousel-img-fit" src="{{ URL('/assets/images/product/industry/industry_banner.jpg') }}" alt="First slide"/>
+                    <div class="overlay"></div>
+                    <div class="row carousel-ban-text-adj">
+                      <div class="row col-12">
+                        <h1 class="col-12 carousel-header-adj"><b>Supplying Your Testing Needs</b></h1>
+                        <h2 class="col-12 carousel-paragraph themeTextColor">For All Industries  </h2>
+                        <p class="nsr22" style="font-weight:200;">Reliable, Percise & Innovative </p>
+                      </div>
+                    </div>
+                  </div>
         </div>
     </section>
 

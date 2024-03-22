@@ -38,7 +38,7 @@ class RangeController extends Controller
                             ->orderBy('p.order_wise')
                             ->get(['r.id as range_id','r.range_name','r.range_url','p.id','p.prod_name','p.prod_detail','p.prod_url','p.prod_images']);
 
-            if($range_url_id=='1' || $range_url_id=='2' || $range_url_id=='3' || $range_url_id=='4' || $range_url_id=='5') {
+            if($range_url_id=='1' || $range_url_id=='2' || $range_url_id=='3' || $range_url_id=='4' || $range_url_id=='5' || $range_url_id=='8') {
                 return view('frontend_view.ranges.index', compact('range_data','range_pro_data','industry_data'));
             }
             else if($range_url_id=='6') {
@@ -63,7 +63,7 @@ class RangeController extends Controller
 
         if (str_contains($prod_url, 'article') == false) { 
             $range_data = DB::table('product as p')
-                    ->select('p.id as prod_id','p.prod_name','p.prod_url','p.range_id','r.range_name','p.prod_desc')
+                    ->select('p.id as prod_id','p.prod_name','p.prod_url','p.range_id','r.range_name','p.prod_desc','p.prod_detail')
                     ->leftjoin('range as r', 'r.id', '=', 'p.range_id')
                     ->where('p.prod_url','like', '%'.$prod_url.'%')
                     ->orderBy('p.order_wise')
@@ -78,7 +78,7 @@ class RangeController extends Controller
                             'prod_name' => $prod_name
                         );
                 $cat_data = DB::table('category as c')
-                                ->select('c.id as cat_id','c.cat_name','c.cat_ranges','c.cat_url','c.cat_image')
+                                ->select('c.id as cat_id','c.cat_name','c.cat_ranges','c.cat_url','c.cat_image','c.prod_id')
                                 ->orderBy('c.order_wise')
                                 ->where('c.prod_id', $id)
                                 ->get();
@@ -225,6 +225,18 @@ class RangeController extends Controller
             $category_presentation = DB::table('category_presentation as cp')
                         ->leftjoin('category as c','c.id','=','cp.cat_id')
                         ->where('cp.cat_id', $cat_id)->get();
+                    
+            $syringe_table_data = DB::table('category_filtration_syringe as cfs')
+                        ->leftjoin('category_filtration_desc as cfdes','cfdes.id','=','cfs.cfdes_id')
+                        ->where('cfs.cat_id',$cat_id)
+                        ->orderBy('cfs.order_by','ASC')
+                        ->get();
+
+            $membrane_table_data = DB::table('category_filtration_membrane as cfm')
+                        ->leftjoin('category_filtration_desc as cfdes','cfdes.id','=','cfm.cfdes_id')
+                        ->where('cfm.cat_id',$cat_id)
+                        ->orderBy('cfm.order_by','ASC')
+                        ->get();
             
             $tags = array();
             $tags = explode(',',$cat_data[0]->cat_tags);
@@ -241,7 +253,7 @@ class RangeController extends Controller
             $ext_thimb = DB::table('extraction_thimble as et')
                             ->where('et.cat_id', $cat_id)->get();
 
-            return view('frontend_view.ranges.products.category.index', compact('data','range_data','cat_data','sub_cat_data','extraction_thimble','category_presentation','cat_desc','cat_tags','ext_thimb'));
+            return view('frontend_view.ranges.products.category.index', compact('data','range_data','cat_data','sub_cat_data','extraction_thimble','category_presentation','cat_desc','cat_tags','ext_thimb','syringe_table_data','membrane_table_data'));
         }
     }
 
@@ -300,7 +312,7 @@ class RangeController extends Controller
 
         }else{
             $sub_cat_data = DB::table('subcategory as sc')
-                    ->select('sc.id as sub_cat_id','sc.sub_cat_name')
+                    ->select('sc.id as sub_cat_id','sc.sub_cat_name','sc.sc_desc')
                     ->where('sc.subcat_url','LIKE', '%'.$subcat_url.'%')->get();
         }
         

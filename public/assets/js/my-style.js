@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(function ($) {
 	$('.content_description').each(function () {
-		var show_char = 350;
+		var show_char = 2000;
 		var ellipses = "... ";
 		var content = $(this).html();
 

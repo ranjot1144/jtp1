@@ -79,7 +79,7 @@ Route::prefix('/frontend')->namespace('App\Http\Controllers\frontend')->group(fu
     //Route::POST('validate_certificate_form',[ServiceController::class,'validate_certificate']);
             //Route::POST('certificate',[ServiceController::class,'certificate_pdf']);
 
-    Route::get('support/catalouge',[ServiceController::class,'catalouge']);
+    Route::get('support/catalogue',[ServiceController::class,'catalouge']);
     Route::get('support/knowledge_hub',[ServiceController::class,'knowledge']);
     Route::get('support/faq',[ServiceController::class,'faq']);
 

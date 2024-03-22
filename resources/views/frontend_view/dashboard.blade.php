@@ -63,7 +63,7 @@
 
 
         <section class="site-section align-items-stretch photos gradient-right-to-left" id="about-us-outer">
-          <section class="row align-items-stretch photos gradient-right-to-left" id="about-us" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+          <section class="row align-items-stretch photos gradient-right-to-left" id="about-us" style="background: rgb(255 255 255 / 15%); box-shadow: 0px 0px 10px 0px rgb(219 121 41 / 50%);">
             <div class="container">
 
               <div class="row columns_margin_bottom_20">
@@ -103,10 +103,10 @@
 
 
         <section class="intro_section" id="slider">
-          <div id="carousel-thumb" class="carousel carousel-thumbnails slide" data-ride="carousel" data-interval="15000">
+          <div id="carousel-thumb" class="carousel carousel-thumbnails slide" data-ride="carousel" data-interval="2500">
                   <div class="carousel-inner" role="listbox">
 
-                      <div class="carousel-item active">
+                  <div class="carousel-item active">
                         <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Total_Chlorine_Johnson.jpg')}}" alt="First slide">
                           <div class="row carousel-ban-text-adj">
                             <div class="row col-12">
@@ -133,7 +133,7 @@
                         <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Urine_Johnson.jpg')}}" alt="Third slide">
                         <div class="row carousel-ban-text-adj">
                           <div class="row col-12">
-                            <h1 class="col-12 carousel-header-adj bold-text">Unine Test Strips</h1>
+                            <h1 class="col-12 carousel-header-adj bold-text">Urine Test Strips</h1>
                             <h3 class="col-12 carousel-paragraph themeTextColor avbook32">Measure up to 11 Parameters</h3>
                             <p class="col-12 carousel-paragraph nsr22 mt-0">Fast, Accurate, Stable and Precise</p>
                           </div>
@@ -145,21 +145,22 @@
                         <div class="row carousel-ban-text-adj">
                           <div class="row col-12">
                             <h1 class="col-12 carousel-header-adj bold-text text-white">Most Simple Version of</h1>
-                            <h3 class="col-12 carousel-paragraph themeTextColor text-white avbook32">Colormetric and Titrimetric</h3>
+                            <h3 class="col-12 carousel-paragraph text-white avbook32">Colormetric and Titrimetric</h3>
                             <p class="col-12 carousel-paragraph nsr22 mt-0 text-white">Visual Evaluation Test Kits</p>
                           </div>
                         </div>
                       </div>
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/VTK_Johnson.jpg')}}" alt="Fifth slide">
-                        <!-- <div class="row carousel-ban-text-adj">
-                          <div class="row col-12">
-                            <h1 class="col-12 carousel-header-adj bold-text text-white">Test</h1>
-                            <h3 class="col-12 carousel-paragraph themeTextColor text-white">Colormetric and Titrimetric</h3>
-                            <p class="col-12 carousel-paragraph nsr22 mt-0 text-white">Visual Evaluation Test Kits</p>
+                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/OEM_homepage_Johnson.jpg')}}" alt="Fifth slide">
+                        <div class="row carousel-ban-text-adj">
+                          <div class="row col-12 text-uppercase">
+                            <h1 class="col-12 carousel-header-adj bold-text">LAUNCH <span class="text-white">Your</span></h1>
+                            <h1 class="col-12 carousel-header-adj bold-text" style="margin-left:75px;">OWN <span class="text-white">Brand</span></h1>
+                            <p class="col-12 carousel-paragraph">Private Label Manufacturing</p>
+                            <h1 class="col-12 carousel-paragraph nsr22 mt-0 heading">OEM <span class="text-white"> One Stop Service</h1>
                           </div>
-                        </div> -->
+                        </div>
                       </div>
 
                 </div><!-- carousel-inner -->
@@ -200,7 +201,7 @@
                               for($i=0;$i<count($range_data)-1;$i++) {
                         ?>
 
-                          <div class="col-md-3 mb-4">
+                          <div class="col-md-3 col-lg-4 mb-4">
                               <div class="img_hover_color">
                                 <?php if($range_data[$i]->range_image=='') { ?>
                                   <img src="{{ asset('assets/images/product/filter-boxes.png') }}" alt="Landing_images">
@@ -220,22 +221,7 @@
                           </div>
                         <?php } } ?>
 
-                        <!-- <div class="col-md-3 mb-4">
-                            <div class="img_hover_color">
-                              <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow">
-                              <div class="overlay">
-                                <div class="text">
-                                    <a href="{{ URL('/support/catalouge') }}" class="btn btn-primary btn-md white-border-col text-white">Explore</a>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="range_name">
-                              <label class="nsm20 text-uppercase">Catalouges</label>
-                            </div>
-                        </div> -->
-
-                        <div class="col-md-3 mb-4">
+                        <div class="col-md-3 col-lg-4 mb-4">
                             <div class="img_hover_color">
                               <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow">
                               <div class="overlay">
@@ -259,7 +245,8 @@
             </div>
         </section>
 
-        <section class="site-section-footer bg-image" style="background-image: url(&quot;../assets/images/left_side_bar.png&quot;); height: 10vh; background-position: top; min-height:150px;" id="home-border"> </section>
+        <!-- <section class="site-section-footer bg-image" style="background-image: url(&quot;../assets/images/left_side_bar.png&quot;); height: 10vh; background-position: top; min-height:150px;" id="home-border"> </section> -->
+        <img src='{{ URL("assets/images/product/front_footer.jpg") }}' style="height: 10vh; width:-webkit-fill-available;"></img>
               
     </div>
     @endsection

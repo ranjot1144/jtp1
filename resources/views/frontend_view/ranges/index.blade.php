@@ -46,7 +46,7 @@
       @include('frontend_view.layouts.breadcrumb_nav')
                 
         <section class="intro_section" id="range-slider">
-          <div id="carousel-thumb" class="carousel carousel-thumbnails slide" data-ride="carousel" data-interval="15000">
+          <div id="carousel-thumb" class="carousel carousel-thumbnails slide" data-ride="carousel" data-interval="2500">
               <div class="carousel-inner" role="listbox">
                     <!-- <div class="carousel-item active carousel-banner"> -->
 
@@ -91,7 +91,7 @@
                       <div class="row col-12">
                         <h1 class="col-12 carousel-header-adj"><b>Filtration</b></h1>
                         <h2 class="col-12 carousel-paragraph themeTextColor">Provising solutions for all requirements </h2>
-                        <p class="nsr22">Guranteed highest grade quality</p>
+                        <p class="nsr22" style="font-weight:200;">Guranteed highest grade quality</p>
                       </div>
                     </div>
                   </div>
@@ -104,7 +104,7 @@
                       <div class="row col-12">
                         <h1 class="col-12 carousel-header-adj"><b>Pool & Spa</b></h1>
                         <h2 class="col-12 carousel-paragraph themeTextColor">Columetric & Titrimetric </h2>
-                        <p class="nsr22">Water Analysis with distinctive color reactions </p>
+                        <p class="nsr22" style="font-weight:200;">Water Analysis with distinctive color reactions </p>
                       </div>
                     </div>
                   </div>
@@ -115,9 +115,9 @@
                     <div class="overlay"></div>
                         <div class="row carousel-ban-text-adj">
                     <div class="row col-12">
-                      <h1 class="col-12 carousel-header-adj"><b>Visual test Kits</b></h1>
-                      <h2 class="col-12 carousel-paragraph themeTextColor">Columetric & Titrimetric </h2>
-                      <p>Water Analysis with distinctive color reactions </p>
+                      <h1 class="col-12 carousel-header-adj"><b>Chec2o Aquarium</b></h1>
+                      <h2 class="col-12 carousel-paragraph themeTextColor">Multiple & Single </h2>
+                      <p class="nsr22" style="font-weight:200;">Testing Strips </p>
                     </div>
                   </div>
                 </div>
@@ -129,7 +129,19 @@
                     <div class="row col-12">
                       <h1 class="col-12 carousel-header-adj"><b>Visual test Kits</b></h1>
                       <h2 class="col-12 carousel-paragraph themeTextColor">Columetric & Titrimetric </h2>
-                      <p>Water Analysis with distinctive color reactions </p>
+                      <p class="nsr22" style="font-weight:200;">Water Analysis with distinctive color reactions </p>
+                    </div>
+                  </div>
+                </div>
+                  <?php } else if($range_data[0]->prod_id=='8') { ?>
+                  <div class="carousel-item active">
+                  <img class="d-block w-100 carousel-img-fit" src="{{ URL('/assets/images/product/filtration/banner/visual_test_kit_banner.jpg') }}" alt="First slide">
+                  <div class="overlay"></div>
+                        <div class="row carousel-ban-text-adj">
+                    <div class="row col-12">
+                      <h1 class="col-12 carousel-header-adj"><b>HealthCare</b></h1>
+                      <h2 class="col-12 carousel-paragraph themeTextColor">Columetric & Titrimetric </h2>
+                      <p class="nsr22" style="font-weight:200;">Water Analysis with distinctive color reactions </p>
                     </div>
                   </div>
                 </div>
@@ -216,12 +228,11 @@
                                       <div class="col-md-{{$col_val}} ranges_prod">
                                         <a href="{{ url($range->prod_url) }}">
                                           <div class="img_hover_color">
-                                              <?php if($range->prod_images=='') { ?>
-                                                <img src="{{ asset('assets/images/product/filter-boxes.png') }}" alt="Landing_images" width="100%" />
-                                              <?php } else { ?>
-                                                <img src="{{ URL($range_data[$i]->range_image) }}" alt="<?php echo $range_data->range_name; ?>" width="100%"/>
-                                              <?php } ?>
-                                            
+                                                @if($range->prod_images=='')
+                                                  <img src="{{ asset('assets/images/product/filter-boxes.png') }}" alt="Landing_images" width="100%" />
+                                                @else
+                                                  <img src="{{ URL($range->prod_images) }}" alt="<?php echo $range->prod_name; ?>" width="100%"/>
+                                                @endif
                                               
                                                 <div class="overlay">
                                                   <div class="text" style="width:100%;">
@@ -230,6 +241,12 @@
                                                 </div>
                                           </div>
                                         </a>
+                                        @php
+                                          $originalString = $range->prod_name;
+                                          $search = "®";
+                                          $html = "<sup>®</sup>"; // Sup tag
+                                          $range->prod_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                                        @endphp
 
                                           <div class="range_name">
                                             <label class="nsm20">{!! $range->prod_name; !!}</label>
@@ -252,7 +269,7 @@
         </section>
 
 
-        <?php if($range_data[0]->prod_id=='3' || $range_data[0]->prod_id=='4' || $range_data[0]->prod_id=='5') { ?>
+        <?php if($range_data[0]->prod_id=='3' || $range_data[0]->prod_id=='4' || $range_data[0]->prod_id=='5' || $range_data[0]->prod_id=='8') { ?>
           <section class="site-section-hero bg-image" style="height: 30vh; min-height: 250px; background:#239aff;" data-stellar-background-ratio="0.5" id="blue-banner"> 
             <div class="container">
                 <div class="row justify-content-center  align-items-center" style="min-height: 250px; height: 30vh;">
@@ -291,14 +308,14 @@
                 <div class="owl-carousel slide-one-item home-slider">
                     <div class="item"> 
                       <a href="{{ URL('product/industries') }}">
-                        <img src="{{ asset('../assets/images/person_1.jpg') }}" alt="Image" class="mx-auto img-fluid w-50"> <p class="text-center">View All</p>
+                        <img src="{{ asset('../assets/images/product/industry/view_all.jpg') }}" alt="Image" class="mx-auto img-fluid w-50"> <p class="text-center">View All</p>
                       </a>
                     </div>
 
                   <?php if(!empty($industry_data)){
                     foreach($industry_data as $data){
                       if($data->range_id=='6') { 
-                              $redirect_url = URL('product/industry/'.$data->prod_url);
+                              $redirect_url = URL($data->prod_url);
                               if(!empty($data->prod_images)){
                                 $img_url = URL('../assets/images/'.$data->prod_images); 
                               }else{

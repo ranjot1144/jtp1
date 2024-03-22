@@ -51,22 +51,40 @@
               $bac_col = 'rapid_test_bac_color';
             } else if($sec_text_val == 'Filtration') {
               $bac_col = 'filtration_test_bac_color';
-            } else if($sec_text_val == 'Pool And Spa') {
-              $dis_col = 'disable_color';
+            } else if($sec_text_val == 'Pool And Spa') { ?>
+              <style>
+                .breadcrumbs a{
+                  color: #d3d3d3;
+                }
+              </style>
+              <?php
               $bac_col = 'ps_test_bac_color';
             } else if($sec_text_val == 'Aquarium') {
               $bac_col = 'aquarium_test_bac_color';
-                } else if($sec_text_val == 'Visual Test Kits') {
+            } else if($sec_text_val == 'Visual Test Kits') {
+                  ?>
+                  <style>
+                    .breadcrumbs a{
+                      color: #d3d3d3;
+                    }
+                  </style>
+            <?php
+                $bac_col = 'vtk_test_bac_color';
+            } else if($sec_text_val == 'Industries') {
+              $bac_col = 'ind_test_bac_color'; ?>
 
-                    $dis_col = 'disable_color';
-                    $bac_col = 'vtk_test_bac_color';
-                } else if($sec_text_val == 'Industries') {
+            <?php } else if($sec_text_val == 'Industry') {
               $bac_col = 'ind_test_bac_color';
-            } else if($sec_text_val == 'Industry') {
-              $bac_col = 'ind_test_bac_color';
-            } else if($sec_text_val == 'Oem Label') {
-              $bac_col = 'rapid_test_bac_color';
+            } else if($sec_text_val == 'Oem Label') { ?>
+              <style>
+                .breadcrumbs a{
+                  color: #d3d3d3;
+                }
+              </style>
+            <?php } else if($sec_text_val == 'healthcare' || $sec_text_val == 'Healthcare') {
+                $bac_col = 'health_col';
             }
+
 
             echo '<div class="col-md-5 breadcrumbs '.$bac_col.'">
               <a href="/" class="'.$dis_col.'">Home / '.$first_val.' / </a>';

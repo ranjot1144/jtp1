@@ -32,9 +32,6 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-            @vite(['public/assets/css/custom.scss', 'public/assets/css/custom.css'])
-
-
     </head>
 
     <body data-spy="scroll" class="overflow-x-hidden" data-target=".site-navbar-target" data-offset="200">
@@ -66,37 +63,39 @@
 
     <script>
 
-    $(function() {
-    var zeynep = $('.zeynep').zeynep({
-      opened: function () {},
-      closed: function () {}
-    })
+document.addEventListener("DOMContentLoaded", function() {
 
-    // dynamically bind 'closing' event
-    zeynep.on('closing', function () {
-      console.log('this event is dynamically binded')
-    })
+const submenuToggles = document.querySelectorAll('.menu-elm');
 
-    // handle zeynepjs overlay click
-    $('.zeynep-overlay').on('click', function () {
-      zeynep.close()
-    })
+submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const submenu = toggle.nextElementSibling;
+        const dropdownArrow = this.querySelector('.dropdown-arrow');
+        dropdownArrow.classList.toggle('rotate');
+        submenu.classList.toggle('open');
+    });
+});
 
-    // open zeynepjs side menu
-    $('.btn-open').on('click', function () {
-      zeynep.open()
-    })
-  })
 
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "295px";
-      document.getElementById("overlaySidenav").classList.toggle("overlay-menu");
-    }
+const subMenuArrow = document.querySelectorAll(".sub-menu-arrow");
+subMenuArrow.forEach(toggle => {
+    toggle.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const innerSubMenu = this.parentNode.nextElementSibling;
+        this.classList.toggle('rotate');
+        innerSubMenu.classList.toggle('open');
+    });
+});
 
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("overlaySidenav").classList.remove("overlay-menu");
-    }
+document.getElementById('mobHamburger').addEventListener('click', function() {
+    document.querySelector('.mobile-menu-content').classList.toggle('open');
+    document.querySelector('.mobileSidebarContainer .burger-btn').classList.toggle('close-btn');
+});
+
+});
+
+
         jQuery(document).ready(function ($) {
             if (screen && screen.width > 800) {
                 var base_url = window.location.origin;
@@ -131,9 +130,6 @@
         }
     });
 });
-        </script>
-
-      <script>
       $('.owl-carousel').owlCarousel({
           stagePadding: 50,
           loop:true,
@@ -147,12 +143,18 @@
           navText: ['<span aria-label="Previous">‹</span>','<span aria-label="Next">›</span>'],
           responsive:{
               0:{
-                  items:1
+                  items:2
               },
               600:{
-                  items:5
+                  items:3
               },
-              1000:{
+              800:{
+                  items:3
+              },
+              1200:{
+                  items:4
+              },
+              1200:{
                   items:5
               }
 

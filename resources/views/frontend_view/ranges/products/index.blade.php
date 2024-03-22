@@ -34,6 +34,12 @@
             @if($range_data->isNotEmpty() ) 
               @if(!empty($range_data) && $range_data[0]->range_id=='1')
                 @php $colorclass = 'rapid_text_color'; @endphp
+              @elseif(!empty($range_data) && $range_data[0]->range_id=='2')
+                @php $colorclass = 'filtration_text_color'; @endphp
+              @elseif(!empty($range_data) && $range_data[0]->range_id=='4')
+                @php $colorclass = 'aquarium_text_bac_color'; @endphp
+              @elseif(!empty($range_data) && $range_data[0]->range_id=='8')
+                @php $colorclass = 'health_text_col'; @endphp
               @endif
             @else
               @php $colorclass = 'filtration_text_color'; @endphp
@@ -160,7 +166,7 @@
                   <div class="row">
                       <div class="col-md-12">
                           <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Header" style="width:100%; display:block;"/>
-                            @if($range_data[0]->range_id=='1' && $range_data[0]->prod_id=='1')
+                            @if($range_data[0]->range_id=='1')
                             <div class="top-left">
                               <div class="row justify-content-center align-items-center">
                                   <div class="col-md-12">
@@ -172,12 +178,12 @@
                               </div>
                           </div>
                             @endif
-                            @if($range_data[0]->range_id=='2')
+                            @if($range_data[0]->range_id=='2' || $range_data[0]->range_id=='8')
                             <div class="top-left">
                               <div class="row justify-content-center align-items-center">
                                   <div class="col-md-12">
                                       <div data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
-                                        <h2 class="filterpapercolor bold-text mb-3 border-left-bar px-md-4" data-aos="fade-right"> {!! $range_data[0]->prod_name !!}</h2>
+                                        <h2 class="{{$colorclass}} bold-text mb-3 border-left-bar px-md-4" data-aos="fade-right"> {!! $range_data[0]->prod_name !!}</h2>
                                         <p class="nsr25 line_height mt-5">{!! $range_data[0]->prod_desc !!}</p>
                                       </div>
                                   </div>
@@ -195,10 +201,9 @@
                     <div class="container">
                       <div class="row justify-content-center ">
                         
-                        <div class="col-md-12 general-text-color text-center">
-                          <h3 class="mb-4">Grade Finder</h3>
-                          <p class="mb-5">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                              <br/>tempor invidunt ut labore et dolore magna aliquyam erat, sed diam.</p>
+                        <div class="col-md-12 general-text-color mb-5">
+                          <h3 class="mb-4 text-center bold-text">Grade Finder</h3>
+                          <p>{!! $prod_desc_data[0]->pd_desc; !!}</p>
                         </div>
 
                         <div class="col-md-12">
@@ -267,14 +272,35 @@
                                 <!-- <h3 class="text-center">Our Range of</h3> -->
                               @endif
                               
-                                @if ($range_data[0]->range_id=='1' || $range_data[0]->range_id=='2')
-                                  <h2 class="mb-4 text-center bold-text">{{ trim($range_data[0]->prod_name,"s"); }} Range</h2>
+                                @if ($range_data[0]->range_id=='1' || $range_data[0]->range_id=='2' || $range_data[0]->range_id=='8')
+                                          @php
+                                            $originalString = $range_data[0]->prod_name;
+                                            $search = "®";
+                                            $html = "<sup>®</sup>"; // Sup tag
+                                            $range_data[0]->prod_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                                          @endphp
+
+                                  @if($range_data[0]->range_id!='8')
+                                    <h2 class="mb-4 text-center bold-text">{!! trim($range_data[0]->prod_name,"s"); !!} Range</h2>
+                                  @else
+                                    <h2 class="mb-4 text-center bold-text">{!! $range_data[0]->prod_name !!} Range</h2>
+                                  @endif
                                     
-                                  @if($range_data[0]->prod_id!='5' && $range_data[0]->prod_id!='1')
-                                  <!-- <h2 class="mb-4 {{ $colorclass;}} text-center"><b>{{ $range_data[0]->prod_name; }}</b></h2> -->
-                                  <!-- <h2 class="mb-4 {{ $colorclass;}} text-center"><b>{{ $range_data[0]->prod_name; }}</b></h2> -->
+                                  @if($range_data[0]->prod_id!='5')
                                       @if($prod_desc_data->isNotEmpty())
-                                          <div class="mb-5 content_description"><p>{!! $prod_desc_data[0]->pd_desc; !!}</p></div>
+
+                                          @php
+                                            $originalString = $prod_desc_data[0]->pd_desc;
+                                            $search = "®";
+                                            $html = "<sup>®</sup>"; // Sup tag
+                                            $prod_desc_data[0]->pd_desc = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                                          @endphp
+
+                                          @if($range_data[0]->prod_id=='1')
+                                            <div class="text-center content_description"><p>{!! $prod_desc_data[0]->pd_desc; !!}</p></div>
+                                          @else
+                                            <div class="content_description"><p>{!! $prod_desc_data[0]->pd_desc; !!}</p></div>
+                                          @endif
                                       @endif
                                   @endif
                                 @endif
@@ -289,10 +315,12 @@
                                   if(!empty($cat_data) && $cat_data!='') {
                                     $url = '';
                                     $col = 'col-md-4';
-                                    if(count($cat_data)>3) {
+                                    if(count($cat_data)>3 && count($cat_data)!=5) {
                                       $col = 'col-md-3';
                                     }else if(count($cat_data)==2) {
                                       $col = 'col-md-6';
+                                    }else if(count($cat_data)==5){
+                                      $col = 'col-md-4';
                                     }
 
                                     foreach($cat_data as $data) {
@@ -309,7 +337,12 @@
 
                                       </a>
                                         <div class="prod_name">
-                                          <label class="" style="margin:20px 0 0;"><b>{!! $data->cat_name !!}</b></label></br>
+                                          @php $originalString = $data->cat_name;
+                                                $search = "®";
+                                                $html = "<sup>®</sup>"; // Sup tag
+                                                $data->cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                                          @endphp
+                                            <label class="" style="margin:20px 0 0;"><b>{!! $data->cat_name !!}</b></label></br>
                                           <label><b>{!! $data->cat_ranges !!}</b></label>
                                         </div>
                                     </div>
@@ -362,6 +395,8 @@
                         </div>
                 </section>
                         @else
+
+                @if(count($prod_desc_data) && $prod_desc_data[0]->pd_features!='')
                   <section class="site-section lighter-bg content-padding" id="prod-section-nav">
                     <div class="container">
                       <div class="row justify-content-center general-text-color">
@@ -409,12 +444,13 @@
                       </div>
                     </div>
                   </section>
+                  @endif
                 @endif
               <?php } 
 
-              if($range_data[0]->range_id =='2' && $range_data[0]->prod_id!='8') { ?>
+              if($range_data[0]->range_id=='2' && ($range_data[0]->prod_id!='8' || $range_data[0]->prod_id!='18')) { ?>
 
-                <section class="site-section lighter-bg" id="section-bio">
+                <!-- <section class="site-section lighter-bg" id="section-bio">
                     <div class="container">
                       <div class="row justify-content-center general-text-color">
                         
@@ -445,7 +481,7 @@
 
                       </div>
                     </div>
-                </section>
+                </section> -->
                 <?php } ?>
 
 

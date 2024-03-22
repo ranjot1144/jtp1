@@ -221,7 +221,7 @@ a {
 
 .gradient-right-to-left {
     color: #fff;
-    background-image: linear-gradient(to right, #F58621, #d3552e);
+    background-image: linear-gradient(to right, #F58621, 80%, #d3552e);
 }
 
 .main-content .photos .photo-item img {
@@ -325,12 +325,20 @@ ul li li:before {
     color: #A0BF1A;
 }
 
+.ps_text_bac_color {
+    color: #2C4A9A;
+}
+
 .ps_test_bac_color {
     background: #2C4A9A;
 }
 
 .aquarium_test_bac_color {
     background: #6FC3BA;
+}
+
+.aquarium_text_bac_color {
+    color: #6FC3BA;
 }
 
 .vtk_test_bac_color {
@@ -399,14 +407,14 @@ header {
             /* color: #000; */
 
             >p>a {
-                color: #000;
+                color: #818181;
             }
 
             .social_icons {
                 margin: 10px 0px !important;
 
                 svg {
-                    color: #000;
+                    color: #818181;
                 }
 
                 >a {
@@ -415,6 +423,10 @@ header {
             }
         }
     }
+}
+
+button:focus {
+    outline: none;
 }
 
 #jQuant tbody tr:nth-of-type(odd) {
@@ -639,6 +651,7 @@ figure {
 
 img.image-50 {
     height: 10pc;
+    object-fit: contain;
     /* margin-bottom: 20px;
     width: 50%; */
 }
@@ -876,35 +889,48 @@ input[type="search"]::placeholder {
 }
 
 .lab_col {
-    background-color: #47cbcb;
+    /* background-color: #47cbcb; */
+    background-color: #9AA5B6;
 }
 
 .health_col {
-    background-color: #d3552e;
+    /* background-color: #d3552e; */
+    background-color: #42AD49;
+}
+
+.health_text_col {
+    /* background-color: #d3552e; */
+    color: #42AD49;
 }
 
 .food_col {
-    background-color: #8f3114;
+    /* background-color: #8f3114; */
+    background-color: #F47F72;
 }
 
 .edu_col {
-    background-color: #2eadd3;
+    /* background-color: #2eadd3; */
+    background-color: #febd1b;
 }
 
 .env_col {
-    background-color: #2d9d45;
+    /* background-color: #2d9d45; */
+    background-color: #244C26;
 }
 
 .cos_col {
-    background-color: #e17eac;
+    /* background-color: #e17eac; */
+    background-color: #A61D36;
 }
 
 .ind_col {
-    background-color: #6c757d;
+    /* background-color: #6c757d; */
+    background-color: #C18F5D;
 }
 
 .water_col {
-    background-color: #939303;
+    /* background-color: #939303; */
+    background-color: #12A2B9;
 }
 
 .industry_content_css {
@@ -1047,7 +1073,7 @@ input[type="search"]::placeholder {
 
 #other-product {
     padding: 2em 3em;
-    border-top: 1px solid #d3d3d3;
+    /* border-top: 1px solid #d3d3d3; */
 }
 
 #section-bio {
@@ -1102,10 +1128,10 @@ input[type="search"]::placeholder {
 
 .service-logo {
     background-image: url('../images/gradient-left-right.png');
-    height: 50vh;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center !important;
+    padding-bottom: 50px;
 }
 
 #table_presentation_data .accordion-div {
@@ -1273,6 +1299,7 @@ input[type="search"]::placeholder {
 
     #meet figure img {
         height: 120px !important;
+        object-fit: contain;
     }
 
     .site-section-footer.bg-image {
@@ -1294,12 +1321,6 @@ input[type="search"]::placeholder {
 
     .service-logo .owl-stage .owl-item .item img {
         padding: 10px 0px;
-        width: 80% !important;
-        height: 125px;
-    }
-
-    .breadcrumbs {
-        margin-top: 12.9%;
     }
 
     #phTestingStrip_image img {
@@ -1371,7 +1392,6 @@ input[type="search"]::placeholder {
     }
 
     .breadcrumbs {
-        margin-top: 19% !important;
 
         a {
             font-size: 12px;
@@ -1449,9 +1469,6 @@ input[type="search"]::placeholder {
         max-width: 30px;
     } */
 
-    .breadcrumbs {
-        margin-top: 19%;
-    }
 
     .search-container {
         margin-top: 15% !important;
@@ -1486,14 +1503,6 @@ input[type="search"]::placeholder {
         padding: 0 20px !important;
     }
 
-    .service-logo .owl-stage .owl-item .item img {
-        width: 30% !important;
-    }
-
-    #industry-section-carousel .owl-stage .owl-item .item img {
-        width: 40% !important;
-    }
-
     #product_banner img {
         height: 250px !important
     }
@@ -1520,15 +1529,10 @@ input[type="search"]::placeholder {
     .carousel-swap-adjuster {
         bottom: -105px;
     }
-
-    .breadcrumbs {
-        margin-top: 21% !important;
-    }
 }
 
 @media (max-width: 320px) {
     .breadcrumbs {
-        margin-top: 25% !important;
         padding: 10px;
 
         a {
@@ -1663,7 +1667,6 @@ input[type="search"]::placeholder {
 }
 
 #prod-section-nav {
-    border-top: 1px solid #d3d3d3;
 
     .navbar-filter-papers.active {
         background: none;
@@ -1799,6 +1802,7 @@ input[type="search"]::placeholder {
 
     img.image-50 {
         height: 8pc;
+        object-fit: contain;
     }
 
     h2 {
@@ -1837,6 +1841,7 @@ input[type="search"]::placeholder {
     width: 100%;
     max-width: 100%;
     height: 170px;
+    object-fit: cover;
 }
 
 
@@ -1853,8 +1858,20 @@ input[type="search"]::placeholder {
 
 
 
+@media (max-width: 1300px) {
 
+    #meet figure img {
+        object-fit: contain;
+    }
 
+    .range_name label {
+        margin-top: 10px;
+    }
+
+    #meet figure img {
+        height: 125px;
+    }
+}
 
 
 

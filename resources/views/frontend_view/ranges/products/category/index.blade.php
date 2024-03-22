@@ -106,10 +106,91 @@ tbody {
   padding: 10px;
 }
 
+.cellulose-table-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 7px;
+}
+.cellulose-table-container .heading-box{
+  height: 53px;
+    border-radius: 30px 30px 0 0;
+    padding: 11px 57px;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, #d3552e, 35%, #F58621);
+}
+
+.cellulose-table-container .heading-box h4{
+    color: #fff;
+    font-size: 17px;
+}
+
+.cellulose-item-content{
+  display: flex;
+    justify-content: space-between;
+    padding: 10px 56px;
+    border-radius: 4px;
+}
+
+.cellulose-item{
+  background: #e36c28;
+  padding: 10px 34px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #ffff;
+    font-weight: 600;
+    font-size: 16px;
+
+}
+
+.cellulose-item-content:nth-child(odd) {
+        background-color: #ffffff; 
+    }
+
+    .cellulose-item-content:nth-child(even) {
+        background-color: #dddbdb; 
+    }
+
+    .parent-cellulose-item{
+      transition : 2s;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s ease;
+    }
+
+    .open{
+        max-height: 1000px;
+    }
+
+  
+    .outer-cellulose-content .arrow{
+        transform: rotate(45deg);
+    }
+    .outer-cellulose-content .arrow.rotate{
+      transform: rotate(225deg);
+      margin-bottom: 0
+    }
+
+    .outer-cellulose-content:last-child .cellulose-item{
+          border-radius: 0 0 30px 30px;
+    }
+
+    @media (max-width: 786px){
+      .cellulose-item-content, .cellulose-table-container .heading-box{
+        padding: 10px;
+      }
+      .cellulose-table-container .heading-box h4, .cellulose-item-content > div{
+        font-size: 10px !important;
+      }
+      .cellulose-item-content{
+        gap: 8px;
+      }
+    }
   </style>
        @include('frontend_view.layouts.breadcrumb_nav')
-
-
             @php 
               $cat_name = '';
               $colorclass = ''; 
@@ -142,21 +223,29 @@ tbody {
                   <div class="row ">
                       <div class="col-md-12">
                           <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Header"/>
-                          @if ( ($range_data[0]->range_id==1 && $range_data[0]->prod_id=='2') || ($range_data[0]->range_id==2 && $cat_data[0]->cat_id!='5') )
-                          <div class="top-right">
+                          @php $top_position = 'top-left'; @endphp
+                          @if ( ($range_data[0]->range_id==1 && ($cat_data[0]->cat_id=='1' || $cat_data[0]->cat_id=='103' || $cat_data[0]->cat_id=='104' || $range_data[0]->prod_id=='16') ) )
+                            @php $top_position = 'top-right'; @endphp
+                          @endif
+
+                          <!-- @if ( ($range_data[0]->range_id==1 && $range_data[0]->prod_id=='2') || ($range_data[0]->range_id==2 && $cat_data[0]->cat_id!='5') )
+                          @endif -->
+
+                          
+                          <div class="{{ $top_position }}">
                               <div class="row justify-content-center align-items-center">
                                   <div class="col-md-12">
                                       <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
-                                        <h2 data-aos="fade-right"> {!! $range_data[0]->prod_name !!}</h2>
-                                        <h3 class="{{ $colorclass }}">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h3>
+                                        <h2 data-aos="fade-right" class="{{ $colorclass }} bold-text mb-3 border-left-bar px-md-4 aos-init aos-animate"> {!! $range_data[0]->prod_name !!}</h2>
+                                        <h3 class="">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h3>
                                       </div>
                                   </div>
                               </div>
                           </div>
-                          <div class="bottom-right">
+                          <!-- <div class="bottom-right">
                               <a href="#" class="btn btn-primary btn-large">Purchase</a>
-                          </div>
-                          @endif
+                          </div> -->
+                          
 
                       </div>
                   </div>
@@ -170,29 +259,36 @@ tbody {
                           @if ($cat_data[0]->cat_id=='6' || $cat_data[0]->cat_id=='2')
                             <div class="col-md-12 general-text-color">
                               <!-- <h3 class="text-center mb-4">Grades</h3> -->
-                              <h3 class="text-center mb-4 bold-text">{{ $cat_data[0]->cat_name }} Range</h3>
+                              <h3 class="text-center mb-4 bold-text">{{ trim($cat_data[0]->cat_name,"s") }} Range</h3>
                               <div class="mb-5 content_description"><p>{{ $cat_data[0]->cat_main_desc }}</p></div>
                             </div>
-                          @elseif ($range_data[0]->range_id==2 && $cat_data[0]->cat_id=='5')
+                          @elseif ($range_data[0]->range_id==2 && ($cat_data[0]->cat_id=='4' || $cat_data[0]->cat_id=='5'))
                           <div class="col-md-12 general-text-color">
-                            <h2 class="mb-3 bold-text">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
-                            <div class="mb-5 content_description "><p>{!! $cat_data[0]->cat_main_desc !!}</p></div>
+                            <h2 class="mb-3 bold-text text-center">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
+                            <div class="mb-5 content_description text-center">{!! $cat_data[0]->cat_main_desc !!}</div>
                           </div>
                             <!-- <div class="col-md-12 text-center general-text-color">
                               <h3 class="mb-5">Categories</h3>
                             </div> -->
                             @elseif ($range_data[0]->range_id==2 && ($cat_data[0]->cat_id=='8' || $cat_data[0]->cat_id=='9'))
                           <div class="col-md-12 general-text-color">
-                            <h2 class="mb-3 bold-text">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
+                          <h2 class="mb-3 bold-text text-center">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
                             <div class="mb-5 content_description"><p>{!! $cat_data[0]->cat_main_desc !!}</p></div>
                           </div>
 
                           @else
                           <div class="col-md-12 general-text-color">
-                            <h2 class="text-center mb-5 bold-text">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
-                            @if(count($cat_desc))
-                            <div class="mb-5 content_description"><p>{!! $cat_desc[0]->cd_maindesc !!}</p></div>
-                            @endif
+                              @php
+                                $originalString = $cat_name;
+                                $search = "®";
+                                $html = "<sup>®</sup>"; // Sup tag
+                                $cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                              @endphp
+                            <h2 class="text-center mb-5 bold-text">{!! preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) !!}</h2>
+                              <div class="mb-5 content_description"><p>{!! $cat_data[0]->cat_main_desc !!}</p></div>
+                              @if(count($cat_desc))
+                               <div class="mb-5 content_description"><p>{!! $cat_desc[0]->cd_maindesc !!}</p></div>
+                              @endif
                           </div>
                             @if($range_data[0]->range_id=='2')
                             <!-- <div class="col-md-12 text-center general-text-color">
@@ -203,125 +299,148 @@ tbody {
                         @endif
 
                         <?php  
-                        if($range_data->isNotEmpty() && $range_data[0]->range_id=='2') {
-                          if($range_data[0]->prod_id=='7') {
+                        if($range_data->isNotEmpty() && $range_data[0]->range_id=='2') { ?>
+                          @if($cat_data[0]->cat_id=='123') <!--Glass Fibre Filters-->
+
+                          <table class="table-striped w-full">
+                              <thead class="">
+                                <tr class="gradient-left-to-right">
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Grade</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Whatman <br/> Equivalent</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Speed</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Thickness (mm)</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Retension Rate (%)</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Weight (g/m2)</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Filtration Speed (Sec)</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Air Permeability</th>
+                                  <th scope="p-3 text-sm font-semibold tracking-wide text-left">Max Operating Temperature (oC)</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                  
+                                  <tr class="parent" id="50a" title="Click to expand/collapse" style="cursor: pointer;">
+                                    <td class="p-3 text-sm text-gray-700">50A </td>
+                                    <td>GFA</td>
+                                    <td>Fast, High Load</td>
+                                    <td>0.29</td>
+                                    <td>99.993</td>
+                                    <td>56</td>
+                                    <td>19</td>
+                                    <td>33</td>
+                                    <td>500</td>
+                                  </tr>
+                                  <tr class="parent" id="50b" title="Click to expand/collapse" style="cursor: pointer;">
+                                    <td>50B </td>
+                                    <td>GFB</td>
+                                    <td>Medium - Fast, Very High Load</td>
+                                    <td>1</td>
+                                    <td>99.993</td>
+                                    <td>140</td>
+                                    <td>44</td>
+                                    <td>11</td>
+                                    <td>500</td>
+                                  </tr>
+                                  <tr class="parent" id="50c" title="Click to expand/collapse" style="cursor: pointer;">
+                                    <td>50C </td>
+                                    <td>GFC</td>
+                                    <td>Medium - Fast, Very High Load</td>
+                                    <td>0.28</td>
+                                    <td>99.995</td>
+                                    <td>54</td>
+                                    <td>25</td>
+                                    <td>54</td>
+                                    <td>500</td>
+                                  </tr>
+
+                              </tbody>
+                            </table>
+
+                          @elseif($cat_data[0]->cat_id=='124') <!-- Quartz Filter -->
+
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Please fell free to <a href="">Contact us</a>
+                          </p>
+
+                              
+                          @endif
+
+                          <?php if($range_data[0]->prod_id=='7') {
                             ?>
 
-                          <table class="table-striped">
+                            <table class="table-striped">
                               <thead>
                                 <tr>
-                                  <th scope="col" style="background:#fff;width:20%;">&nbsp;</th>
-                                  <th scope="col" colspan="4" class="gradient-left-to-right text-center" style="border-radius: 15px 15px 0px 0px; width:100%;border-right:2px solid;">PVDF</th>
+                                  <th scope="col" style="background:#fff;width:40%;">&nbsp;</th>
+                                  <th scope="col" colspan="4" class="gradient-left-to-right text-center" style="border-radius: 15px 15px 0px 0px; width:100%;border-right:2px solid;">Technical Specification</th>
                                 </tr>
                               </thead>
                               <tbody class="text-center">
-                                <tr>
-                                    <th></th>
-                                    <td>13mm</th>
-                                    <td>13mm</td>
-                                    <td>25mm</td>
-                                    <td>25mm</th>
-                                </tr>
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left; border-top-left-radius:20px;">Pore Size</th>
-                                  <th>0.20</th>
-                                  <th>0.45</th>
-                                  <th>0.20</th>
-                                  <th>0.45</th>
-                                </tr>
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Membrane Material</td>
-                                  <td>PVDF</td>
-                                  <td>PVDF</td>
-                                  <td>PVDF</td>
-                                  <td>PVDF</td>
-                                </tr>
 
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Housing Material</th>
-                                  <td>PP</td>
-                                  <td>PP</td>
-                                  <td>PP</td>
-                                  <td>PP</td>
-                                </tr>
+                              <?php foreach($syringe_table_data as $index => $td) {
+                                      if($td->cfd_val2!='') { ?>
 
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Maximum Operating Pressure(PSI)</th>
-                                  <td>87</td>
-                                  <td>87</td>
-                                  <td>87</td>
-                                  <td>87</td>
-                                </tr>
+                                      <tr>
+                                          <th class="themebackgroundColor" style="text-align:left;"><?php echo $td->cfd_desc; ?></th>
+                                          <td><?php echo $td->cfd_val1; ?></th>
+                                          <td><?php echo $td->cfd_val2; ?></td>
+                                          <td><?php echo $td->cfd_val3; ?></td>
+                                          <td><?php echo $td->cfd_val4; ?></th>
+                                      </tr>
 
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Applicable pH Value</th>
-                                  <td>1-14</td>
-                                  <td>1-14</td>
-                                  <td>1-14</td>
-                                  <td>1-14</td>
-                                </tr>
+                                      <?php } else { ?>
+                                        <tr>
+                                          <th class="themebackgroundColor" style="text-align:left;"><?php echo $td->cfd_desc; ?></th>
+                                          <td colspan=4><?php echo $td->cfd_val1; ?></th>
+                                        </tr>
+                                      <?php if($index=='10'){ ?>
+                                        <tr style="background:#fff;">
+                                          <th style="text-align:left;">Product Codes</th>
+                                          <td colspan=4></th>
+                                        </tr>
+                                      <?php }
+                                      
+                                    }
+                                      $index++;
+                                    } ?>
+                              </tbody>
+                            </table>
 
+                            <?php
+                          } if($range_data[0]->prod_id=='6'){ ?>
+                          
+                          <table class="table-striped">
+                              <thead>
                                 <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Filtration Diameter(mm)</th>
-                                  <td>13</td>
-                                  <td>13</td>
-                                  <td>13</td>
-                                  <td>13</td>
+                                  <th scope="col" style="background:#fff;width:40%;">&nbsp;</th>
+                                  <th scope="col" colspan="2" class="gradient-left-to-right text-center" style="border-radius: 15px 15px 0px 0px; width:100%;border-right:2px solid;">Technical Specification</th>
                                 </tr>
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Filtration Area</th>
-                                  <td>1.09</td>
-                                  <td>1.09</td>
-                                  <td>4.08</td>
-                                  <td>4.08</td>
-                                </tr>
+                              </thead>
+                              <tbody class="text-center">
 
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Hold-Up Volume(μL)</th>
-                                  <td><20</td>
-                                  <td><20</td>
-                                  <td><100</td>
-                                  <td><100</td>
-                                </tr>
+                              <?php foreach($membrane_table_data as $index => $td) {
+                                      if($td->cfm_val2!='') { ?>
 
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Sample Volume(ML)</th>
-                                  <td><10</td>
-                                  <td><10</td>
-                                  <td><100</td>
-                                  <td><100</td>
-                                </tr>
+                                      <tr>
+                                          <th class="themebackgroundColor" style="text-align:left;"><?php echo $td->cfd_desc; ?></th>
+                                          <td><?php echo $td->cfm_val1; ?></th>
+                                          <td><?php echo $td->cfm_val2; ?></td>
+                                      </tr>
 
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Pack Size</th>
-                                  <td>100</td>
-                                  <td>100</td>
-                                  <td>100</td>
-                                  <td>100</td>
-                                </tr>
-
-                                
-
-                                <tr>
-                                  <td style="text-align:left; background:#fff;" colspan="7">Product code</th>
-                                </tr>
-
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left;">Non-Sterile</th>
-                                  <th>SFV13P020N</th>
-                                  <th>SFV13P045N</th>
-                                  <th>SFV25P020N</th>
-                                  <th>SFV25P045N</th>
-                                </tr>
-
-                                <tr>
-                                  <th class="themebackgroundColor" style="text-align:left; border-bottom-left-radius:20px;">Sterile</th>
-                                  <th>SFV13P020NS</th>
-                                  <th>SFV13P045NS</th>
-                                  <th>SFV25P020NS</th>
-                                  <th>SFV25P045NS</th>
-                                </tr>
-
+                                      <?php } else { ?>
+                                        <tr>
+                                          <th class="themebackgroundColor" style="text-align:left;"><?php echo $td->cfd_desc; ?></th>
+                                          <td colspan=4><?php echo $td->cfm_val1; ?></th>
+                                        </tr>
+                                      <?php if($index=='8'){ ?>
+                                        <tr style="background:#fff;">
+                                          <th style="text-align:left;">Product Codes</th>
+                                          <td colspan=4></th>
+                                        </tr>
+                                      <?php }
+                                      
+                                    }
+                                      $index++;
+                                    } ?>
                               </tbody>
                             </table>
 
@@ -332,76 +451,66 @@ tbody {
 
                         <?php if($range_data->isNotEmpty() && $range_data[0]->range_id=='1') { 
 
-                          if($cat_data[0]->cat_id=='2'){ ?>
-                            <div class="col-md-12">
-                                <div class="card">
-                                  <div class="card-header">
-                                    <div class="row text-center image-list">
-                                      <?php 
-                                        if(!empty($sub_cat_data) && $sub_cat_data!='') {
-                                          $url = '';
-                                          $col = 'col-md-4';
-                                          if(count($sub_cat_data)>3) {
-                                            $col = 'col-md-3';
-                                          }else if(count($sub_cat_data)==2) {
-                                            $col = 'col-md-6';
-                                          }
+                            if($cat_data[0]->cat_id=='2') { ?>
+                              <div class="col-md-12">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <div class="row text-center image-list">
+                                        <?php 
+                                          if(!empty($sub_cat_data) && $sub_cat_data!='') {
+                                            $url = '';
+                                            $col = 'col-md-4';
+                                            if(count($sub_cat_data)>3) {
+                                              $col = 'col-md-3';
+                                            }else if(count($sub_cat_data)==2) {
+                                              $col = 'col-md-6';
+                                            }
 
-                                          foreach($sub_cat_data as $data) {
-                                            $url = $data->subcat_url;
-                                        ?>
-                                          <div class="{{ $col }} ranges_prod">
-                                            <a href="{{ URL($data->subcat_url) }}">
+                                            foreach($sub_cat_data as $data) {
+                                              $url = $data->subcat_url;
+                                          ?>
+                                            <div class="{{ $col }} ranges_prod">
+                                              <a href="{{ URL($data->subcat_url) }}">
 
-                                              @if($data->sc_images!='')
-                                                <img src="{{ URL($data->sc_images); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
-                                              @else
-                                                <img src="{{ url('assets/images/j-quant.png'); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
-                                              @endif
+                                                @if($data->sc_images!='')
+                                                  <img src="{{ URL($data->sc_images); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
+                                                @else
+                                                  <img src="{{ url('assets/images/j-quant.png'); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
+                                                @endif
 
-                                            </a>
-                                              <div class="prod_name">
-                                                <label class="" style="margin:20px 0 0;"><b>{!! $data->sub_cat_name !!}</b></label></br>
-                                                <label><b>{!! $data->sc_ranges.'' !!}</b></label>
-                                              </div>
-                                          </div>
-                                      <?php  }
-                                        }  ?>
+                                              </a>
+                                                <div class="prod_name">
+                                                  <label class="bold-text" style="margin:20px 0 0;">{!! $data->sub_cat_name !!}</label></br>
+                                                  <label class="bold-text">{!! $data->sc_ranges.'' !!}</label>
+                                                </div>
+                                            </div>
+                                        <?php  }
+                                          }  ?>
 
-                                    </div>
-                                    <?php if(count($cat_data)>12) { ?>
-                                      <div class="content_count">
-                                        <p class="text-center showing-result"></p>
-                                        <a class="load-more"> Load More <span class="loading"><span></span></span></a>
                                       </div>
-                                    <?php } ?>
+                                      <?php if(count($cat_data)>12) { ?>
+                                        <div class="content_count">
+                                          <p class="text-center showing-result"></p>
+                                          <a class="load-more"> Load More <span class="loading"><span></span></span></a>
+                                        </div>
+                                      <?php } ?>
+                                    </div>
+
                                   </div>
+                              </div>
 
-                                </div>
-                            </div>
-
-                          <?php }else{ ?> 
-                          <div class="col-md-12 general-text-color">
+                            <?php }else{ ?>  
+                              <div class="col-md-12 general-text-color">
                             <table id="jQuant">
                               <thead>
-                                <tr class="gradient-left-to-right">
-                                  <th scope="col">Product</th>
+                                <tr class="gradient-left-to-right gradient-row">
+                                  <th scope="col" width="25%">Product</th>
                                   <th scope="col">Graduation</th>
-                                  <th scope="col" width="20%">Presentation</th>
-                                  <th scope="col" width="10%">Product</th>
+                                  <th scope="col" width="15%">Presentation</th>
+                                  <th scope="col" width="10%">Code</th>
                                 </tr>
                               </thead>
                                 <tbody>
-                                    <?php /*if(!empty($sub_cat_data) && $sub_cat_data!='') { 
-                                            foreach ($sub_cat_data as $key => $value) { ?>
-                                              <tr>
-                                                <td>{{ $value->sub_cat_name.' '.$value->sc_ranges; }}</td>
-                                                <td>{{ $value->sp_graduation; }}</td>
-                                                <td>{{ $value->sp_presentation; }}</td>
-                                                <td>{{ $value->sp_prod_code; }}</td>
-                                              </tr>
-                                    <?php } 
-                                        } */?>
                                     <?php if(!empty($category_presentation) && $category_presentation!='') { 
                                             foreach ($category_presentation as $key => $value) { ?>
                                               <tr>
@@ -427,7 +536,38 @@ tbody {
 
                                 <button class="text-uppercase accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> Industries</button>
                                 <div class="panel">
-                                  <p class="mt-3">{!! $cat_desc[0]->cd_industries !!}</p>
+                                  <p class="mt-3">
+                                    @if($cat_desc->isNotEmpty())
+                                      <ul class="ul-check list-unstyled success" style="margin-bottom:0px;">
+                                        @foreach($cat_desc as $k=>$data)
+                                          @foreach(explode(',', $data->cd_industries) as $info)
+
+                                          
+                                            @if($info=='Laboratory')
+                                              <li><a href="{{ URL('product/industries/laboratory') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Healthcare')
+                                              <li><a href="{{ URL('product/industries/healthcare') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Food & Beverages')
+                                              <li><a href="{{ URL('product/industries/food_beverages') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Education')
+                                              <li><a href="{{ URL('product/industries/education') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Environmental')
+                                              <li><a href="{{ URL('product/industries/environmental') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Disinfection & Sanitation')
+                                              <li><a href="{{ URL('product/industries/cosmetic') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Industrial Water Testing')
+                                              <li><a href="{{ URL('product/industries/industrial') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Domestic Water Testing')
+                                              <li><a href="{{ URL('product/industries/water') }}">{{$info}}</a></li>
+                                            @else
+                                              <li>{{$info}}</li>
+                                            @endif
+
+                                          @endforeach
+                                        @endforeach
+                                      </ul>
+                                    @endif
+                                  </p>
                                 </div>
 
                                 <button class="text-uppercase accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> Downloads</button>
@@ -440,18 +580,37 @@ tbody {
 
                           </div>
                         <?php 
-                      } }else if ($range_data->isNotEmpty() && ($range_data[0]->range_id=='3' || $range_data[0]->range_id=='5') ) { ?>
+                      } }else if ($range_data->isNotEmpty() && ($range_data[0]->range_id=='3' || $range_data[0]->range_id=='4' || $range_data[0]->range_id=='5' || $range_data[0]->range_id=='8') ) { ?>
+
+                              <table id="jQuant">
+                              <thead>
+                                <tr class="gradient-left-to-right">
+                                  <!--<th scope="col">Product</th>-->
+                                  <th scope="col" width="45%">Graduation</th>
+                                  <th scope="col" width="15%">Presentation</th>
+                                  <th scope="col" width="10%">Code</th>
+                                </tr>
+                              </thead>
+                                <tbody>
+                                    <?php if(!empty($category_presentation) && $category_presentation!='') { 
+                                            foreach ($category_presentation as $key => $value) { ?>
+                                              <tr>
+                                                <!--<td>{{ $value->cp_product.' '.$value->cp_range }}</td>-->
+                                                <td style='width="20%";'>{!! $value->cp_graduation; !!}</td>
+                                                <td>{!! $value->cp_presentation !!}</td>
+                                                <td>{!! $value->cp_prod_code !!}</td>
+                                              </tr>
+                                    <?php } 
+                                        } ?>
+                                  
+                                </tbody>
+                              </table>
                         <div class="col-md-12 general-text-color">
                             <div class="accordion-div">
                                 <button class="accordion toggle_tr"><span class="arrow down"></span> Description</button>
                                 <div class="panel">
                                   <p>{!! $cat_data[0]->cat_desc !!}</p>
                                 </div>
-
-                                <!-- <button class="accordion visual-test-kit">Specification</button>
-                                <div class="panel">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div> -->
 
                                 <button class="accordion toggle_tr"><span class="arrow down"></span>Industries</button>
                                 <div class="panel">
@@ -463,15 +622,13 @@ tbody {
                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 </div>
 
-                                <!-- <button class="accordion visual-test-kit">Documents</button>
-                                <div class="panel">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div> -->
+                               
 
                                 
                             </div>
                         </div>
                       <?php }else{ ?>
+
 
                         <div class="col-md-12">
                           <div class="card">
@@ -479,78 +636,59 @@ tbody {
                               
                               <div class="row">
 
-                              <?php if($range_data->isNotEmpty() && $range_data[0]->prod_id=='5' ) {  ?>
+                                <?php if($range_data->isNotEmpty() && $range_data[0]->prod_id=='5' ) {  ?>
+                                  <div class="col-md-12 general-text-color">
 
-                                <div class="col-md-12 general-text-color">
 
-                                          <table class="table-condensed" style="border-collapse:collapse;" id="extraction_table">
-                                              <thead>
-                                                  <tr class="gradient-left-to-right">
-                                                      <th width="40%">Diameter</th>
-                                                      <th width="30%">Presentation</th>
-                                                      <th width="30%">Product Code</th>
-                                                  </tr>
-                                              </thead>
+                                    <div class="cellulose-table-container">
+                                        <div class="heading-box">
+                                          <h4>Diameter</h4>
+                                          <h4>Presentation	</h4>
+                                          <h4>Product Code</h4>
+                                        </div>
+                                                          @php 
+                                                            $filter_val = '';
+                                                            $recommendation = ''; 
+                                                            $visibility = '';
+                                                          @endphp
+                                                            @if(\Request::getQueryString())
+                                                              @php 
+                                                                $recommendation = \Request::getQueryString(); 
+                                                                $filter = explode('=',$recommendation);
+                                                                $filter_val = $filter[1];
+                                                              @endphp
+                                                            @endif
+                                                            @foreach($ext_thimb as $index => $val)
+                                                              <div class="outer-cellulose-content">
+                                                                <div class="cellulose-item"><span class="arrow"></span>{{'Ø '. $val->et_diameter}}</div>
+                                                                      @php 
+                                                                        $new_index = ''; 
+                                                                        $visibility=''; 
+                                                                      @endphp
+                                                                    <div class="parent-cellulose-item">
+                                                                          <?php $ranges = DB::table('extraction_thimble_ranges as er')
+                                                                                          ->where('er.et_id', $val->id)->get();
+                                                                            ?>
+                                                                            @foreach($ranges as $data)
+                                                            
+                                                                                  <div class="cellulose-item-content">
+                                                                                    <div>{{ 'Ø '. $data->er_diameter.' x '.$data->er_height.' mm'; }}</div>
+                                                                                    <div>{{ $data->er_presentation }}</div>
+                                                                                    <div>{{ $data->er_prod_code }}</div>
+                                                                                  </div>
+                                                                                @if($filter_val==$data->er_diameter)
+                                                                                  @php  $new_index = $index; @endphp
+                                                                                    @if($new_index == $index)
+                                                                                      $visibility='show';
+                                                                                    @endif
+                                                                                @endif
+                                                                            @endforeach
+                                                                      </div>
+                                                                </div>
+                                                            @endforeach
+                                    </div>
 
-                                              <tbody>
-                                              @php 
-                                                $filter_val = '';
-                                                $recommendation = ''; 
-                                                $visibility = '';
-                                              @endphp
-                                                @if(\Request::getQueryString())
-                                                  @php 
-                                                    $recommendation = \Request::getQueryString(); 
-                                                    $filter = explode('=',$recommendation);
-                                                    $filter_val = $filter[1];
-                                                  @endphp
-                                                @endif
-
-                                              <?php foreach($ext_thimb as $index => $val) { ?>
-                                                
-                                                <tr data-toggle="collapse" data-target="#demo{{$index}}" class="accordion-toggle " style="border-bottom:5px solid #fff;">
-                                                  <td colspan="3" style="background:orange;"><span class="arrow down"></span>{{'Ø '. $val->et_diameter}}</td>
-                                                </tr>
-                                                @php 
-                                                  $new_index = ''; 
-                                                  $visibility=''; 
-                                                @endphp
-                                                <?php $ranges = DB::table('extraction_thimble_ranges as er')
-                                                                ->where('er.et_id', $val->id)->get();
-
-                                                                foreach($ranges as $data) {
-                                                ?>
-                                                <tr>
-                                                    <td colspan="3" class="hiddenRow">
-                                                          
-                                                          @if($filter_val==$data->er_diameter)
-                                                            @php  
-                                                                $new_index = $index;
-                                                                if($new_index == $index){
-                                                                  $visibility='show';
-                                                                }
-                                                            @endphp
-                                                          @endif
-
-                                                      <div class="accordian-body collapse {{$visibility}}" id="demo{{$index}}">
-                                                          <table class="table-striped" style="margin-bottom:0px;">
-                                                              <tbody>
-                                                                <tr data-toggle="collapse" class="accordion-toggle" data-target="#demo{{$index}}">
-                                                                  <td width="40%"> {{ 'Ø '. $data->er_diameter.' x '.$data->er_height.' mm'; }}</td>
-                                                                  <td width="30%">{{ $data->er_presentation }} </td>
-                                                                  <td width="30%">{{ $data->er_prod_code }} </td>
-                                                                </tr>
-                                                              </tbody>
-                                                          </table>
-                                                      </div>
-                                                    </td>
-                                                  </tr>
-
-                                                <?php } } ?>
-                                              </tbody>
-                                          </table>
-
-                                </div>
+                                  </div>
                               </div>
                             
                                 <div class="row text-center image-list">
@@ -708,7 +846,7 @@ tbody {
                                                           <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" class="img-fluid">
                                                         </a>
                                                         <div class="range_name text-center">
-                                                          <label class="text-uppercase" style="margin-top:20px;">'.$value->sub_cat_name.'<br/>'.$value->sc_ranges.'</label>
+                                                          <label class="bold-text" style="margin-top:20px;">'.$value->sub_cat_name.'<br/>'.$value->sc_ranges.'</label>
                                                         </div>
                                                       </div>';
                                                     }
@@ -739,7 +877,7 @@ tbody {
                 //if(!empty($range_data) && ($range_data[0]->prod_id=='1' || $range_data[0]->range_id=='2')) { 
                   ?>
                 @if(!empty($range_data) && ($range_data[0]->prod_id=='1' || $range_data[0]->range_id=='2'))
-
+                  @if(count($cat_desc) && $cat_desc[0]->cd_description!='')
                 <section class="site-section lighter-bg" id="prod-section-nav">
                     <div class="container">
                       <div class="row justify-content-center general-text-color">
@@ -793,48 +931,51 @@ tbody {
                       </div>
                     </div>
                 </section>
+                @endif
               @endif
         <?php //} ?>
 
 
-                @if($range_data[0]->prod_id!='5' && $cat_data[0]->cat_id!='5')
-                <section class="site-section lighter-bg " id="other-product">
-                    <div class="container">
-                      <div class="row justify-content-center general-text-color">
+                @if($range_data[0]->prod_id!='5' && $cat_data[0]->cat_id!='5' && $cat_data[0]->cat_id!='123')
+                  @if($cat_tags->isNotEmpty())
+                  <section class="site-section lighter-bg " id="other-product">
+                      <div class="container">
+                        <div class="row justify-content-center general-text-color">
 
-                        <div class="col-md-12 general-text-color">
-                          <h3 class="<?php echo $colorclass; ?>">Other Related Products</h3>
-                        </div>
+                          <div class="col-md-12 general-text-color">
+                            <h3 class="<?php echo $colorclass; ?>">Other Related Products</h3>
+                          </div>
 
-                        <div class="col-md-12">
-                          <div class="card">
-                            <div class="card-header">
-                              <div class="row text-center image-list">
-                                  @if($cat_tags->isNotEmpty())
-                                    @foreach($cat_tags as $index=> $tags)
-                                      <div class="col-md-4 ranges_prod">
-                                        <a href="{{ URL($tags->cat_url) }}">
-                                          @if($tags->cat_image!='')
-                                            <img src="{{ url('assets/images/j-quant.png'); }}" alt="{{$tags->cat_name}}" class="img-fluid tab_hover" style="height:300px;" />
-                                          @else
-                                            <img src="{{ url('assets/images/j-quant.png'); }}" alt="image{{$index}}" class="img-fluid tab_hover" style="height:300px;" />
-                                          @endif
-                                        </a>
-                                          <div class="prod_name">
-                                            <label class="" style="margin:20px 0 0;"><b>{!! $tags->cat_name !!}</b></label></br>
-                                            <label><b>{!! $tags->cat_ranges !!}</b></label>
-                                          </div>
-                                      </div>
-                                    @endforeach
-                                  @endif
+                          <div class="col-md-12">
+                            <div class="card">
+                              <div class="card-header">
+                                <div class="row text-center image-list">
+                                    
+                                      @foreach($cat_tags as $index=> $tags)
+                                        <div class="col-md-4 ranges_prod">
+                                          <a href="{{ URL($tags->cat_url) }}">
+                                            @if($tags->cat_image!='')
+                                              <img src="{{ url('assets/images/j-quant.png'); }}" alt="{{$tags->cat_name}}" class="img-fluid tab_hover" style="height:300px;" />
+                                            @else
+                                              <img src="{{ url('assets/images/j-quant.png'); }}" alt="image{{$index}}" class="img-fluid tab_hover" style="height:300px;" />
+                                            @endif
+                                          </a>
+                                            <div class="prod_name">
+                                              <label class="bold-text" style="margin:20px 0 0;">{!! $tags->cat_name !!}</label></br>
+                                              <label class="bold-text">{!! $tags->cat_ranges !!}</label>
+                                            </div>
+                                        </div>
+                                      @endforeach
+                                    
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
 
+                        </div>
                       </div>
-                    </div>
-                </section>
+                  </section>
+                  @endif
                 @endif
             
                 
@@ -858,5 +999,20 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+
+const celluloseItem = document.querySelectorAll('.cellulose-item');
+
+celluloseItem.forEach(toggle => {
+    toggle.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const submenu = toggle.nextElementSibling;
+        const dropdownArrow = this.querySelector('.cellulose-item .arrow');
+        dropdownArrow.classList.toggle('rotate');
+        submenu.classList.toggle('open');
+    });
+});
+
+
 </script>
     @endsection

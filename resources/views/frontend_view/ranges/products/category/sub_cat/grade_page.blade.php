@@ -52,8 +52,8 @@
                                 <tr class="gradient-left-to-right">
                                   <th scope="col">Product</th>
                                   <th scope="col">Graduation</th>
-                                  <th scope="col" width="20%">Presentation</th>
-                                  <th scope="col" width="10%">Product</th>
+                                  <th scope="col" width="15%">Presentation</th>
+                                  <th scope="col" width="10%">Code</th>
                                 </tr>
                               </thead>
                                 <tbody>
@@ -91,7 +91,36 @@
 
                                 <button class="text-uppercase accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> Industries</button>
                                 <div class="panel">
-                                    <p class="mt-3">{!! $subcatdesc_data[0]->sd_industries !!}</p>
+                                    <p class="mt-3">
+                                    @if($subcatdesc_data->isNotEmpty())
+                                      <ul class="ul-check list-unstyled success" style="margin-bottom:0px;">
+                                        @foreach($subcatdesc_data as $k=>$data)
+                                          @foreach(explode(',', $data->sd_industries) as $info)
+                                            @if($info=='Laboratory')
+                                              <li><a href="{{ URL('product/industries/laboratory') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Healthcare')
+                                              <li><a href="{{ URL('product/industries/healthcare') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Food & Beverages')
+                                              <li><a href="{{ URL('product/industries/food_beverages') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Education')
+                                              <li><a href="{{ URL('product/industries/education') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Environmental')
+                                              <li><a href="{{ URL('product/industries/environmental') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Disinfection & Sanitation')
+                                              <li><a href="{{ URL('product/industries/cosmetic') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Industrial Water Testing')
+                                              <li><a href="{{ URL('product/industries/industrial') }}">{{$info}}</a></li>
+                                            @elseif(trim($info)=='Domestic Water Testing')
+                                              <li><a href="{{ URL('product/industries/water') }}">{{$info}}</a></li>
+                                            @else
+                                              <li>{{$info}}</li>
+                                            @endif
+
+                                          @endforeach
+                                        @endforeach
+                                      </ul>
+                                    @endif
+                                    </p>
                                 </div>
 
                                 <button class="text-uppercase accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> Downloads</button>
@@ -115,22 +144,90 @@
 
                         <div class="col-md-10">
                           <h3 class="text-center mb-5 bold-text">Grades</h3>
-                          <p>Our Ashless Filter Papers are made under the strictest conditions using high quality raw materials. The ashless filter paper grades are made
-                          with 100% cotton linter fibres. Cellulose fibres in their natural state contain small quantities of organic and inorganic impurities. <a href="">Read More</a></p>
+                          <div class="mb-5 content_description text-center"><p>{!! $sub_cat_data[0]->sc_desc !!}</p></div>
                         </div>
 
-                        <div class="col-md-12 table-responsive text-center padding-top-bot-40">
-                            <table class="table-striped">
+                        <div class="mobile-Grades-container">
+                            <div class="top-grade-bar">
+                              <div>Grade</div>
+                              <div>Whatman Equivalent</div>
+                            </div>
+                            <div class="grade-content-area">
+                            @php 
+                                  $filter_val = '';
+                                  $recommendation = ''; 
+                                @endphp
+                                  @if(\Request::getQueryString())
+                                    @php 
+                                      $recommendation = \Request::getQueryString(); 
+                                      $filter = explode('=',$recommendation);
+                                      $filter_val = $filter[1];
+                                    @endphp
+                                  @endif
+                            <?php 
+                              if(!empty($grade_data)) {
+                                foreach($grade_data as $data) {
+                            ?>
+                            <div class="grade-items">
+                                <div class="grade-box">
+                                  <div class="grade-num">{{$data->grade_range}}<span class="arrow"></span> </div>
+                                  <div>= No.{{$data->whatman_equivalent}}</div>
+                                </div>
+                                <div class="dropdonw-content">
+                                <ul>
+                                  <li>Speed<span>{{$data->filtering_speed}}</span></li>
+                                  <li>Filteration Speed (sec) <span>{{$data->filtration_speed}}</span></li>
+                                  <li>Thickness (mm) <span>{{$data->thickness}}</span></li>
+                                  <li>Retention Capacity <span>{{$data->pore_size}}</span></li>
+                                  <li>Weight (g/m<sup>2</sup>) <span>{{$data->weight}}</span></li>
+                                  <li>Burst Strength (kg/cm<sup>2</sup>) <span>{{$data->burst_strength}}</span></li>
+                                </ul>
+                                <?php 
+                                if(isset($data->grade_desc) && !empty($data->grade_desc)){
+                                ?>
+                                <div class="bottom-gradle-content-container">
+                                        <div class="header-grade">
+                                            <div>Grade {{$data->grade_range}} </div>
+                                            <div>Sizes (Diameter/mm)</div>
+                                            <div>Product Code</div>
+                                        </div>
+                                        <div class="grade-points">
+                                          <h6>
+                                            {{$data->grade_desc}}
+                                         </h6>
+                                          <ul>
+                                          <?php 
+                                              if(count($grade_code) > 0 && $data->id==$grade_code[0]->grade_desc_id) {
+                                                foreach($grade_code as $index => $gc) { 
+                                            ?>
+                                             <li><span>{{$gc->gc_size}}</span> <span>{{$gc->gc_prod_code}}</span></li>
+                                             
+                                            <?php }}?>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                <?php }?>
+                                </div>
+                              </div>
+                            <?php }}?>
+
+                            
+                              
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 table-responsive text-center desktop-grades-container padding-top-bot-40">
+                            <table class="table-striped ">
                               <thead>
                                 <tr class="gradient-left-to-right">
                                   <th scope="col">Grade</th>
                                   <th scope="col">Whatman <br/> Equivalent</th>
                                   <th scope="col">Speed</th>
-                                  <th scope="col">Filteration Speed <br/> (sec*)</th>
+                                  <th scope="col">Filteration Speed <br/> (sec)</th>
                                   <th scope="col">Thickness <br/> (mm)</th>
                                   <th scope="col">Retention Capacity</th>
-                                  <th scope="col">Weight <br/> (g/m2)</th>
-                                  <th scope="col">Burst Strength <br/> (kg/cm2)</th>
+                                  <th scope="col">Weight <br/> (g/m<sup>2</sup>)</th>
+                                  <th scope="col">Burst Strength <br/> (kg/cm<sup>2</sup>)</th>
                                 </tr>
                               </thead>
 
@@ -152,14 +249,14 @@
                                   $display_item = 'display:none';
                                   $span = '';
                                 if(!empty($grade_data)) {
-                                        foreach($grade_data as $data) {
+                                        foreach($grade_data as $zindex => $data) {
 
                                           $span = '';
-                                          if($data->id==$grade_code[0]->grade_desc_id) {
-                                            if(count($grade_code)){
-                                              $span = '<span style="float:right;">+</span>';
-                                            }
-                                          }
+                                          // if($data->id==$grade_code[0]->grade_desc_id) {
+                                          //   if(count($grade_code)){
+                                          //     $span = '<span style="float:right;">+</span>';
+                                          //   }
+                                          // }
 
                                           $grade_desc = '';
                                           if(isset($data->grade_desc) && !empty($data->grade_desc)){
@@ -167,7 +264,11 @@
                                           }
 
                                           $cnt = 0;
+                                          $grade_code = DB::table('grades_code as gc')
+                                                        ->where('gc.grade_desc_id',$data->grade_id)
+                                                        ->get();
                                           if(isset($grade_code) && !empty($grade_code)) {
+                                              $span = '<span style="float:right;">+</span>';
                                               $cnt = count($grade_code)+1;
                                           }
 
@@ -188,29 +289,29 @@
 
                                             if(isset($grade_desc) && !empty($grade_desc)) {
 
-                                            if($filter_val==$grade_data[0]->grade_range) {
+                                            if($filter_val==$grade_data[$zindex]->grade_range) {
                                               $display_item = '';
                                             }
                                               
-                                              echo '<tr class="child-row1 child-row'.$grade_data[0]->grade_range.'" style="'.$display_item.'">
+                                              echo '<tr class="child-row1 child-row'.$grade_data[$zindex]->grade_range.'" style="'.$display_item.'">
                                                       <th> </td>  
-                                                      <th colspan="4">Grade '.$grade_data[0]->grade_range.' <span style="padding:15px; background: #A0BF1A; color:#fff;">'.$grade_data[0]->filtering_speed.' filtering</span></td>  
+                                                      <th colspan="4">Grade '.$grade_data[0]->grade_range.' </td>  
                                                       <th> </td>  
                                                       <th> Sizes <br/>(Diameter/mm) </td> 
                                                       <th> Product Code</td>  
                                                     </tr>
 
-                                                    <tr class="child-row1 child-row'.$grade_data[0]->grade_range.'" style="'.$display_item.'">
+                                                    <tr class="child-row1 child-row'.$grade_data[$zindex]->grade_range.'" style="'.$display_item.'">
                                                       <td> </td>  
                                                       <td colspan="4" rowspan='.$cnt.' style="text-align:left; vertical-align: top; width:50%;">'.$grade_desc.'
                                                       <td> &nbsp;</td>  
                                                       <td> </td>
                                                       <td> </td>
                                                     </tr>';
-                                                
-                                                  if($data->id==$grade_code[0]->grade_desc_id) {
+                                                if($grade_code->isNotEmpty()) {
+                                                  if($data->id==$grade_code[$zindex]->grade_desc_id) {
                                                     foreach($grade_code as $index => $gc) { 
-                                                      echo '<tr class="child-row1 child-row'.$grade_data[0]->grade_range.'" style="'.$display_item.'">
+                                                      echo '<tr class="child-row1 child-row'.$grade_data[$zindex]->grade_range.'" style="'.$display_item.'">
                                                             <td> </td>
                                                             <td> </td>
                                                             <td>'.$gc->gc_size.'</td>
@@ -218,12 +319,12 @@
                                                             </tr>';   
                                                     }
 
-                                                    echo '<tr class="child-row1 child-row'.$grade_data[0]->grade_range.'" style="text-align:left; '.$display_item.'; background-color:#fff;">
+                                                    echo '<tr class="child-row1 child-row'.$grade_data[$zindex]->grade_range.'" style="text-align:left; '.$display_item.'; background-color:#fff;">
                                                             <td> </td>
                                                             <td colspan="7">Key Features</td>
                                                           </tr>';
                                                   }
-
+                                                }
                                                   
                                               }
                                             
@@ -273,6 +374,22 @@
       }
     });
   }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const gradeNums = document.querySelectorAll(".grade-num");
+
+    gradeNums.forEach(function(gradeNum) {
+      gradeNum.addEventListener("click", function() {
+        const parentGradeItem = gradeNum.closest(".grade-items");
+        if (parentGradeItem) {
+          const dropdonwContent = parentGradeItem.querySelector('.dropdonw-content');
+          if (dropdonwContent) {
+            dropdonwContent.classList.toggle("show");
+          } 
+        } 
+      });
+    });
+  });
 </script>
 
     @endsection

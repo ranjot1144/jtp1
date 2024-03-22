@@ -56,9 +56,10 @@
 
             <div class="row justify-content-center">
             
-                <div class="col-md-12 text-center">
-                    <p class="nsr25 mb-2">Our Range of</p>
-                    <h3 class="general-text-color mb-5">{!! $range_data[0]->prod_name !!}</h3>
+                <div class="col-md-12 mb-5">
+                    <p class="nsr25 mb-2 text-center">Our Range of</p>
+                    <h3 class="general-text-color mb-5 text-center">{!! $range_data[0]->prod_name !!}</h3>
+                    <div class="content-description">{!! $range_data[0]->prod_desc !!}</div>
                 </div>
 
 
@@ -68,21 +69,53 @@
                     <div class="row justify-content-center">
 
                 <!-- <figure class="mb-12"> -->
-                    <?php if(!empty($cat_data) && !empty($cat_data)) {
-                        foreach($cat_data as $value) {
-                    ?>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="teaser hover_icon text-center">
-                        <div> 
-                            <a class="general-text-color" href="{{ URL($value->cat_url) }}">
-                                <img class="image-70" src="{{ url('assets/images/ammonia.png') }} " style="width:60%"> </div>
-                                <label style="margin:20px 20px 0px 20px;"><b> {{ $value->cat_name }}</b></label>
-                                <p>{{ $value->cat_ranges }}</p> 
-                            </a>
-                        </div>
-                    </div>
 
-                    <?php } } ?>
+                    @if ($range_data[0]->prod_id=='19')
+                            <table id="jQuant">
+                              <thead>
+                                <tr class="gradient-left-to-right">
+                                  <th scope="col">Product</th>
+                                  <th scope="col" width="45%">Graduation</th>
+                                  <th scope="col" width="15%">Presentation</th>
+                                  <th scope="col" width="10%">Code</th>
+                                </tr>
+                              </thead>
+                                <tbody>
+                                    @if(!empty($cat_data) && count($cat_data))
+                                        @foreach($cat_data as $value)
+                                            @php $cat_des = DB::table('category_presentation as cp')
+                                                                ->where('cp.cat_id', $value->cat_id)
+                                                                ->get();
+                                            @endphp
+                                            <tr>
+                                                <td>{{ $value->cat_name }}</td>
+                                                <td>{!! $cat_des[0]->cp_graduation !!}</td>
+                                                <td>{{ $cat_des[0]->cp_presentation }}</td>
+                                                <td>{{ $cat_des[0]->cp_prod_code }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                  
+                                </tbody>
+                              </table>
+                    @else
+
+                        <?php if(!empty($cat_data) && count($cat_data)) {
+                            foreach($cat_data as $value) {
+                        ?>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="teaser hover_icon text-center">
+                            <div> 
+                                <a class="general-text-color" href="{{ URL($value->cat_url) }}">
+                                    <img class="image-70" src="{{ url('assets/images/ammonia.png') }} " style="width:60%"> </div>
+                                    <label style="margin:20px 20px 0px 20px;"><b> {{ $value->cat_name }}</b></label>
+                                    <p>{{ $value->cat_ranges }}</p> 
+                                </a>
+                            </div>
+                        </div>
+
+                        <?php } } ?>
+                    @endif
                 <!--</figure> -->
                     </div>
                 </div>
