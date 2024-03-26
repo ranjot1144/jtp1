@@ -90,7 +90,7 @@ background-color: #a5c226;
     border-top: 27px solid transparent;
     border-bottom: 27px solid transparent;
     border-left: 27px solid #5d5d5d;
-
+    z-index: 9999;
 }
 
 
@@ -110,6 +110,12 @@ background-color: #a5c226;
     border-bottom: 28px solid transparent;
     border-left: 28px solid #0f0f0f;
 
+}
+
+.flexdropdownmenu ul.second_layer_menu li:last-child.selected::after {
+    background-color: transparent;
+    width: 0;
+    border: 0;
 }
 
 .has-submenu {

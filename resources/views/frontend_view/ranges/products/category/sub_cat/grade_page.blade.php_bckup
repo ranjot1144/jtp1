@@ -186,22 +186,15 @@
                                 if(isset($data->grade_desc) && !empty($data->grade_desc)){
                                 ?>
                                 <div class="bottom-gradle-content-container">
-                                  <div>
                                         <div class="header-grade">
                                             <div>Grade {{$data->grade_range}} </div>
+                                            <div>Sizes (Diameter/mm)</div>
+                                            <div>Product Code</div>
                                         </div>
                                         <div class="grade-points">
                                           <h6>
                                             {{$data->grade_desc}}
                                          </h6>
-                                        </div>
-                                  </div>
-                                  <div>
-                                  <div class="header-grade">
-                                            <div>Sizes (Diameter/mm)</div>
-                                            <div>Product Code</div>
-                                        </div>
-                                        <div class="grade-points">
                                           <ul>
                                           <?php 
                                               if(count($grade_code) > 0 && $data->id==$grade_code[0]->grade_desc_id) {
@@ -212,9 +205,6 @@
                                             <?php }}?>
                                           </ul>
                                         </div>
-                                  </div>
-                                        
-                                        
                                     </div>
                                 <?php }?>
                                 </div>

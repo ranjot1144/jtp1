@@ -367,7 +367,7 @@ tbody {
                           <?php if($range_data[0]->prod_id=='7') {
                             ?>
 
-                            <table class="table-striped">
+                            <table class="table-striped technical_spec">
                               <thead>
                                 <tr>
                                   <th scope="col" style="background:#fff;width:40%;">&nbsp;</th>
@@ -408,7 +408,7 @@ tbody {
                             <?php
                           } if($range_data[0]->prod_id=='6'){ ?>
                           
-                          <table class="table-striped">
+                          <table class="table-striped technical_spec">
                               <thead>
                                 <tr>
                                   <th scope="col" style="background:#fff;width:40%;">&nbsp;</th>
@@ -678,9 +678,7 @@ tbody {
                                                                                   </div>
                                                                                 @if($filter_val==$data->er_diameter)
                                                                                   @php  $new_index = $index; @endphp
-                                                                                    @if($new_index == $index)
-                                                                                      $visibility='show';
-                                                                                    @endif
+                                                                                    
                                                                                 @endif
                                                                             @endforeach
                                                                       </div>

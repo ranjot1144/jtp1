@@ -67,6 +67,7 @@ Route::prefix('/frontend')->namespace('App\Http\Controllers\frontend')->group(fu
     Route::get('company/about-us',[CompanyController::class,'aboutUs']);
     Route::get('company/imprint',[CompanyController::class,'imprint']);
     Route::get('company/terms',[CompanyController::class,'terms_condition']);
+    Route::get('company/privacy_policy',[CompanyController::class,'privacy_policy']);
 
     Route::get('company/news-development',[CompanyController::class,'news']);
 

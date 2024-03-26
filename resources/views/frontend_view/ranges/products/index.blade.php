@@ -309,6 +309,36 @@
 
                         <div class="col-md-12">
                           <div class="card">
+                        
+                          @if($range_data[0]->prod_id=='30')
+
+                          <div class="col-md-12 general-text-color">
+                            <table id="jQuant">
+                              <thead>
+                                <tr class="gradient-left-to-right gradient-row">
+                                  <th scope="col" width="25%">Product</th>
+                                  <th scope="col">Graduation</th>
+                                  <th scope="col" width="15%">Presentation</th>
+                                  <th scope="col" width="10%">Code</th>
+                                </tr>
+                              </thead>
+                                <tbody>
+                                    <?php if(!empty($category_presentation) && $category_presentation!='') { 
+                                            foreach ($category_presentation as $key => $value) { ?>
+                                              <tr>
+                                                <td>{{ $value->cp_product.' '.$value->cp_range }}</td>
+                                                <td>{!! $value->cp_graduation; !!}</td>
+                                                <td>{!! $value->cp_presentation !!}</td>
+                                                <td>{!! $value->cp_prod_code !!}</td>
+                                              </tr>
+                                    <?php } 
+                                        } ?>
+                                  
+                                </tbody>
+                              </table>
+                          </div>
+
+                          @else
                             <div class="card-header">
                               <div class="row text-center image-list">
                                 <?php 
@@ -316,36 +346,36 @@
                                     $url = '';
                                     $col = 'col-md-4';
                                     if(count($cat_data)>3 && count($cat_data)!=5) {
-                                      $col = 'col-md-3';
-                                    }else if(count($cat_data)==2) {
-                                      $col = 'col-md-6';
-                                    }else if(count($cat_data)==5){
-                                      $col = 'col-md-4';
-                                    }
+                                        $col = 'col-md-3';
+                                      }else if(count($cat_data)==2) {
+                                        $col = 'col-md-6';
+                                      }else if(count($cat_data)==5) {
+                                        $col = 'col-md-4';
+                                      }
 
                                     foreach($cat_data as $data) {
                                       $url = $data->cat_url;
                                   ?>
-                                    <div class="{{ $col }} ranges_prod">
-                                      <a href="{{ URL($data->cat_url) }}">
+                                        <div class="{{ $col }} ranges_prod">
+                                          <a href="{{ URL($data->cat_url) }}">
 
-                                        @if($data->cat_image!='')
-                                          <img src="{{ URL($data->cat_image); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
-                                        @else
-                                          <img src="{{ url('assets/images/j-quant.png'); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
-                                        @endif
+                                            @if($data->cat_image!='')
+                                              <img src="{{ URL($data->cat_image); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
+                                            @else
+                                              <img src="{{ url('assets/images/j-quant.png'); }}" alt="Snow" class="img-fluid tab_hover" style="height:300px;">
+                                            @endif
 
-                                      </a>
-                                        <div class="prod_name">
-                                          @php $originalString = $data->cat_name;
-                                                $search = "®";
-                                                $html = "<sup>®</sup>"; // Sup tag
-                                                $data->cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
-                                          @endphp
-                                            <label class="" style="margin:20px 0 0;"><b>{!! $data->cat_name !!}</b></label></br>
-                                          <label><b>{!! $data->cat_ranges !!}</b></label>
+                                          </a>
+                                            <div class="prod_name">
+                                              @php $originalString = $data->cat_name;
+                                                    $search = "®";
+                                                    $html = "<sup>®</sup>"; // Sup tag
+                                                    $data->cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                                              @endphp
+                                                <label class="" style="margin:20px 0 0;"><b>{!! $data->cat_name !!}</b></label></br>
+                                              <label><b>{!! $data->cat_ranges !!}</b></label>
+                                            </div>
                                         </div>
-                                    </div>
                                 <?php  }
                                   }  ?>
 
@@ -357,6 +387,8 @@
                                 </div>
                               <?php } ?>
                             </div>
+
+                            @endif
 
                           </div>
                         </div>

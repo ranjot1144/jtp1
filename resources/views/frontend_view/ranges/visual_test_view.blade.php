@@ -36,7 +36,7 @@
         </div>
     </section>
 
-    <section class="site-section-hero bg-image" style="background-image: url(&quot;../../assets/images/visual_test_kit.png&quot;); height: 50vh; background-position: 50% 20.164px; min-height:250px;" id="test-strip-filteration1"> 
+    <section class="site-section-hero bg-image" style="background-image: url(&quot;../../assets/images/visual_test_kit.png&quot;); height: 50vh; background-position: 50% 0px; min-height:250px;" id="test-strip-filteration1"> 
         <div class="container" style="max-width:1440px;">
             <div class="row justify-content-center  align-items-center" style="min-height: 250px; height: 50vh;">
                 <div class="col-md-8 text-center">
@@ -63,7 +63,7 @@
                 </div>
 
 
-            <div class="col-md-12 text-center">
+            <div class="col-md-12">
 
                 <div class="container">
                     <div class="row justify-content-center">
@@ -127,7 +127,7 @@
 
 
     <!-- <section class="site-section-hero bg-image" style="background-image: url(&quot;../../assets/images/img_9.jpg&quot;); height: 30vh; background-position: 50% 20.164px; min-height:250px;" data-stellar-background-ratio="0.5" id="test-strip-filteration2">  -->
-    <section class="site-section-hero bg-image" style="background-color: rgb(28 119 198); height: 30vh; min-height:250px;" data-stellar-background-ratio="0.5" id="blue-banner">
+    <section class="site-section-hero bg-image" style="background-color: rgb(28 119 198); height: 30vh; min-height:250px; background-position:50% 0px; background-attachment:scroll;background-repeat:repeat;" data-stellar-background-ratio="0.5" id="blue-banner">
         <div class="container">
             <div class="row justify-content-center  align-items-center" style="min-height: 250px; height: 30vh;">
                 

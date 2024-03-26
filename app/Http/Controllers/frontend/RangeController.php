@@ -91,8 +91,6 @@ class RangeController extends Controller
                     return view('frontend_view.ranges.visual_test_view', compact('range_data','prod_data','cat_data','prod_desc_data'));
                 }else if($prod_name=='industries') {
 
-
-
                     $tags = DB::table('industry_product_tags as ipt')
                                 ->where('ipt.ip_id', $id)
                                 ->get();
@@ -120,8 +118,18 @@ class RangeController extends Controller
 
                     $man_data = DB::table('filterfinder_manufacturer as fm')
                                 ->get();
+                    $category_presentation = array();
+                    if(!empty($cat_data)){
+                        if($cat_data[0]->prod_id=='30') {
+                            $category_presentation = DB::table('category as c')
+                                                    ->leftjoin('category_presentation as cp','cp.cat_id','=','c.id')
+                                                    ->where('c.prod_id',$cat_data[0]->prod_id)
+                                                    ->get();
+                        }
+                    }
                     
-                    return view('frontend_view.ranges.products.index', compact('range_data','prod_data','cat_data','prod_desc_data','man_data'));
+                    
+                    return view('frontend_view.ranges.products.index', compact('range_data','prod_data','cat_data','prod_desc_data','man_data','category_presentation'));
                 }
             }
         }

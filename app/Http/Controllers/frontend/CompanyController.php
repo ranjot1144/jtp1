@@ -19,4 +19,7 @@ class CompanyController extends Controller
     public function news(){
         return view('frontend_view.company.news_view');
     }
+    public function privacy_policy(){
+        return view('frontend_view.company.privacy_policy');
+    }
 }
