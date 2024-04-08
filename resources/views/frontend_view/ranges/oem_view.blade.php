@@ -6,10 +6,10 @@
     <section class="bg-image" style="background-image: url(&quot;../../assets/images/product/oem/oem_banner.jpg&quot;); height: 60vh; background-position: 50% 1%; min-height: 150px;background-attachment:scroll;background-repeat:repeat;" data-stellar-background-ratio="0.5" id="home-border"> 
         <div class="row justify-content-center align-items-center" style="height:60vh;min-height:300px;">
             <div class="col-md-7">
-                    <h1 class="heading text-uppercase" data-aos="fade-right">Launch <span class="themeTextColor">Your</span></h1>
-                    <h1 class="heading text-uppercase" data-aos="fade-up" style="margin-left:40px;">Own <span class="themeTextColor">Brand</span></h1>
-                <p class='button-margin-15 text-white text-uppercase' data-aos="fade-up" data-aos-delay="300" style="font-size:30px;">Private Label Manufacturing</p>
-                <p class='button-margin-15 text-uppercase themeTextColor' data-aos="fade-up" data-aos-delay="300" style="font-size:30px;">OEM <span style="font-size:20px; color:#000;'">One Stop Service!</span></p>
+                    <h1 class="heading text-uppercase bold-text" data-aos="fade-right">Launch <span class="themeTextColor">Your</span></h1>
+                    <h1 class="heading text-uppercase bold-text" data-aos="fade-up" style="margin-left:40px;">Own <span class="themeTextColor">Brand</span></h1>
+                <p class='button-margin-15 text-uppercase' data-aos="fade-up" data-aos-delay="300" style="font-size:30px;">Private Label Manufacturing</p>
+                <p class='button-margin-15 text-uppercase bold-text themeTextColor' data-aos="fade-up" data-aos-delay="300" style="font-size:30px;">OEM <span style="font-size:20px; color:#000;'"><i>One Stop Service!</i></span></p>
             </div>
         </div>
     </section>
@@ -38,31 +38,31 @@
         <div class="container" style="max-width:1440px;">
             <div class="row justify-content-center align-items-center" style="min-height: 250px; height: 30vh;">
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/small_images/uk_flag.png'); }}" alt="Made In UK Image" class="img-fluid" style="width:30%;"/>
-                    <div class="text-white">
-                        <p>Made In UK</p>
-                        <p>Test Strip & Filtration</p>
+                    <img src="{{ URL('assets/images/product/oem/OEM_UK.png'); }}" alt="Made In UK Image" class="img-fluid mr-2" style="width:15%;"/>
+                    <div>
+                        <p class="bold-text mb-0">Made In UK</p>
+                        <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/small_images/tick.png'); }}" alt="High Quality Image" class="img-fluid" style="width:30%;"/>
-                    <div class="text-white">
-                        <p>High Quality</p>
-                        <p>Test Strip & Filtration</p>
+                    <img src="{{ URL('assets/images/product/oem/OEM_Quality.png'); }}" alt="High Quality Image" class="img-fluid  mr-2" style="width:15%;"/>
+                    <div>
+                        <p class="bold-text mb-0">High Quality</p>
+                        <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/small_images/test_tube.png'); }}" alt="Original Image" class="img-fluid" style="width:30%;"/>
-                    <div class="text-white">
-                        <p>Original</p>
-                        <p>Test Strip & Filtration</p>
+                    <img src="{{ URL('assets/images/product/oem/OEM_original.png'); }}" alt="Original Image" class="img-fluid mr-2" style="width:15%;"/>
+                    <div>
+                        <p class="bold-text mb-0">Original</p>
+                        <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/small_images/tick.png'); }}" alt="Custom Order Image" class="img-fluid" style="width:30%;"/>
-                    <div class="text-white">
-                        <p>Custom Order</p>
-                        <p>Test Strip & Filtration</p>
+                    <img src="{{ URL('assets/images/product/oem/OEM_custom.png'); }}" alt="Custom Order Image" class="img-fluid mr-2" style="width:10%;"/>
+                    <div>
+                        <p class="bold-text mb-0">Custom Order</p>
+                        <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
             </div>

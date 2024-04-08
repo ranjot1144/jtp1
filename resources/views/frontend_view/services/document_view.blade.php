@@ -9,16 +9,7 @@
 
     @include('frontend_view.layouts.breadcrumb_nav')
 
-    <section class="zero_padding" id="top-banner">
-        <div class="row ">
-            <div class="col-md-12 text-center">
-                <img src="{{ URL('assets/images/product/doc_cer.png') }} " alt="contact_img"/>
-                <div class="centered">
-                    <h2 class="bold-text">Documents & Certificates</h2>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
 
 
@@ -27,14 +18,12 @@
             <div class="row justify-content-center general-text-color">
 
                 <div class="col-md-12 text-center general-text-color">
-                  <h2 class="mb-4 themeTextColor">Certificate & Technical Data Sheets</h2>
-                    <p class="mb-5 nsr22">Lorem ipsum dolor sit amet, connsetetur sadipscing elit, sed diam nonumy eirmiod<br/> 
-                                            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam.</p>
+                  <h2 class="mb-4 themeTextColor bold-text">Certificates & Technical Data Sheets</h2>
+                    <p class="mb-5 nsr22">Certificates of analysis/conformity, safety and technical data sheets are available for download for all products within our catalogue.</p>
                 </div>
 
                 <div class="col-md-12">
                     <div class="card">
-
 
                     @if(Session::has('error'))
                         <p class="alert {{ Session::get('alert-class', 'alert-danger') }} text-center">{{ Session::get('error') }}</p>
@@ -49,7 +38,7 @@
                                     <a href="#tab-2" class="nav-link">Certificate of Conformity</a>
                                 </li>
                                 <li class="col-md-3 text-center text-uppercase nav-item navbar-filter-papers" data-myAttri="tab-3">
-                                    <a href="#tab-2" class="nav-link">Material Safety Data Sheet</a>
+                                    <a href="#tab-2" class="nav-link">Safety Data Sheet</a>
                                 </li>
                                 <li class="col-md-3 text-center text-uppercase nav-item navbar-filter-papers" data-myAttri="tab-4">
                                     <a href="#tab-2" class="nav-link">Technical Data Sheet</a>
@@ -208,6 +197,17 @@
                     </div>
                 </div>
                         
+            </div>
+        </div>
+    </section>
+
+    <section class="zero_padding" id="top-banner">
+        <div class="row ">
+            <div class="col-md-12 text-center">
+                <img src="{{ URL('assets/images/product/Certificates&Documents.jpg') }} " alt="contact_img"/>
+                <!-- <div class="centered">
+                    <h2 class="bold-text">Documents & Certificates</h2>
+                </div> -->
             </div>
         </div>
     </section>

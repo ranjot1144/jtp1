@@ -100,7 +100,7 @@ header .sidebar-bottom .sidebar_rel .privacy_sec {
 header .sidebar-bottom .images-content {
     display: flex;
     gap: 20px;
-    padding: 15px 0px 26px;
+    padding: 15px 0px;
 }
 
 header .sidebar-bottom a img {
@@ -131,7 +131,7 @@ header .sidebar-bottom .sidebar_rel .social_icons {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 18px;
+    padding-bottom: 10px;
 }
 
 header .sidebar-bottom .sidebar_rel .social_icons a {
@@ -143,7 +143,7 @@ header .sidebar-bottom .sidebar_rel .social_icons a {
     height: 20px;
 }
 
-header .sidebar-bottom .sidebar_rel .social_icons a  svg{
+header .sidebar-bottom .sidebar_rel .social_icons a svg {
     width: 100%;
     height: 100%;
 }
@@ -333,10 +333,24 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
 
     .carousel-img-fit {
         object-fit: fill;
+        min-height: 400px;
+    }
+
+    .carousel-ban-text-adj {
+        bottom: 130px;
+        margin-left: 50px;
+    }
+
+    .carousel-ban-text-adj h1 {
+        font-size: 30px;
     }
 
     .miscellaneous h2 {
         font-size: 25px;
+    }
+
+    #meet .text {
+        top: 40%;
     }
 }
 
@@ -375,18 +389,37 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
     .desktop-grades-container {
         display: none;
     }
+
 }
 
 
 @media screen and (max-width: 1040px) {
-    .site-section-hero.bg-image{
+    .site-section-hero.bg-image {
         background-position: center;
     }
+
+    .top-margin .avbook32 {
+        font-size: 20px;
+    }
+
+
 }
 
 @media screen and (max-width: 1023px) {
+    #product_banner img {
+        height: 350px;
+    }
+
+    #about-us h2 {
+        font-size: 22px;
+    }
+
+    #about-us p {
+        font-size: 15px;
+    }
+
     .breadcrumbs {
-        margin-top: 98px;
+        margin-top: 80px;
     }
 
     .main-content {
@@ -475,7 +508,6 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
 
     .mobileSidebarContainer .mobile-menu-content ul li {
         cursor: pointer;
-        ;
     }
 
     .mobileSidebarContainer .mobile-menu-content ul li a {
@@ -489,6 +521,10 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .mobileSidebarContainer .mobile-menu-content ul li ol li a {
+        display: inline;
     }
 
     .mobileSidebarContainer .mobile-menu-content ul li ol li a {
@@ -582,7 +618,7 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
         color: #818181;
     }
 
-    .mobileSidebarContainer .bottom-menu-content .social-icons a{
+    .mobileSidebarContainer .bottom-menu-content .social-icons a {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -590,7 +626,7 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
         height: 22px;
     }
 
-    .mobileSidebarContainer .bottom-menu-content .social-icons a svg{
+    .mobileSidebarContainer .bottom-menu-content .social-icons a svg {
         width: 100%;
         height: 100%;
     }
@@ -835,9 +871,9 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
         padding: 5em 0em;
     }
 
-.site-section-hero.bg-image {
-    background-position: center;
-}
+    .site-section-hero.bg-image {
+        background-position: center;
+    }
 }
 
 
@@ -929,7 +965,6 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
 
     .mobileSidebarContainer .mobile-menu-content ul li {
         cursor: pointer;
-        ;
     }
 
     .mobileSidebarContainer .mobile-menu-content ul li a {
@@ -1314,6 +1349,10 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
     .site-section {
         padding: 15px !important;
     }
+
+    #carousel-thumb img {
+        min-height: 200px;
+    }
 }
 
 
@@ -1321,6 +1360,7 @@ header .sidebar-bottom .sidebar_rel .social_icons a  svg{
     #industry-section-carousel .owl-stage .owl-item img {
         width: 82px !important;
     }
+
 
     .top-grade-bar>div {
         font-size: 10px;

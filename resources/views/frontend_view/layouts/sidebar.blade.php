@@ -14,7 +14,7 @@ $prod_data = DB::table('product as r')
 
               <div class="site-logo">
                 <a href="{{ url('/') }} ">
-                  <img class="mx-auto d-block image-90" alt="logo" src="{{ URL('/assets/images/logo.png')}}" />
+                  <img class="mx-auto d-block image-90" alt="logo" src="{{ URL('/assets/images/Johnson_Analytica.png')}}" />
                 </a>
               </div>
 
@@ -86,6 +86,8 @@ $prod_data = DB::table('product as r')
                   <ul class="second_layer_menu">
                     <li><a href="{{ url('support/contact-us') }}">Contact Us</a></li>
                     <li><a href="{{ url('support/document') }}">Document & Certificates</a></li>
+                    <li><a href="{{ url('product/filtration/filter_finder') }}">Filter Finder</a></li>
+                    <li><a href="{{ url('#') }}">Chemical Compatibility Chart</a></li>
                     <li><a href="{{ url('support/catalogue') }}">Catalogues</a></li>
                     <li><a href="{{ url('support/knowledge_hub') }}">Knowledge Hub</a></li>
                     <li><a href="{{ url('support/faq') }}">FAQ's</a></li>
@@ -98,7 +100,7 @@ $prod_data = DB::table('product as r')
                 <div class="sidebar_rel">
 
                     <p class="mb-2"><a href="{{ URL('company/terms') }}" target="_blank" >Terms & Conditions</a></p>
-                    <p><a href="{{ URL('') }}">Privacy Policy</a></p>
+                    <p><a href="{{ url('company/privacy_policy') }}">Privacy Policy</a></p>
 
                     <div class="images-content">
                                   <a href="#" target="_blank"> 
@@ -119,7 +121,7 @@ $prod_data = DB::table('product as r')
 
                   <div class="row">
                     <div class="col-md-12">
-                      <p class="text-center">&copy;johnsontestpaper</p>
+                      <p class="text-center">&copy; Johnson Analytica Ltd</p>
                     </div>
                   </div>
 
@@ -127,9 +129,20 @@ $prod_data = DB::table('product as r')
               </div>
           </div>
 
+
+@php
+  $range_data = DB::table('range as r')
+                ->orderBy('r.order_wise','ASC')
+                ->get();
+  $prod_data = DB::table('product as r')
+                ->orderBy('r.order_wise','ASC')
+                ->get();
+@endphp
+
+
             <div class="mobileSidebarContainer">
             <div class="mobile-header">
-                <a href="/" ><img src="https://www.johnsontestpapers.com/images/logo.png" class="mobile_logo" alt="Company Logo" /> </a>
+                <a href="/" ><img src="{{ URL('/assets/images/Johnson_Analytica.png')}}" class="mobile_logo" alt="Company Logo" /> </a>
                 <div class="burger-btn" id="mobHamburger"></div>
             </div>
 
@@ -137,168 +150,98 @@ $prod_data = DB::table('product as r')
                             <ul>
                               <li><a href="javascript:void(0)" class="menu-elm">Product & Services <button class="dropdown-arrow"><img  src="{{ URL('/assets/images/right-arrow-desk.png')}}" alt=""></button></a>
                                   <ol>
-                                  <li class="first"> 
-                                    <h6>
-                                    <a href="{{ URL('product/rapid_test') }}">Rapid Test</a>
-                                    <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
-                                    </h6>
-                                  <ol class="inner-sub-menu">
-                                    <li>
-                                      <a href="">pH Tests</a>
-                                    </li>
-                                    <li>
-                                        <a href="http://magictree.johnsontestpapers.com/product/rapid_test/litmus_paper">Litmus Paper</a></li>
-                                        <li>
-                                          <a href="http://magictree.johnsontestpapers.com/product/rapid_test/homebrewing">Homebrewing</a></li>
-                                          <li>
-                                            <a href="http://magictree.johnsontestpapers.com/product/rapid_test/jquant_test_strips">J-QUANT® Test Strips</a>
-                                          </li><li>
-                                            <a href="http://magictree.johnsontestpapers.com/product/rapid_test/qualitative_test_paper">Qualitative Test Paper</a></li><li>
-                                              <a href="http://magictree.johnsontestpapers.com/product/rapid_test/enviromental">Environmental</a></li>
-                                    </ol>
-                                </li>
-                              <li class="first"> 
-                                <h6>  
-                              <a href="{{ URL('product/filtration') }}">Filtration</a> 
-                              <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
-                              </h6>
 
-                              <ol class="inner-sub-menu">
-                                <li>
-                                  <a href="https://magictree.johnsontestpapers.com/product/filtration/filter_paper">Filter Papers</a>
-                                </li>
-                                <li>
-                                  <a href="https://magictree.johnsontestpapers.com/product/filtration/glass_quartz_microfiber">Glass and Quartz Microfiber</a>
-                                </li>
-                                <li>
-                                  <a href="https://magictree.johnsontestpapers.com/product/filtration/extraction_thimbles">Extraction Thimbles</a>
-                                </li>
-                                <li>
-                                  <a href="https://magictree.johnsontestpapers.com/product/filtration/microfiltration_membranes">Membrane Filters</a>
-                                </li>
-                                <li>
-                                  <a href="https://magictree.johnsontestpapers.com/product/filtration/syringe_filter">Syringe Filters</a>
-                                </li>
-                                <li>
-                                  <a href="https://magictree.johnsontestpapers.com/product/filtration/filter_finder">Filter Finder</a>
-                                </li>
-                              </ol>
-                              </li>
-                              <li class="first"> 
-                              <h6>
-                              <a href="{{ URL('product/pool_and_spa') }}">Pool & Spa</a> 
-                              <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
-                              </h6>
-                              <ol class="inner-sub-menu">
-                              <li class="">
-                                <a href="">SaniQuant</a>
-                              </li>
-                              <li class="">
-                                <a href="">Urinalysis</a>
-                              </li><li class="">
-                                <a href="">AspHirate pH strips</a>
-                              </li>
-                            </ol>
-                            </li>
-                              <li class="first"> 
-                                <h6>
-                                <a href="{{ URL('product/aquarium') }}">Aquarium</a> 
-                                <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
-                                </h6>
-                                <ol class="inner-sub-menu">
-                                  <li>
-                                    <a href="https://magictree.johnsontestpapers.com/product/pool_and_spa/aquarium_multiple_testing_strips">Check2o® Pool &amp; Spa Multiple Testing Strips</a>
-                                  </li>
-                                  <li>
-                                    <a href="https://magictree.johnsontestpapers.com/product/pool_and_spa/aquarium_single_testing_strips">Check2o® Pool &amp; Spa SINGLE Testing Strips</a>
-                                  </li>
-                                </ol>
-                              </li>
-                              <li class="first"> 
-                                  <h6>
-                                  <a href="{{ URL('product/visual_test_kits') }}">Visual Test Kits</a> 
-                                  <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
-                              </h6>
-                                  <ol class="inner-sub-menu">
-                                    <li>
-                                      <a href="https://magictree.johnsontestpapers.com/product/visual_test_kits/eco_vtk">VTKolor® Eco Visual test kits</a>
-                                      </li>
-                                      <li><a href="https://magictree.johnsontestpapers.com/product/visual_test_kits/plus_vtk">VTKolor® PLUS Visual test kits</a>
-                                      </li>
-                                      <li><a href="https://magictree.johnsontestpapers.com/product/visual_test_kits/prime_vtk">VTKOLOR® PRIME Visual test kits</a>
-                                      </li>
-                                  </ol>
-                                </li>
-                              <li class="first"> 
-                                <h6>
-                                <a href="{{ URL('product/industries') }}">Industries</a> 
-                                <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
-                              </h6>
-                              <ol class="inner-sub-menu">
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/laboratory">Laboratory</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/healthcare">Healthcare</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/food_beverages">Food &amp; Beverages</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/education">Education</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/environmental">Environmental</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/cosmetic">Disinfection &amp; Sanitation</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/industrial">Industrial Water Testing</a>
-                              </li>
-                              <li>
-                                <a href="https://magictree.johnsontestpapers.com/product/industries/water">Domestic Water Testing</a>
-                              </li>
-                              </ol>
-                              </li>
-                              <li> <a href="{{ URL('product/oem_label') }}">OEM Private Label</a> </li>
-                                  </ol>
-                             </li>
-                              <li><a href="" class="menu-elm">Company<button class="dropdown-arrow"><img  src="{{ URL('/assets/images/right-arrow-desk.png')}}" alt=""></button></a> 
-                              <ol>
-                              <li><a href="{{ url('company/about-us') }}">Our Story</a></li>
+
+
+                    @foreach($range_data as $range_data)
+                      <li class="first">
+                        <h6>
+                        <a href="{{ URL($range_data->range_url) }}" >{{ $range_data->range_name }}</a>
+                          <button class="dropdown-arrow sub-menu-arrow"><img  src="{{ URL('/assets/images/right-arrow.png')}}" alt=""></button>
+                        </h6>
+
+                            <?php 
+                            $color_range = '';
+                            $url = '';
+                            if($prod_data->isNotEmpty()) {
+                                    echo '<ol class="inner-sub-menu '.$color_range.'">';
+                                      foreach($prod_data as $prod) {
+
+                                        $originalString = $prod->prod_name;
+                                        $search = "®";
+                                        $html = "<sup>®</sup>"; // Sup tag
+                                        $prod->prod_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+
+                                        if($range_data->id == $prod->range_id) {
+                                          if($range_data->id=='1') {
+                                            $color_range = 'rapid_test_bac_color';
+                                            $url = URL($prod->prod_url);
+                                          }else if($range_data->id=='2') {
+                                            $color_range = 'filtration_test_bac_color';
+                                            $url = URL($prod->prod_url);
+                                          }else if($range_data->id=='3') {
+                                            $color_range = 'ps_test_bac_color';
+                                            $url = URL($prod->prod_url);
+                                          }else if($range_data->id=='4') {
+                                            $color_range = 'aquarium_test_bac_color';
+                                            $url = URL($prod->prod_url);
+                                          }else if($range_data->id=='5') {
+                                            $color_range = 'vtk_test_bac_color';
+                                            $url = URL($prod->prod_url);
+                                          }else if($range_data->id=='6') {
+                                            $color_range = 'ind_test_bac_color';
+                                            $prod_name = strtolower($prod->prod_name);
+                                            $url = URL($prod->prod_url);
+                                          }else if($range_data->id=='8') {
+                                            $color_range = 'health_col';
+                                            $prod_name = strtolower($prod->prod_name);
+                                            $url = URL($prod->prod_url);
+                                          }
+                                          echo '<li class='.$color_range.'><a href="'.$url.'">'.$prod->prod_name.'</a></li>';
+                                        }
+                                      }
+                                    echo '</ol>';
+                                } ?>
+                        </li>
+                    @endforeach
+                      </ol>
+                        <li><a href="" class="menu-elm">Company<button class="dropdown-arrow"><img  src="{{ URL('/assets/images/right-arrow-desk.png')}}" alt=""></button></a>
+                          <ol>
+                            <li><a href="{{ url('company/about-us') }}">Our Story</a></li>
                             <li><a href="{{ url('company/imprint') }}">Imprint</a></li>
                             <li><a href="{{ url('company/terms') }}">Terms and Conditions</a></li>
                             <li><a href="{{ url('company/privacy_policy') }}">Privacy Policy</a></li>
-                                  </ol>
-                              </li>
-                              <li><a href="" class="menu-elm">Support <button class="dropdown-arrow"><img  src="{{ URL('/assets/images/right-arrow-desk.png')}}" alt=""></button></a>
-                              <ol>
+                          </ol>
+                        </li>
+
+                        <li><a href="" class="menu-elm">Support <button class="dropdown-arrow"><img  src="{{ URL('/assets/images/right-arrow-desk.png')}}" alt=""></button></a>
+                          <ol>
                               <li><a href="{{ url('support/contact-us') }}">Contact Us</a></li>
-                          <li><a href="{{ url('support/document') }}">Document & Certificates</a></li>
-                          <li><a href="{{ url('support/catalogue') }}">Catalouges</a></li>
-                          <li><a href="{{ url('support/knowledge_hub') }}">Knowledge Hub</a></li>
-                          <li><a href="{{ url('support/faq') }}">FAQ's</a></li>
-                                  </ol>
-                              </li>
-                              <li><a href="{{ url('company/news-development') }}">News & Development</a></li>
-                            </ul>
+                              <li><a href="{{ url('support/document') }}">Document & Certificates</a></li>
+                              <li><a href="{{ url('product/filtration/filter_finder') }}">Filter Finder</a></li>
+                              <li><a href="{{ url('#') }}">Chemical Compatibility Chart</a></li>
+                              <li><a href="{{ url('support/catalouge') }}">Catalouges</a></li>
+                              <li><a href="{{ url('support/knowledge_hub') }}">Knowledge Hub</a></li>
+                              <li><a href="{{ url('support/faq') }}">FAQ's</a></li>
+                          </ol>
+                        </li>
+                            
+                            <li><a href="{{ url('company/news-development') }}">News & Development</a></li>
+                </ul>
 
                             <div class="bottom-menu-content">
-                                <h6>
-                                  <a href="">Terms & Conditions</a>
-                                </h6>
-                                <h6>
-                                  <a href="">Privacy Policy</a>
-                                </h6>
+                                <h6> <a href="{{ url('company/terms') }}">Terms & Conditions</a> </h6>
+                                <h6> <a href="{{ url('company/privacy_policy') }}">Privacy Policy</a> </h6>
+                                
                                 <div class="images-content">
                                   <a href="#" target="_blank"> 
-                                    <img src="https://www.johnsontestpapers.com/images/iso/iso9001.jpg" alt="Snow"> 
+                                    <img src="https://www.johnsontestpapers.com/images/iso/iso9001.jpg" alt="Snow" /> 
                                   </a>
                                   <a href="#" target="_blank"> 
-                                    <img src="https://www.johnsontestpapers.com/images/iso/iso13485.jpg" alt="Snow"> 
+                                    <img src="https://www.johnsontestpapers.com/images/iso/iso13485.jpg" alt="Snow" /> 
                                   </a>
                                 </div>
+                                
                                 <div class="social-icons">
                                   <a href="#" class="social-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"> <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg> </a>
                                   <a href="#" class="social-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16"> <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/> </svg> </a>
@@ -308,7 +251,7 @@ $prod_data = DB::table('product as r')
 
                           <div class="row">
                             <div class="col-md-12">
-                              <p class="mt-3 mb-2 text-center">&copy;johnsontestpaper</p>
+                              <p class="text-center">&copy; Johnson Analytica Ltd</p>
                             </div>
                           </div>
                             </div>

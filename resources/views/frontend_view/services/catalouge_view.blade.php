@@ -6,7 +6,7 @@
     <section class="zero_padding" id="top-banner">
         <div class="row ">
             <div class="col-md-12 text-center">
-                <img src="{{ URL('assets/images/contact_us_image.jpg') }} " alt="contact_img"/>
+                <img src="{{ URL('assets/images/support/product_catalougue_rapid_test_filtration_range.jpg') }} " alt="contact_img"/>
                 <div class="left-centered">
                     <h1 class="bold-text">Browse our <span class="themeTextColor">catalogues</span>  </h1>
                     <h1 class="">for our full product range </h1>
@@ -30,7 +30,7 @@
 
                 <div class="col-md-6 col-sm-6">
                     <div class="teaser hover_icon text-center">
-                        <div> <img class="catalouge_image rounded-circle" src="{{URL('assets/images/Rapid_test_cover.jpg') }}"> </div>
+                        <div> <img class="catalouge_image rounded-circle mr-3" src="{{URL('assets/images/Rapid_test_cover.jpg') }}"> </div>
                             <h3 class="text-uppercase bold-text"><a href="https://www.johnsontestpapers.com/catalogue?name=rapid" class="text-white" target='_blank'> Rapid Test </a></h3>
                         </div>
                     </div>

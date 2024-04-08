@@ -67,64 +67,65 @@
 
 
         <section class="intro_section" id="slider">
-            <div id="carousel-thumb" class="carousel carousel-thumbnails slide" data-ride="carousel" data-interval="2500" data-pause="false">
+            <div id="carousel-thumb" class="carousel carousel-thumbnails slide" data-ride="carousel" data-interval="4500" data-pause="false">
                   <div class="carousel-inner" role="listbox">
 
                         <div class="carousel-item active">
-                          <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Total_Chlorine_Johnson.jpg')}}" alt="First slide">
+                          <!-- <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Total_Chlorine_Johnson.jpg')}}" alt="First slide"> -->
+                          <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_1.jpg')}}" alt="First slide">
                           <div class="row carousel-ban-text-adj">
-                            <div class="row col-12">
+                            <!-- <div class="row col-12">
                               <h1 class="col-12 carousel-header-adj bold-text">Total Chlorine 200</h1>
                               <h3 class="col-12 carousel-paragraph themeTextColor avbook32">Testing Range 0- 200 ppm -mgL </h3>
                               <p class="col-12 carousel-paragraph nsr22 mt-0">Disinfection, Sanitisation & Cleaning</p>
-                            </div>
+                            </div> -->
                           </div>
                       </div>
                       
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Oil_Quality_Johnson.jpg')}}" alt="Second slide">
+                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_2.jpg')}}" alt="Second slide">
                           <div class="row carousel-ban-text-adj">
-                            <div class="row col-12">
+                            <!-- <div class="row col-12">
                               <h1 class="col-12 carousel-header-adj bold-text">Oil Quality Test Strips</h1>
                               <h3 class="col-12 carousel-paragraph themeTextColor avbook32">A simple and cost effective way </h3>
                               <h3 class="col-12 carousel-paragraph themeTextColor avbook32 mt-0">to track the quality of frying oil </h3>
-                            </div>
+                            </div> -->
                           </div>
                       </div>
 
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Urine_Johnson.jpg')}}" alt="Third slide">
-                        <div class="row carousel-ban-text-adj">
+                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_3.jpg')}}" alt="Third slide">
+                        <!-- <div class="row carousel-ban-text-adj">
                           <div class="row col-12">
                             <h1 class="col-12 carousel-header-adj bold-text">Urine Test Strips</h1>
                             <h3 class="col-12 carousel-paragraph themeTextColor avbook32">Measure up to 11 Parameters</h3>
                             <p class="col-12 carousel-paragraph nsr22 mt-0">Fast, Accurate, Stable and Precise</p>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/VTK_Johnson.jpg')}}" alt="Fourth slide">
-                        <div class="row carousel-ban-text-adj">
+                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_4.jpg')}}" alt="Fourth slide">
+                        <!-- <div class="row carousel-ban-text-adj">
                           <div class="row col-12">
                             <h1 class="col-12 carousel-header-adj bold-text text-white">Most Simple Version of</h1>
                             <h3 class="col-12 carousel-paragraph text-white avbook32">Colormetric and Titrimetric</h3>
                             <p class="col-12 carousel-paragraph nsr22 mt-0 text-white">Visual Evaluation Test Kits</p>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/OEM_homepage_Johnson.jpg')}}" alt="Fifth slide">
-                        <div class="row carousel-ban-text-adj">
+                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_5.jpg')}}" alt="Fifth slide">
+                        <!-- <div class="row carousel-ban-text-adj">
                           <div class="row col-12 text-uppercase">
                             <h1 class="col-12 carousel-header-adj bold-text">LAUNCH <span class="text-white">Your</span></h1>
                             <h1 class="col-12 carousel-header-adj bold-text" style="margin-left:75px;">OWN <span class="text-white">Brand</span></h1>
                             <p class="col-12 carousel-paragraph">Private Label Manufacturing</p>
                             <h1 class="col-12 carousel-paragraph nsr22 mt-0 heading">OEM <span class="text-white"> One Stop Service</h1>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
 
                   </div><!-- carousel-inner -->
@@ -159,7 +160,7 @@
 
                 <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-md-12 text-center">
                 
-                  <figure class="mb-12">
+                <figure class="mb-12">
                       
                       <div class="row columns_margin_bottom_20">
                         @if(count($range_data) > 0)
@@ -174,17 +175,17 @@
                                           <img src="{{ URL($range_data[$i]->range_image) }}" alt="<?php echo $range_data[$i]->range_name; ?>" />
                                         @endif
                                   
-                                      <div class="text" style="width:100%; top: 60%; text-align:center; font-size:15px;">
+                                      <div class="text">
                                           @if($range_data[$i]->id=='1')
-                                            <p class="mb-5 text-white">Test papers for determination of pH and semi-quantitative analysis</p>
+                                            <p class="mb-5 text-white">Test papers for determination of pH and <br/>semi-quantitative analysis</p>
                                           @elseif($range_data[$i]->id=='2')
-                                            <p class="mb-5 text-white">Filters, syringe filters and extraction thimbles</p>
+                                            <p class="mb-5 text-white">Filter Papers, Membrane Filters, Syringe Filters <br/>and Extraction Thimbles</p>
                                           @elseif($range_data[$i]->id=='3')
-                                            <p class="mb-5 text-white">Test strips for the analysis of pool and spa’s</p>
+                                            <p class="mb-5 text-white">Test strips for the maintenance of pool and spa’s</p>
                                           @elseif($range_data[$i]->id=='4')
-                                            <p class="mb-5 text-white">Test strips for the analysis of aquariums</p>
+                                            <p class="mb-5 text-white">Test strips for the maintenance of aquariums</p>
                                           @elseif($range_data[$i]->id=='5')
-                                            <p class="mb-5 text-white">Liquid test kits for analysis of water </p>
+                                            <p class="mb-5 text-white">Liquid drop test kits for the analysis of water </p>
                                           @elseif($range_data[$i]->id=='8')
                                             <p class="mb-5 text-white">Test strips for healthcare applications </p>
                                           @endif
@@ -228,10 +229,10 @@
                                 <a href="{{ URL('/product/industries') }}">
                                   <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" />
                               
-                                  <div class="text text-white" style="width:100%; top: 60%; text-align:left;">
+                                  <div class="left-text text text-white">
                                     <h2 class="bold-text">Industries</h2>
                                     <text>Products based on sectors needs</text>
-                                    <p class="nsr22" style="font-weight:200;">Click to View All</p>
+                                    <p class="nsr22" style="font-weight:200;">Click to View</p>
                                   </div>
                                   <div class="overlay"></div>
                                 </a>
@@ -241,11 +242,11 @@
                         <div class="col-md-4 col-lg-4 mb-4"  style="padding-right:15px;">
                             <div class="img_hover_color">
                               <a href="{{ URL('/product/industries') }}">
-                                <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow">
-                                  <div class="text text-white" style="width:100%; top: 60%; text-align:left;">
+                                <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" />
+                                  <div class="left-text text text-white" >
                                       <h2 class="bold-text">Catalogues</h2>
                                       <text>Full product range</text>
-                                      <p class="nsr22" style="font-weight:200;">Rapid tests and Filtration</p>
+                                      <p class="nsr22" style="font-weight:200;">Click to View</p>
                                     </div>
                                 <div class="overlay"></div>
                               </a>
@@ -255,11 +256,11 @@
                         <div class="col-md-4 col-lg-4 mb-4">
                             <div class="img_hover_color">
                               <a href="{{ URL('/support/knowledge_hub') }}">
-                                <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow">
-                                  <div class="text text-white" style="width:100%; top: 60%; text-align:left;">
+                                <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" />
+                                  <div class="left-text text text-white" >
                                       <h2 class="bold-text">Knowledge Hub</h2>
-                                      <text>Full product range</text>
-                                      <p class="nsr22" style="font-weight:200;">Rapid tests and Filtration</p>
+                                      <text>A fresh real of knowledge</text>
+                                      <p class="nsr22" style="font-weight:200;">Click to View</p>
                                     </div>
                                 <div class="overlay"></div>
                               </a>
@@ -278,79 +279,6 @@
         </section>
 
 
-
-        <!-- <section class="site-section lighter-bg" id="meet" style="background: #f9f9f9; border-top: 1px solid #d7d7d7;">
-            <div class="container">
-              <div data-aos="fade-up" data-aos-delay="100" class="row justify-content-center">
-                <div class="col-md-12 text-center">
-                  <figure class="mb-12">
-                      <div class="row columns_margin_bottom_20">
-                        
-<div class="col-md-4 col-lg-4 " style="padding-right:15px;">
-  <div class="flip-container">
-        <div class="cards">
-            <div class="front1">
-              <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Filter Boxes">
-            </div>
-            <div class="back">
-              <a href="{{ URL('/product/industries') }}">
-                <div class="text text-white" style="width:100%; top: 60%; text-align:left;">
-                    <h2 class="bold-text">Industries</h2>
-                    <text>Products based on sectors needs</text>
-                    <p class="nsr22" style="font-weight:200;">Click to View All</p>
-                </div>
-              </a>
-            </div>
-        </div>
-  </div>
-</div>
-
-<div class="col-md-4 col-lg-4 " style="padding-right:15px;">
-  <div class="flip-container">
-        <div class="cards">
-            <div class="front2">
-              <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Filter Boxes">
-            </div>
-            <div class="back">
-              <a href="{{ URL('/support/catalogue') }}">
-                <div class="text text-white" style="width:100%; top: 60%; text-align:left;">
-                    <h2 class="bold-text">Catalogues</h2>
-                    <text>Full product range</text>
-                    <p class="nsr22" style="font-weight:200;">Rapid test and Filtration</p>
-                </div>
-              </a>
-            </div>
-        </div>
-  </div>
-</div>
-
-<div class="col-md-4 col-lg-4" style="padding-right:15px;">
-  <div class="flip-container">
-        <div class="cards">
-            <div class="front3">
-              <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Filter Boxes">
-            </div>
-            <div class="back text-white">
-                <a href="{{ URL('/support/knowledge_hub') }}">
-                    <div class="text " style="width:100%; top: 60%; text-align:left;">
-                
-                      <h2 class="bold-text">Knowledge Hub</h2>
-                      <text>Full product range</text>
-                      <p class="nsr22" style="font-weight:200;">Rapid test and Filtration</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-  </div>
-</div>
-
-
-                      </div>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </section> -->
 
     <img src='{{ URL("assets/images/product/front_footer.jpg") }}' style="height: 10vh; width:-webkit-fill-available;"></img>
               

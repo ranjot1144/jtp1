@@ -23,10 +23,28 @@ class WebsiteController extends Controller
         
         if($request->ajax()) {
             if($request->search!=''){
-                $result_data = DB::table('category as c')
-                        ->where('c.cat_name','like','%'. $request->search.'%')
-                        ->orderBy('c.cat_name')
-                        ->get();
+
+                    $prod_data = DB::table('product as p')
+                                ->select('p.prod_name as p_name', 'p.prod_url as p_url')
+                                ->where('p.prod_name','like','%'. $request->search.'%')
+                                ->get();
+                    $result_data = $prod_data;
+                    if(count($prod_data)==0) {
+                        $cat_data = DB::table('category as c')
+                                ->select('c.cat_name as p_name', 'c.cat_url as p_url')
+                                ->where('c.cat_name','like','%'. $request->search.'%')
+                                ->get();
+                    $result_data = $cat_data;
+                    }
+
+                    if(count($prod_data)==0 && count($cat_data)==0) {
+                        $sub_cat_data = DB::table('subcategory as sc')
+                                ->select('sc.sub_cat_name as p_name', 'sc.subcat_url as p_url', 'sc.subcat_url as sc_ranges')
+                                ->where('sc.sub_cat_name','like','%'. $request->search.'%')
+                                ->get();
+                    $result_data = $sub_cat_data;
+                    }
+
                 
                 $output = '';
                 $option_size='2';
@@ -36,7 +54,8 @@ class WebsiteController extends Controller
                     }
                     $output = '<select size="'.$option_size.'" class="search-list text-white" onchange="location = this.value;" style="width:40%;background:transparent;border-left:none; border-bottom:1px solid #d3d3d3;">';
                     foreach($result_data as $value) {
-                        $output .= '<option style="padding: 10px;" value="'.$value->cat_url.'">'.$value->cat_name.' '.$value->cat_ranges.'</option>';
+                        //$output .= '<option style="padding: 10px;" value="'.$value->cat_url.'">'.$value->$p_name.' '.$value->cat_ranges.'</option>';
+                        $output .= '<option style="padding: 10px;" value="'.$value->p_url.'">'.$value->p_name.'</option>';
                     }
                         $output .= '</select>';
                 }else{

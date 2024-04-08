@@ -43,7 +43,7 @@
   padding: 20px 0px;
 }
 .accordion {
-  background-color: #eb7f2d;
+  background-color: #f47922;
   color: #fff;
   cursor: pointer;
   padding: 10px 20px;
@@ -136,7 +136,7 @@ tbody {
 }
 
 .cellulose-item{
-  background: #e36c28;
+  background: #f47922;
   padding: 10px 34px;
   cursor: pointer;
   border-radius: 4px;
@@ -222,31 +222,22 @@ tbody {
                 <section class="zero_padding" id="product_banner">
                   <div class="row ">
                       <div class="col-md-12">
-                          <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Header"/>
+                          <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Banner"/>
                           @php $top_position = 'top-left'; @endphp
                           @if ( ($range_data[0]->range_id==1 && ($cat_data[0]->cat_id=='1' || $cat_data[0]->cat_id=='103' || $cat_data[0]->cat_id=='104' || $range_data[0]->prod_id=='16') ) )
                             @php $top_position = 'top-right'; @endphp
                           @endif
-
-                          <!-- @if ( ($range_data[0]->range_id==1 && $range_data[0]->prod_id=='2') || ($range_data[0]->range_id==2 && $cat_data[0]->cat_id!='5') )
-                          @endif -->
-
                           
                           <div class="{{ $top_position }}">
                               <div class="row justify-content-center align-items-center">
-                                  <div class="col-md-12">
-                                      <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
-                                        <h2 data-aos="fade-right" class="{{ $colorclass }} bold-text mb-3 border-left-bar px-md-4 aos-init aos-animate"> {!! $range_data[0]->prod_name !!}</h2>
-                                        <h3 class="">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h3>
-                                      </div>
-                                  </div>
+                                    <div class="col-md-12">
+                                        <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
+                                            <h2 data-aos="fade-right" class="{{ $colorclass }} bold-text mb-3 border-left-bar px-md-4 aos-init aos-animate"> {!! $range_data[0]->prod_name !!}</h2>
+                                            <h3 class="">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h3>
+                                        </div>
+                                    </div>
                               </div>
                           </div>
-                          <!-- <div class="bottom-right">
-                              <a href="#" class="btn btn-primary btn-large">Purchase</a>
-                          </div> -->
-                          
-
                       </div>
                   </div>
                 </section>
@@ -382,14 +373,14 @@ tbody {
                                   
                                       <tr class="child-row2" title="Click to expand/collapse" style="cursor: pointer; display:none;">
                                         <td class="p-3 text-sm text-gray-700 bold-text" style="color:#000;background:#fff;">Prod. Code</td>
-                                        <td>50A021</td>
-                                        <td>50A024</td>
-                                        <td>50A025</td>
-                                        <td>50A047</td>
-                                        <td>50A055</td>
-                                        <td>50A090</td>
-                                        <td>50A110</td>
-                                        <td>50A125</td>
+                                        <td>50B021</td>
+                                        <td>50B024</td>
+                                        <td>50B025</td>
+                                        <td>50B047</td>
+                                        <td>50B055</td>
+                                        <td>50B090</td>
+                                        <td>50B110</td>
+                                        <td>50B125</td>
                                       </tr>
 
                                   <tr class="parent" id="row3" title="Click to expand/collapse" style="cursor: pointer;">
@@ -436,7 +427,7 @@ tbody {
                           <p>
                             Quartz filtration membranes are advanced materials used in various filtration processes, particularly in industries where high purity and efficiency are paramount. These membranes are typically composed of layers of quartz, a hard and chemically inert mineral, which is processed into a porous structure suitable for filtration purposes. <br/><br/>
                             Quartz membranes exhibit excellent temperature and pressure resistance, allowing them to withstand extreme operating conditions without compromising filtration performance. This makes them suitable for use in high-temperature processes or applications involving elevated pressures. These membranes find applications across various industries, including pharmaceuticals, biotechnology, semiconductor manufacturing, food and beverage processing, wastewater treatment, and chemical processing. They are used for diverse filtration tasks, such as particle removal, sterilization, purification, and separation of substances. <br/><br/>
-                            Please contact us for sizing, pricing and availability.  </a>
+                            Please <a href="{{URL('support/contact-us') }}">contact us</a> for sizing, pricing and availability.  </a>
                           </p>
 
                               
@@ -593,7 +584,7 @@ tbody {
                                             foreach ($category_presentation as $key => $value) { ?>
                                               <tr>
                                                 <td>{{ $value->cp_product.' '.$value->cp_range }}</td>
-                                                <td>{{ $value->cp_graduation; }}</td>
+                                                <td>{!! $value->cp_graduation; !!}</td>
                                                 <td>{!! $value->cp_presentation !!}</td>
                                                 <td>{!! $value->cp_prod_code !!}</td>
                                               </tr>

@@ -7,7 +7,7 @@
           if(isset($range_data) && $range_data->isNotEmpty()) {
             
             if($range_data[0]->prod_id=='8') { ?>
-            <h2 class="mb-4 themeTextColor">Did not find the right filter</h2>
+            <h2 class="mb-4 themeTextColor">Did not find the right filter ?</h2>
             <p  class="mb-2 nsr22">Let our expert Technical Team<br/>assist you with that. </p>
             
           <?php }else if($range_data[0]->prod_id=='7'){ ?>

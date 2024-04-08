@@ -4,23 +4,29 @@
 
     @include('frontend_view.layouts.breadcrumb_nav')
 
-    <section class="site-section-hero bg-image" style="background-image: url(&quot;../../assets/images/vtk_banner.png&quot;); height: 60vh; background-position: 50% 1%; min-height: 150px;" id="home-border"> 
-                <div class="row justify-content-center align-items-center" style="height:60vh;min-height:300px;">
-                    <div class="col-md-7">
-                        @if($range_data[0]->range_id=='3')
-                            <h1 class="heading text-white" data-aos="fade-right"><b>{{ $range_data[0]->range_name }} </b></h1>
-                            <h1 class="text-white" data-aos="fade-up"><b>Test Strips</b></h1>
-                        @else
-                          <h1 class="heading" data-aos="fade-right ">Visual Test Kits </h1>
-                          <h2 class="heading text-white" data-aos="fade-up">VTKolor</h2>
-                        @endif
-                          
+    <section class="zero_padding" id="product_banner">
+        <div class="row ">
+            <div class="col-md-12">
+                <img src="{{ url('/assets/images/vtk_banner.png'); }}" alt="Filter Finder Banner"/>
+                <div class="left-centered">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-12">
+                                @if($range_data[0]->range_id=='3')
+                                    <h1 class="heading text-white" data-aos="fade-right"><b>{{ $range_data[0]->range_name }} </b></h1>
+                                    <h1 class="text-white" data-aos="fade-up"><b>Test Strips</b></h1>
+                                @else
+                                <h1 class="heading" data-aos="fade-right ">Visual Test Kits </h1>
+                                <h2 class="heading text-white" data-aos="fade-up">VTKolor</h2>
+                                @endif
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
 
 
-    <section class="site-section text-center site-section lighter-bg" id="oem_gradient_section">
+    <!--<section class="site-section text-center site-section lighter-bg" id="oem_gradient_section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -47,18 +53,18 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
 
-    <section class="site-section lighter-bg" id="contact_us">
+    <section class="site-section lighter-bg" id="prod_content_section">
         <div class="container">
 
 
             <div class="row justify-content-center">
             
                 <div class="col-md-12 mb-5">
-                    <p class="nsr25 mb-2 text-center">Our Range of</p>
-                    <h3 class="general-text-color mb-5 text-center">{!! $range_data[0]->prod_name !!}</h3>
+                    <!-- <p class="nsr25 mb-2 text-center">Our Range of</p> -->
+                    <h2 class="mb-4 bold-text text-center">{!! $range_data[0]->prod_name !!}</h2>
                     <div class="content-description">{!! $range_data[0]->prod_desc !!}</div>
                 </div>
 
@@ -70,11 +76,12 @@
 
                 <!-- <figure class="mb-12"> -->
 
-                    @if ($range_data[0]->prod_id=='19')
-                            <table id="jQuant">
+                    @if ($range_data[0]->prod_id=='19' || $range_data[0]->prod_id=='25')
+
+                            <table class="table-striped w-full">
                               <thead>
                                 <tr class="gradient-left-to-right">
-                                  <th scope="col" width="20%">Product</th>
+                                  <th scope="col" width="25%">Product</th>
                                   <th scope="col" width="45%">Graduation</th>
                                   <th scope="col" width="12%">Presentation</th>
                                   <th scope="col" width="10%">Code</th>
@@ -82,22 +89,29 @@
                               </thead>
                                 <tbody>
                                     @if(!empty($cat_data) && count($cat_data))
-                                        @foreach($cat_data as $value)
+                                        @foreach($cat_data as $key => $value)
                                             @php $cat_des = DB::table('category_presentation as cp')
                                                                 ->where('cp.cat_id', $value->cat_id)
                                                                 ->get();
                                             @endphp
+                                            @if ($range_data[0]->prod_id=='19')
                                             <tr>
-                                                <td>{{ $value->cat_name }}</td>
+                                                <td class="bold-text">Description</td>
+                                                <td colspan="3">{!! $value->cat_main_desc !!}</td>
+                                            </tr>
+                                            @endif
+                                            <tr >
+                                                <!-- <td class="text-white" style="font-weight: 600; background-color: #F47922; border-radius: 30px 0px 0px 30px;">{!! $value->cat_name !!} <span style="float:right;">+</span></td> -->
+                                                <td>{!! $value->cat_name !!} </td>
                                                 <td>{!! $cat_des[0]->cp_graduation !!}</td>
                                                 <td>{{ $cat_des[0]->cp_presentation }}</td>
                                                 <td>{{ $cat_des[0]->cp_prod_code }}</td>
                                             </tr>
 
-                                            <tr>
+                                            <!-- <tr class="child-row{{$key}}" title="Click to expand/collapse" style="cursor: pointer; display:none;">
                                                 <td class="bold-text">Description</td>
-                                                <td colspan="3"><?php print_r($value); ?></td>
-                                            </tr>
+                                                <td colspan="3">{!! $value->cat_main_desc !!}</td>
+                                            </tr> -->
                                         @endforeach
                                     @endif
                                   

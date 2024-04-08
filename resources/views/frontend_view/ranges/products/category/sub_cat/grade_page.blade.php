@@ -143,7 +143,7 @@
                     <div class="row justify-content-center">
 
                         <div class="col-md-10">
-                          <h3 class="text-center mb-5 bold-text">Grades</h3>
+                          <h3 class="text-center mb-5 bold-text">{{ $sub_cat_data[0]->sub_cat_name.' '.$cat_data[0]->cat_name }}</h3>
                           <div class="mb-5 content_description text-center"><p>{!! $sub_cat_data[0]->sc_desc !!}</p></div>
                         </div>
 

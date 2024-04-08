@@ -15,14 +15,14 @@
 
     <section class="zero_padding" id="top-banner">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="{{ URL('assets/images/support/faq.png') }}" alt="faq"/>
-                <h1 class="centered">How we can <span class="text-white">help </span></h1>
+            <div class="col-md-12 text-center gradient-left-to-right" style="height:50vh;">
+                <!-- <img src="{{ URL('assets/images/support/faq.png') }}" alt="faq"/> -->
+                <h1 class="centered general-text-color bold-text">How we can <span class="text-white">help </span>?</h1>
             </div>
         </div>
     </section>
 
-    <section class="site-section lighter-bg" id="meet">
+    <section class="site-section lighter-bg" id="faq_text">
         <div class="container">
             <div class="row justify-content-center">
                         
@@ -41,7 +41,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header faq themebackgroundColor" id="heading{{$val->id}}">
                                         <button type="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="accordion-button themebackgroundColor" data-bs-target="#collapse{{$loop->index}}">
-                                            <label class="nsr22">{{ $val->question }} </label>
+                                            <label>{{ $val->question }} </label>
                                             <i class="material-icons" style="float:right;">&#xe313;</i>
                                         </button>
                                     </h2>

@@ -78,7 +78,7 @@ class RangeController extends Controller
                             'prod_name' => $prod_name
                         );
                 $cat_data = DB::table('category as c')
-                                ->select('c.id as cat_id','c.cat_name','c.cat_ranges','c.cat_url','c.cat_image','c.prod_id')
+                                ->select('c.id as cat_id','c.cat_name','c.cat_ranges','c.cat_url','c.cat_image','c.prod_id','c.cat_main_desc')
                                 ->orderBy('c.order_wise')
                                 ->where('c.prod_id', $id)
                                 ->get();
@@ -87,7 +87,7 @@ class RangeController extends Controller
                                 ->where('pd.prod_id', $id)
                                 ->get();
 
-                if($prod_name=='visual_test_kits' || $prod_name=='pool_and_spa') {
+                if($prod_name=='visual_test_kits' || $prod_name=='aquarium' || $prod_name=='pool_and_spa' ) {
                     return view('frontend_view.ranges.visual_test_view', compact('range_data','prod_data','cat_data','prod_desc_data'));
                 }else if($prod_name=='industries') {
 
@@ -119,8 +119,8 @@ class RangeController extends Controller
                     $man_data = DB::table('filterfinder_manufacturer as fm')
                                 ->get();
                     $category_presentation = array();
-                    if(!empty($cat_data)){
-                        if($cat_data[0]->prod_id=='30') {
+                    if(count($cat_data)>0) {
+                        if($cat_data[0]->prod_id=='30' || $cat_data[0]->prod_id=='31') {
                             $category_presentation = DB::table('category as c')
                                                     ->leftjoin('category_presentation as cp','cp.cat_id','=','c.id')
                                                     ->where('c.prod_id',$cat_data[0]->prod_id)
@@ -385,10 +385,30 @@ class RangeController extends Controller
 
     public function thimble_list(){
         $type_id = $_POST['id'];
-        $data = DB::table('extraction_thimble as et')
-                    ->where('et.cat_id', $type_id)
+        // $data = DB::table('extraction_thimble as et')
+        //             ->where('et.cat_id', $type_id)
+        //             ->get();
+        
+        $data =  DB::table('extraction_thimble_ranges as etr')
+                    ->select('etr.er_id','etr.er_diameter','etr.er_height')
+                    ->where('etr.etr_cat_id', $type_id)
+                    ->groupBy('etr.er_diameter')
                     ->get();
+        
+        //$data =  DB::select('SELECT * FROM extraction_thimble_ranges WHERE etr_cat_id = '.$type_id.' GROUP BY er_diameter');
 
+        return $data;
+    }
+
+    public function grade_height() {
+        $grade_id = $_POST['grade_id'];
+        $diameter = $_POST['diameter_id'];
+
+        $data =  DB::table('extraction_thimble_ranges as etr')
+                    ->select('etr.er_height')
+                    ->where('etr.er_diameter', $diameter)
+                    ->where('etr.etr_cat_id', $grade_id)
+                    ->get();   
         return $data;
     }
     

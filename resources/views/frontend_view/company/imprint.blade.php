@@ -1,24 +1,14 @@
 @extends('frontend_view.layouts.layout')
     @section('content')
 
-<style>
-.centered {
-  position: absolute;
-  top: 30%;
-  left: 25%;
-  transform: translate(-50%, -50%);
-}
-</style>
 
-    <!-- Breadcrumb Section Begin -->
     @include('frontend_view.layouts.breadcrumb_nav')
     
-    <!-- <section class="site-section-hero bg-image" style="background-image: url(&quot;../assets/images/contact_us.png&quot;); height: 60vh; background-position: 50% 1%; min-height: 150px;" data-stellar-background-ratio="0.5" id="home-border">  -->
     <section class="zero_padding" id="top-banner">
         <div class="row ">
             <div class="col-md-12">
                 <img src="{{ URL('/assets/images/support/environmental_imprint.jpg') }}" alt="banner"/>
-                <h1 class="centered bold-text">
+                <h1 class="left-centered bold-text">
                     <span class="text-white">Environmental </span>
                     <br/><span style="">Imprint </span>
                 </h1>

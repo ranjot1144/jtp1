@@ -29,6 +29,8 @@ Route::get('product/{range_name}/{prod_url}/{cat_url}/{sub_cat_url}',[RangeContr
 Route::POST('product/filtration/grade_list',[RangeController::class,'ff_grades_list']);
 Route::POST('product/filtration/thimble_list',[RangeController::class,'thimble_list']);
 
+Route::POST('product/filtration/grade_height',[RangeController::class,'grade_height']);
+
 Route::get('products/industry/education',[RangeController::class,'education']);
 
 //Visual Test Kits

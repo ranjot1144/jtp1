@@ -270,17 +270,44 @@ jQuery(function ($) {
 					$("#diameter").empty();
 					$("#diameter").append('<option disabled selected>Select Diameter</option>');
 					$.each(response, function (key, value) {
-						var result = value['et_diameter'].split('-');
-						$("#diameter").append('<option value=' + value['id'] + ' height=' + result[1] + ' diameter=' + result[0] + '>' + result[0] + '</option>');
+						//var result = value['et_diameter'].split('-');
+						//$("#diameter").append('<option value=' + value['id'] + ' height=' + result[1] + ' diameter=' + result[0] + '>' + result[0] + '</option>');
+						var result = value['er_diameter'];
+						$("#diameter").append('<option value=' + result + ' height=' + value['er_height'] + ' diameter=' + result + '>' + result + '</option>');
 					});
 
 
 				}
 			});
-
-
-
 		});
+
+
+		$("#diameter").change(function () {
+			var grade_id = $("#grade").val();
+			var diameter_id = $(this).val();
+			var token = $('meta[name="csrf-token"]').attr("content");
+
+			$.ajax({
+				type: 'POST',
+				url: 'grade_height',
+				data: {
+					_token: token,
+					grade_id: grade_id,
+					diameter_id: diameter_id,
+				},
+				success: function (response) {
+					$("#height").empty();
+					$("#height").append('<option disabled selected>Select Height</option>');
+					$.each(response, function (key, value) {
+						var result = value['er_height'];
+						$("#height").append('<option >' + result + '</option>');
+					});
+
+
+				}
+			});
+		});
+
 		$("#diameter").change(function () {
 			var thimble_height = $(this).find(':selected').attr("height");
 			var thimble_diam = $(this).find(':selected').attr("diameter");

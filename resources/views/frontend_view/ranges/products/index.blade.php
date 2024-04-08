@@ -52,12 +52,12 @@
                       <div class="row ">
                           <div class="col-md-12">
                               <img src=" {{ URL('/assets/images/filter_finder/filter_finder_header.jpg') }} " alt="Filter Finder Header1"/>
-                              <div class="top-left">
+                              <div class="left-centered">
                                 <div class="row justify-content-center align-items-center">
                                       <div class="col-md-12">
                                           <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
-                                            <h2 class="bold-text" data-aos="fade-right"> Find Your equivalent <span class="themeTextColor">Filter</span></h2>
-                                            <h3 class="text-white" data-aos="fade-right">Within our Johnson Test Papers Range</h3>
+                                            <h1 class="bold-text" data-aos="fade-right"> Find Your equivalent <span class="themeTextColor">Filter</span></h1>
+                                            <h3 data-aos="fade-right">Within our Johnson Analytica Range</h3>
                                           </div>
                                       </div>
                                 </div>
@@ -86,21 +86,21 @@
                         <div class="row justify-content-center align-items-center" style="min-height: 250px; height: 30vh;">
 
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                <img src="{{ URL('assets/images/small_images/uk_flag.png'); }}" alt="Made In UK Image" class="img-fluid" style="width:30%;"/>
+                                <img src="{{ URL('assets/images/small_images/step_one.png'); }}" alt="Made In UK Image" class="img-fluid mr-2"/>
                                 <div class="text-white">
                                     <p>Step One</p>
                                     <p>Select Manufacturer</p>
                                 </div>
                             </div>
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                <img src="{{ URL('assets/images/small_images/tick.png'); }}" alt="High Quality Image" class="img-fluid" style="width:30%;"/>
+                                <img src="{{ URL('assets/images/small_images/step_two.png'); }}" alt="High Quality Image" class="img-fluid mr-2" />
                                 <div class="text-white">
                                     <p>Step Two</p>
                                     <p>Select a Grade</p>
                                 </div>
                             </div>
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                <img src="{{ URL('assets/images/small_images/test_tube.png'); }}" alt="Original Image" class="img-fluid" style="width:30%;"/>
+                                <img src="{{ URL('assets/images/small_images/step_three.png'); }}" alt="Original Image" class="img-fluid mr-2"/>
                                 <div class="text-white">
                                     <p>Step Three</p>
                                     <p>View Result</p>
@@ -178,7 +178,7 @@
                               </div>
                           </div>
                             @endif
-                            @if($range_data[0]->range_id=='2' || $range_data[0]->range_id=='8')
+                            @if($range_data[0]->range_id=='2' || $range_data[0]->range_id=='8' || $range_data[0]->range_id=='4')
                             <div class="top-left">
                               <div class="row justify-content-center align-items-center">
                                   <div class="col-md-12">
@@ -257,22 +257,16 @@
                 @endif
               @endif
 
-
+              
                 <section class="site-section lighter-bg content-padding" id="prod_content_section">
                     <div class="container">
                       <div class="row justify-content-center ">
                         
                         <div class="col-md-12 general-text-color">
                             @if($range_data->isNotEmpty())
-                              @if ($range_data[0]->range_id=='2')
-                                <!-- <h3 class="mb-4 text-center bold-text">{{ $range_data[0]->prod_name; }}</h3> -->
-                              @endif
-
-                              @if ($range_data[0]->range_id=='1' && $range_data[0]->prod_id=='1')
-                                <!-- <h3 class="text-center">Our Range of</h3> -->
-                              @endif
                               
-                                @if ($range_data[0]->range_id=='1' || $range_data[0]->range_id=='2' || $range_data[0]->range_id=='8')
+                            
+                                @if ($range_data[0]->range_id=='1' || $range_data[0]->range_id=='2' || $range_data[0]->range_id=='8' || $range_data[0]->range_id=='4')
                                           @php
                                             $originalString = $range_data[0]->prod_name;
                                             $search = "®";
@@ -281,9 +275,9 @@
                                           @endphp
 
                                   @if($range_data[0]->range_id!='8')
-                                    <h2 class="mb-4 text-center bold-text">{!! trim($range_data[0]->prod_name,"s"); !!} Range</h2>
+                                    <h2 class="mb-4 text-center bold-text">{!! $range_data[0]->prod_name; !!} </h2>
                                   @else
-                                    <h2 class="mb-4 text-center bold-text">{!! $range_data[0]->prod_name !!} Range</h2>
+                                    <h2 class="mb-4 text-center bold-text">{!! $range_data[0]->prod_name !!} </h2>
                                   @endif
                                     
                                   @if($range_data[0]->prod_id!='5')
@@ -353,6 +347,34 @@
                                         $col = 'col-md-4';
                                       }
 
+                                      if($cat_data[0]->cat_id=='177'){ ?>
+                                      <div class="col-md-12 general-text-color">
+                                          <table id="jQuant">
+                                            <thead>
+                                              <tr class="gradient-left-to-right gradient-row">
+                                                <th scope="col" width="25%">Product</th>
+                                                <th scope="col">Graduation</th>
+                                                <th scope="col" width="15%">Presentation</th>
+                                                <th scope="col" width="10%">Code</th>
+                                              </tr>
+                                            </thead>
+                                              <tbody>
+                                                  <?php if(!empty($category_presentation) && $category_presentation!='') { 
+                                                          foreach ($category_presentation as $key => $value) { ?>
+                                                            <tr>
+                                                              <td>{{ $value->cp_product.' '.$value->cp_range }}</td>
+                                                              <td>{!! $value->cp_graduation; !!}</td>
+                                                              <td>{!! $value->cp_presentation !!}</td>
+                                                              <td>{!! $value->cp_prod_code !!}</td>
+                                                            </tr>
+                                                  <?php } 
+                                                      } ?>
+                                                
+                                              </tbody>
+                                            </table>
+                                      </div>
+                                          
+                                <?php }else{
                                     foreach($cat_data as $data) {
                                       $url = $data->cat_url;
                                   ?>
@@ -377,6 +399,7 @@
                                             </div>
                                         </div>
                                 <?php  }
+                                    }
                                   }  ?>
 
                               </div>
@@ -387,8 +410,7 @@
                                 </div>
                               <?php } ?>
                             </div>
-
-                            @endif
+                          @endif
 
                           </div>
                         </div>
@@ -396,8 +418,9 @@
                       </div>
                     </div>
                 </section>
+                
                 <?php } } ?>
-
+              
 
               <?php if($range_data[0]->range_id =='1') { ?>
                 @if($range_data[0]->prod_id=='1')
@@ -405,17 +428,6 @@
                       
                         <div class="row">
                           <div class="col-md-12 main-content-srip-image">
-                              <!-- <img src="{{ asset('assets/images/filter_finder/filter_finder_header.jpg') }}" alt="Filter Finder Header"/>
-                              <div class="image-center">
-                                <div class="row justify-content-center align-items-center">
-                                      <div class="col-md-12 text-center">
-                                          <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
-                                            <h2 class="bold-text" data-aos="fade-right"> Quick, Accurate & Easy </h2>
-                                            <h3 class="text-white" data-aos="fade-right">pH Testing</h3>
-                                          </div>
-                                      </div>
-                                </div>
-                              </div> -->
                               <img src="{{ asset('assets/images/filter_finder/filter_finder_header.jpg') }} " alt="contact_img"/>
                               <div class="centered text-center">
                                     <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
@@ -478,43 +490,7 @@
                   </section>
                   @endif
                 @endif
-              <?php } 
-
-              if($range_data[0]->range_id=='2' && ($range_data[0]->prod_id!='8' || $range_data[0]->prod_id!='18')) { ?>
-
-                <!-- <section class="site-section lighter-bg" id="section-bio">
-                    <div class="container">
-                      <div class="row justify-content-center general-text-color">
-                        
-                        <div class="col-md-12">
-                          <h4>General Information</h4>
-                        </div>
-
-                        <div class="col-md-12">
-                          <div class="d-block d-md-flex">
-                            
-                            <div class="col-md-12" >
-                              <div class="mr-md-auto mr-2">
-                                @if($prod_desc_data->isNotEmpty())
-                                  {!! $prod_desc_data[0]->pd_desc; !!}
-                                @endif
-
-                                <p class="button-margin-15" >
-                                  <a href="#section-contact" class="btn btn-primary btn-md smoothscroll">Read More</a>
-                                </p>
-
-                              </div>
-                            </div>
-                            
-
-                          </div>
-                            
-                        </div>
-
-                      </div>
-                    </div>
-                </section> -->
-                <?php } ?>
+              <?php } ?>
 
 
                @include('frontend_view.layouts.contact_section')

@@ -198,7 +198,7 @@
 
                 <div class="col-md-12 text-center general-text-color">
                 @if($range_data->isNotEmpty())
-                    <h2 class="mb-4 bold-text">{!! $range_pro_data[0]->range_name !!} Range</h2>
+                    <h2 class="mb-4 bold-text">{!! $range_pro_data[0]->range_name !!}</h2>
                     <p class="mb-5 nsr22">{!! $range_data[0]->range_desc !!}</p>
                   @endif
                 </div>

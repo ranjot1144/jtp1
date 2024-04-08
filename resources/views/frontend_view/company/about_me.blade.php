@@ -105,7 +105,7 @@
                                         <p class="avbook28">The use of rapid tests play a very important role when analysing solutions,
                                         <br/>be it, for education, research and development, healthcare or other specialist industries.
                                         <br/>Since the company was founded in the United Kingdom over 70 years ago,
-                                        <br/>Johnson Test Papers has established a brand in well over 45 countries.
+                                        <br/>Johnson Analytica has established a brand in well over 45 countries.
                                         <br/>This 70 years of experience has resulted in satisfied customers all over the world relating
                                               our name with quality, short delivery times and competitive pricing.</p>
                                     </div>

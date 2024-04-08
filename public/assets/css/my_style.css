@@ -129,6 +129,10 @@ h4 {
     margin: 40px;
 }
 
+.mb-0 {
+    margin-bottom: 0px;
+}
+
 .btn-primary {
     background-color: transparent;
     border-color: #F47922;
@@ -183,7 +187,7 @@ a {
 }
 
 .image-90 {
-    width: 80%;
+    width: 90%;
 }
 
 .btn.btn-md {
@@ -373,10 +377,6 @@ ul li li:before {
     display: none;
 }
 
-#product_banner img {
-    height: 450px;
-}
-
 .navbar-filter-papers::before {
     content: "";
     position: absolute;
@@ -498,16 +498,19 @@ table tr {
 #product_banner img {
     height: 500px;
     width: -webkit-fill-available;
+    width: 100%;
 }
 
 #top-banner img {
     height: 500px;
     width: -webkit-fill-available;
+    width: 100%;
 }
 
 #phTestingStrip_image img {
     height: 350px;
     width: -webkit-fill-available;
+    width: 100%;
 }
 
 .centered {
@@ -519,9 +522,8 @@ table tr {
 
 .left-centered {
     position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
+    top: 35%;
+    left: 5%;
 }
 
 
@@ -632,6 +634,13 @@ figure {
     }
 }
 
+#meet .text {
+    width: 100%;
+    top: 60%;
+    text-align: center;
+    font-size: 15px;
+}
+
 #meet .img_hover_color {
     position: relative;
 }
@@ -699,7 +708,7 @@ img.image-50 {
 img.catalouge_image {
     height: 12pc;
     margin-bottom: 20px;
-    width: 40%;
+    width: 35%;
 }
 
 #oem_gradient_section h3 p::before {
@@ -830,7 +839,7 @@ input[type="search"]::placeholder {
     position: absolute;
     width: auto;
     display: flex;
-    margin-left: 100px;
+    margin-left: 5%;
     bottom: 150px;
 }
 
@@ -851,7 +860,7 @@ input[type="search"]::placeholder {
 .carousel-img-fit {
     width: 100%;
     min-height: 500px;
-    object-fit: cover;
+    object-fit: fill;
     object-position: 50% 50%;
     max-height: 450px !important;
 }
@@ -1132,26 +1141,26 @@ input[type="search"]::placeholder {
 .filtration-top-left {
     position: absolute;
     top: 20%;
-    left: 15%;
+    left: 5%;
     transform: translate(-50%, -50%);
 }
 
 .top-left {
     position: absolute;
     top: 10%;
-    left: 10%;
+    left: 5%;
 }
 
 .top-right {
     position: absolute;
     top: 15%;
-    right: 20%;
+    right: 10%;
 }
 
 .bottom-right {
     position: absolute;
-    bottom: 10%;
-    right: 20%;
+    bottom: 15%;
+    right: 10%;
 }
 
 #phTestingStrip_image {
@@ -1183,8 +1192,7 @@ input[type="search"]::placeholder {
 }
 
 #table_presentation_data .accordion {
-    /*background-color: #df983f;*/
-    background-color: #eb7f2d;
+    background-color: #f47922;
     color: #fff;
     cursor: pointer;
     padding: 10px 20px;
@@ -1348,15 +1356,49 @@ input[type="search"]::placeholder {
     border-color: transparent;
 }
 
-@media (max-width: 768px) {
+.miscellaneous .left-text {
+    text-align: left !important;
+}
 
-    .cards,
-    .front1,
-    .front2,
-    .front3,
-    .back {
-        height: 120px !important;
-    }
+#industry_body .container {
+    max-width: 1140px;
+}
+
+#industry_body .container div a {
+    font-size: 12px;
+}
+
+#slider .carousel-img-fit {
+    min-height: 400px;
+}
+
+/* width */
+select::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+select::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+select::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 10px;
+}
+
+#test-strip-filteration p {
+    margin-bottom: 0px;
+}
+
+#test-strip-filteration img {
+    width: 11%;
+}
+
+
+@media (max-width: 768px) {
 
     .site-section-hero.bg-image {
         background-size: cover;
@@ -1371,8 +1413,12 @@ input[type="search"]::placeholder {
         bottom: -40px;
     }
 
+    #product_banner img {
+        height: 280px !important;
+    }
+
     h1 {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     h2 {
@@ -1413,9 +1459,26 @@ input[type="search"]::placeholder {
         min-height: 80px;
     }
 
+    #meet .text {
+        top: 50% !important;
+        font-size: 10px;
+    }
+
     #meet .btn.btn-md {
         padding: 5px 25px;
-        font-size: 12px;
+        font-size: 10px;
+    }
+
+    .miscellaneous .left-text {
+        width: max-content !important;
+    }
+
+    .miscellaneous .left-text h2 {
+        font-size: 20px !important;
+    }
+
+    .miscellaneous .left-text p {
+        font-size: 15px !important;
     }
 
     .range_name label {
@@ -1444,20 +1507,17 @@ input[type="search"]::placeholder {
     }
 
     #industry_body .container div a {
-        font-size: 15px;
+        font-size: 12px;
+    }
+
+    #test-strip-filteration img {
+        width: 25%;
+        height: auto;
     }
 
 }
 
 @media (max-width: 550px) {
-
-    .cards,
-    .front1,
-    .front2,
-    .front3,
-    .back {
-        height: 150px !important;
-    }
 
     .site-section-hero.bg-image {
         background-size: cover;
@@ -1476,7 +1536,7 @@ input[type="search"]::placeholder {
     }
 
     .top-margin {
-        top: 20%;
+        top: 15%;
     }
 
     .avbook28 {
@@ -1519,7 +1579,7 @@ input[type="search"]::placeholder {
     }
 
     #product_banner img {
-        height: 250px;
+        height: 200px;
     }
 
     .px-md-4 {
@@ -1585,17 +1645,8 @@ input[type="search"]::placeholder {
         font-size: 15px !important;
     }
 
-    /* .width-50 {
-        max-width: 30px;
-    } */
-
-
-    .search-container {
-        margin-top: 15% !important;
-    }
-
     .teaser.hover_icon.text-center {
-        padding: 0px 80px !important;
+        padding: 20px 0px !important;
     }
 
     input[type="search"] {
@@ -1682,6 +1733,52 @@ input[type="search"]::placeholder {
     .service-logo {
         height: auto;
     }
+
+    #slider .carousel-img-fit {
+        min-height: 300px;
+    }
+
+    .top-margin {
+        top: 12%;
+    }
+
+    .top-margin .avbook32 {
+        font-size: 20px;
+    }
+
+    .top-margin h1 {
+        font-size: 30px;
+    }
+
+    .nsr22 {
+        font-size: 15px;
+    }
+
+    #prod_content_section p {
+        font-size: 13px;
+    }
+
+    #jQuant th {
+        font-size: 12px;
+    }
+
+    #jQuant td {
+        font-size: 10px;
+    }
+
+    #prod-section-nav li a {
+        font-size: 12px;
+    }
+
+    #prod-section-nav ul li {
+        font-size: 10px;
+    }
+
+    .navbar-filter-papers::before {
+        height: 5px;
+        width: 90%;
+    }
+
 }
 
 
@@ -1692,11 +1789,11 @@ input[type="search"]::placeholder {
         width: 100%;
         border: none;
         padding: 10px;
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .accordion-body {
-        padding: 20px 50px;
+        padding: 15px 30px;
         background: #ebebeb;
     }
 }
@@ -1871,7 +1968,6 @@ input[type="search"]::placeholder {
 
     .middle-section .container {
         max-width: 1100px;
-        ;
     }
 
     #about-us-outer .container {
@@ -1900,18 +1996,6 @@ input[type="search"]::placeholder {
 }
 
 @media (min-width: 1440px) {
-
-    .cards,
-    .front1,
-    .front2,
-    .front3,
-    .back {
-        height: 250px;
-    }
-
-}
-
-@media (min-width: 1440px) {
     .owl-carousel .owl-item img {
         /* width: 60% !important; */
         width: 40% !important;
@@ -1919,6 +2003,15 @@ input[type="search"]::placeholder {
         border-radius: 25%;
     }
 
+    #meet .text {
+        top: 50%;
+    }
+
+    .container {
+        max-width: 1920px;
+    }
+
+    /*  */
 }
 
 @media (max-width: 550px) {
@@ -1927,6 +2020,10 @@ input[type="search"]::placeholder {
             width: 100%;
             padding: 0 50px;
         }
+    }
+
+    #slider .carousel-img-fit {
+        min-height: 250px;
     }
 
 }
@@ -1946,12 +2043,29 @@ input[type="search"]::placeholder {
 
 @media (min-width: 990px) and (max-width: 1199px) {
 
-    .cards,
-    .front1,
-    .front2,
-    .front3,
-    .back {
-        height: 140px;
+    .teaser.hover_icon.text-center {
+        padding: 5px;
+    }
+
+    #product_banner img {
+        height: 400px;
+    }
+
+    .miscellaneous .left-text {
+        width: max-content !important;
+        top: 60% !important;
+    }
+
+    .miscellaneous .left-text h2 {
+        font-size: 20px;
+    }
+
+    .miscellaneous .left-text text {
+        font-size: 10px;
+    }
+
+    .miscellaneous .left-text .nsr22 {
+        font-size: 12px;
     }
 
     #meet .container .mb-5 {
@@ -1963,12 +2077,20 @@ input[type="search"]::placeholder {
         object-fit: contain;
     }
 
+    h1 {
+        font-size: 35px;
+    }
+
     h2 {
         font-size: 30px;
     }
 
-    .nsr22 {
+    .nsr25 {
         font-size: 20px;
+    }
+
+    .nsr22 {
+        font-size: 15px;
     }
 
     #meet figure img {
@@ -1977,6 +2099,24 @@ input[type="search"]::placeholder {
 
     #meet .col-md-3 {
         padding: 0px;
+    }
+
+    #meet .text {
+        top: 40%;
+    }
+
+    #meet .text a p {
+        font-size: 10px;
+    }
+
+    #meet .text a {
+        padding: 5px 15px;
+        font-size: 8px;
+    }
+
+    img.catalouge_image {
+        height: 10pc;
+        width: 70%;
     }
 
     #industry-section-carousel h2 {
@@ -1997,6 +2137,34 @@ input[type="search"]::placeholder {
         font-size: 25px;
     }
 
+    #meet {
+        padding: 2em;
+    }
+
+    .avbook28 {
+        font-size: 15px;
+    }
+
+    .nsm20 {
+        font-size: 15px;
+    }
+
+    .avbook20 {
+        font-size: 15px;
+    }
+
+    .site-section {
+        padding: 3em;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    #top-banner img {
+        height: 400px;
+    }
+
 }
 
 .active .material-icons {
@@ -2007,7 +2175,7 @@ input[type="search"]::placeholder {
 #meet figure img {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    height: 348px;
     object-fit: fill;
     border-radius: 5px;
 }
@@ -2108,8 +2276,44 @@ input[type="search"]::placeholder {
 
 }
 
+@media (min-width: 1921px) and (max-width: 2560px) {
+    h1 {
+        font-size: 60px;
+    }
+
+    h2 {
+        font-size: 45px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 28px;
+    }
+
+    #slider .carousel-img-fit {
+        min-height: 650px;
+    }
+
+    #search_list select {
+        width: auto !important;
+    }
+
+    #range-slider .carousel-item img {
+        min-height: 650px;
+    }
+
+    .carousel-ban-text-adj {
+        bottom: 200px;
+    }
+
+}
 
 @media screen and (min-width: 1920px) {
+
+
 
     /* //For Projectors or Higher Resolution Screens (Full HD) */
     /* .container {
