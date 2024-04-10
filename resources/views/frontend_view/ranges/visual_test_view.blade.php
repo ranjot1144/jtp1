@@ -25,37 +25,6 @@
         </div>
     </section>
 
-
-    <!--<section class="site-section text-center site-section lighter-bg" id="oem_gradient_section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate text-uppercase">
-                            @if($range_data[0]->range_id=='3')
-                                <h3 class="text-uppercase bold-text">Multiple Testing Parameters</h3>
-                            @else
-                                <h3 class="text-uppercase bold-text">Simple Colorimteric and Titrimetric test kits</h3>
-                            @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="site-section-hero bg-image" style="background-image: url(&quot;../../assets/images/visual_test_kit.png&quot;); height: 50vh; background-position: 50% 0px; min-height:250px;" id="test-strip-filteration1"> 
-        <div class="container" style="max-width:1440px;">
-            <div class="row justify-content-center  align-items-center" style="min-height: 250px; height: 50vh;">
-                <div class="col-md-8 text-center">
-                    <div data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
-                        <h2>Available at Check2o.com</h2>
-                        <h3 class="text-white">pH Testing</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
-
     <section class="site-section lighter-bg" id="prod_content_section">
         <div class="container">
 
@@ -63,7 +32,6 @@
             <div class="row justify-content-center">
             
                 <div class="col-md-12 mb-5">
-                    <!-- <p class="nsr25 mb-2 text-center">Our Range of</p> -->
                     <h2 class="mb-4 bold-text text-center">{!! $range_data[0]->prod_name !!}</h2>
                     <div class="content-description">{!! $range_data[0]->prod_desc !!}</div>
                 </div>
@@ -73,8 +41,6 @@
 
                 <div class="container">
                     <div class="row justify-content-center">
-
-                <!-- <figure class="mb-12"> -->
 
                     @if ($range_data[0]->prod_id=='19' || $range_data[0]->prod_id=='25')
 
@@ -101,17 +67,13 @@
                                             </tr>
                                             @endif
                                             <tr >
-                                                <!-- <td class="text-white" style="font-weight: 600; background-color: #F47922; border-radius: 30px 0px 0px 30px;">{!! $value->cat_name !!} <span style="float:right;">+</span></td> -->
                                                 <td>{!! $value->cat_name !!} </td>
                                                 <td>{!! $cat_des[0]->cp_graduation !!}</td>
                                                 <td>{{ $cat_des[0]->cp_presentation }}</td>
                                                 <td>{{ $cat_des[0]->cp_prod_code }}</td>
                                             </tr>
 
-                                            <!-- <tr class="child-row{{$key}}" title="Click to expand/collapse" style="cursor: pointer; display:none;">
-                                                <td class="bold-text">Description</td>
-                                                <td colspan="3">{!! $value->cat_main_desc !!}</td>
-                                            </tr> -->
+                                            
                                         @endforeach
                                     @endif
                                   
@@ -126,8 +88,20 @@
                             <div class="teaser hover_icon text-center">
                             <div> 
                                 <a class="general-text-color" href="{{ URL($value->cat_url) }}">
-                                    <img class="image-70" src="{{ url('assets/images/ammonia.png') }} " style="width:60%"> </div>
-                                    <label style="margin:20px 20px 0px 20px;"><b> {{ $value->cat_name }}</b></label>
+                                    @if($value->cat_image!='')
+                                        <img class="image-70" src="{{ url('assets/images/'.$value->cat_image) }} " attr="{{ $value->cat_name.'_image' }}" style="width:100%"> </div>
+                                    @else
+                                        <img class="image-70" src="{{ url('assets/images/ammonia.png') }} " style="width:60%"> </div>
+                                    @endif
+
+
+                                    @php $originalString = $value->cat_name;
+                                        $search = "®";
+                                        $html = "<sup>®</sup>"; // Sup tag
+                                        $value->cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                                    @endphp
+
+                                    <label class="bold-text" style="margin:20px 20px 0px 20px;"> {!! $value->cat_name !!} </label>
                                     <p>{{ $value->cat_ranges }}</p> 
                                 </a>
                             </div>
@@ -135,7 +109,6 @@
 
                         <?php } } ?>
                     @endif
-                <!--</figure> -->
                     </div>
                 </div>
 
@@ -145,7 +118,6 @@
     </section>
 
 
-    <!-- <section class="site-section-hero bg-image" style="background-image: url(&quot;../../assets/images/img_9.jpg&quot;); height: 30vh; background-position: 50% 20.164px; min-height:250px;" data-stellar-background-ratio="0.5" id="test-strip-filteration2">  -->
     <section class="site-section-hero bg-image" style="background-color: rgb(28 119 198); height: 30vh; min-height:250px; background-position:50% 0px; background-attachment:scroll;background-repeat:repeat;" data-stellar-background-ratio="0.5" id="blue-banner">
         <div class="container">
             <div class="row justify-content-center  align-items-center" style="min-height: 250px; height: 30vh;">
@@ -161,7 +133,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <img src="https://draft.check2o.com/wp-content/uploads/elementor/thumbs/Check2O_logo_small-qd9vmyzff0ftbzfher11m9c3ert3dhib9ktottpt6c.png" />
+                            <img alt="check20logo" src="{{ URL('assets/images/product/Check2Ologo.png') }}" />
                         </div>
                     </div>
 

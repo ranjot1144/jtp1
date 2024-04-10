@@ -65,7 +65,7 @@ class RangeController extends Controller
             $range_data = DB::table('product as p')
                     ->select('p.id as prod_id','p.prod_name','p.prod_url','p.range_id','r.range_name','p.prod_desc','p.prod_detail')
                     ->leftjoin('range as r', 'r.id', '=', 'p.range_id')
-                    ->where('p.prod_url','like', '%'.$prod_url.'%')
+                    ->where('p.prod_url','like', '%'.$prod_url)
                     ->orderBy('p.order_wise')
                     ->get();
 
@@ -92,28 +92,16 @@ class RangeController extends Controller
                 }else if($prod_name=='industries') {
 
                     $tags = DB::table('industry_product_tags as ipt')
+                                ->leftjoin('product as p','p.id','=','ipt.p_id')
                                 ->where('ipt.ip_id', $id)
                                 ->get();
 
-                    $cat_tags_data = array();
+
                     $prod_tags_data = array();
+                    $cat_tags_data = array();
+                    $subCat_tags_data = array();
 
-                    if($tags->isNotEmpty()){
-                    $cat_tags = explode(",",$tags[0]->ip_cat_tags);
-                    $prod_tags = explode(",",$tags[0]->ip_prod_tags);
-                    
-                    $cat_tags_data = DB::table('category as c')
-                                    ->select('c.id as cat_id','c.cat_name')
-                                    ->whereIn('c.id', $cat_tags)
-                                    ->get();
-                    
-                    $prod_tags_data = DB::table('product as p')
-                                    ->select('p.id as prod_id','p.prod_name')
-                                    ->whereIn('p.id', $prod_tags)
-                                    ->get();
-                    }
-
-                    return view('frontend_view.ranges.industry.education_view', compact('range_data','prod_data','cat_tags_data','prod_tags_data'));
+                    return view('frontend_view.ranges.industry.education_view', compact('range_data','prod_data','tags','cat_tags_data','prod_tags_data','subCat_tags_data'));
                 }else{
 
                     $man_data = DB::table('filterfinder_manufacturer as fm')
@@ -127,7 +115,6 @@ class RangeController extends Controller
                                                     ->get();
                         }
                     }
-                    
                     
                     return view('frontend_view.ranges.products.index', compact('range_data','prod_data','cat_data','prod_desc_data','man_data','category_presentation'));
                 }
@@ -207,6 +194,12 @@ class RangeController extends Controller
                     ->orderBy('p.id')
                     ->where('p.prod_url','like', '%'.$prod_url.'%')->get();
 
+        $cat_random_three = DB::table('category as cat')
+                    ->select('cat.id as cat_id','cat.cat_name','cat.cat_url','cat.cat_image','cat.cat_ranges')
+                    ->inRandomOrder()
+                    ->limit(3)
+                    ->get();
+
         $cat_data = DB::table('category as c')
                     ->select('c.id as cat_id','c.cat_name','c.cat_tags','c.cat_url','c.cat_desc','c.cat_ranges','c.cat_main_desc','c.cat_image')
                     ->orderBy('c.id')
@@ -261,7 +254,7 @@ class RangeController extends Controller
             $ext_thimb = DB::table('extraction_thimble as et')
                             ->where('et.cat_id', $cat_id)->get();
 
-            return view('frontend_view.ranges.products.category.index', compact('data','range_data','cat_data','sub_cat_data','extraction_thimble','category_presentation','cat_desc','cat_tags','ext_thimb','syringe_table_data','membrane_table_data'));
+            return view('frontend_view.ranges.products.category.index', compact('data','range_data','cat_data','sub_cat_data','extraction_thimble','category_presentation','cat_desc','cat_tags','ext_thimb','syringe_table_data','membrane_table_data','cat_random_three'));
         }
     }
 
@@ -408,6 +401,7 @@ class RangeController extends Controller
                     ->select('etr.er_height')
                     ->where('etr.er_diameter', $diameter)
                     ->where('etr.etr_cat_id', $grade_id)
+                    ->order_by('er_height','ASC')
                     ->get();   
         return $data;
     }

@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                     <div data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
                         <h1 class="">Catalogues </h1>
-                        <p class="mb-3 nsr22">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod <br/>tempor invidunt ut labore et dolore magna aliquyam erat, sed diam.</p>
+                        <!-- <p class="mb-3 nsr22">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod <br/>tempor invidunt ut labore et dolore magna aliquyam erat, sed diam.</p> -->
                         
                     </div>
                 </div>

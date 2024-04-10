@@ -127,7 +127,7 @@
                   <div class="overlay"></div>
                         <div class="row carousel-ban-text-adj">
                     <div class="row col-12">
-                      <h1 class="col-12 carousel-header-adj"><b>Visual test Kits</b></h1>
+                      <h1 class="col-12 carousel-header-adj"><b>Visual test Kits=</b></h1>
                       <h2 class="col-12 carousel-paragraph themeTextColor">Columetric & Titrimetric </h2>
                       <p class="nsr22" style="font-weight:200;">Water Analysis with distinctive color reactions </p>
                     </div>

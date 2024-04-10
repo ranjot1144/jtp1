@@ -302,8 +302,6 @@ jQuery(function ($) {
 						var result = value['er_height'];
 						$("#height").append('<option >' + result + '</option>');
 					});
-
-
 				}
 			});
 		});

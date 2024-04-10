@@ -220,14 +220,14 @@
 
                 <div class="col-md-12 text-center">
                 
-                  <figure class="mb-12">
+                  <figure class="mb-12 hover">
                       
                       <div class="row columns_margin_bottom_20">
                         
                         <div class="col-md-4 col-lg-4 mb-4" style="padding-right:15px;">
-                            <div class="img_hover_color">
+                            <div class="img_hover">
                                 <a href="{{ URL('/product/industries') }}">
-                                  <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" />
+                                  <img src="{{ asset('assets/images/product/Industries.jpg') }}" alt="industry_image" />
                               
                                   <div class="left-text text text-white">
                                     <h2 class="bold-text">Industries</h2>
@@ -240,9 +240,9 @@
                         </div>
 
                         <div class="col-md-4 col-lg-4 mb-4"  style="padding-right:15px;">
-                            <div class="img_hover_color">
+                            <div class="img_hover">
                               <a href="{{ URL('/product/industries') }}">
-                                <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" />
+                                <img src="{{ asset('assets/images/product/Catalogues.jpg') }}" alt="catalogue_image" />
                                   <div class="left-text text text-white" >
                                       <h2 class="bold-text">Catalogues</h2>
                                       <text>Full product range</text>
@@ -254,9 +254,9 @@
                         </div>
 
                         <div class="col-md-4 col-lg-4 mb-4">
-                            <div class="img_hover_color">
+                            <div class="img_hover">
                               <a href="{{ URL('/support/knowledge_hub') }}">
-                                <img src="https://www.johnsontestpapers.com/images/products/filter-boxes.jpg" alt="Snow" />
+                                <img src="{{ asset('assets/images/product/Knowledge_hub.jpg') }}" alt="knowledge_image" />
                                   <div class="left-text text text-white" >
                                       <h2 class="bold-text">Knowledge Hub</h2>
                                       <text>A fresh real of knowledge</text>
@@ -279,8 +279,7 @@
         </section>
 
 
-
-    <img src='{{ URL("assets/images/product/front_footer.jpg") }}' style="height: 10vh; width:-webkit-fill-available;"></img>
+        <img src='{{ URL("assets/images/product/front_footer.jpg") }}' style="height: 10vh; width:-webkit-fill-available;"></img>
               
     </div>
     @endsection

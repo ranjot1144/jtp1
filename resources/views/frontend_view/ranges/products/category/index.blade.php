@@ -211,20 +211,21 @@ tbody {
               @php $colorclass = 'filtration_text_color'; @endphp
             @endif
 
-               <!-- <section class="site-section-hero bg-image bg-header-image" data-stellar-background-ratio="0.5" id="section-home">
-                  <div class="row justify-content-center align-items-center">
-                      <div class="col-md-10">
-                            <h1 class="heading bold-text {{ $colorclass }}" data-aos="fade-right"> {!! $cat_name !!}</h1>
-                            <h3 class="text-white">{!! $cat_range !!}</h3>
-                      </div>
-                  </div>
-                </section> -->
-                <section class="zero_padding" id="product_banner">
+                 <section class="zero_padding" id="product_banner">
                   <div class="row ">
                       <div class="col-md-12">
-                          <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Banner"/>
+                          @if ( ($cat_data[0]->cat_id==90))
+                            <img src="{{ url('/assets/images/product/vtk/eco/VTKolor_ECO_Phosphate_kit_product_banner.jpg'); }}" alt="{{ $cat_data[0]->cat_name.'_image' }}"/>
+                          @else
+                            <img src="{{ url('/assets/images/product/industry/industry_banner.jpg'); }}" alt="Filter Finder Banner"/>
+                          @endif
+
                           @php $top_position = 'top-left'; @endphp
                           @if ( ($range_data[0]->range_id==1 && ($cat_data[0]->cat_id=='1' || $cat_data[0]->cat_id=='103' || $cat_data[0]->cat_id=='104' || $range_data[0]->prod_id=='16') ) )
+                            @php $top_position = 'top-right'; @endphp
+                          @endif
+
+                          @if($range_data[0]->range_id==5)
                             @php $top_position = 'top-right'; @endphp
                           @endif
                           
@@ -233,7 +234,7 @@ tbody {
                                     <div class="col-md-12">
                                         <div data-aos="fade-up " data-aos-delay="100" class="aos-init aos-animate">
                                             <h2 data-aos="fade-right" class="{{ $colorclass }} bold-text mb-3 border-left-bar px-md-4 aos-init aos-animate"> {!! $range_data[0]->prod_name !!}</h2>
-                                            <h3 class="">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h3>
+                                            <h3 class="">{!! preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) !!}</h3>
                                         </div>
                                     </div>
                               </div>
@@ -243,38 +244,42 @@ tbody {
                 </section>
 
 
+                @php
+                  $originalString = $cat_name;
+                  $search = "®";
+                  $html = "<sup>®</sup>"; // Sup tag
+                  $cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
+                @endphp
+
                 <section class="site-section lighter-bg content-padding" id="prod_content_section">
                     <div class="container">
                       <div class="row justify-content-center">
-                        @if ($range_data->isNotEmpty() && $range_data[0]->range_id!='5')
-                          @if ($cat_data[0]->cat_id=='6' || $cat_data[0]->cat_id=='2')
-                            <div class="col-md-12 general-text-color">
-                              <!-- <h3 class="text-center mb-4">Grades</h3> -->
-                              <h3 class="text-center mb-4 bold-text">{{ trim($cat_data[0]->cat_name,"s") }} Range</h3>
-                              <div class="mb-5 content_description"><p>{{ $cat_data[0]->cat_main_desc }}</p></div>
-                            </div>
-                          @elseif ($range_data[0]->range_id==2 && ($cat_data[0]->cat_id=='4' || $cat_data[0]->cat_id=='5'))
-                          <div class="col-md-12 general-text-color">
-                            <h2 class="mb-3 bold-text text-center">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
-                            <div class="mb-5 content_description text-center">{!! $cat_data[0]->cat_main_desc !!}</div>
-                          </div>
-                            <!-- <div class="col-md-12 text-center general-text-color">
-                              <h3 class="mb-5">Categories</h3>
-                            </div> -->
-                            @elseif ($range_data[0]->range_id==2 && ($cat_data[0]->cat_id=='8' || $cat_data[0]->cat_id=='9'))
-                          <div class="col-md-12 general-text-color">
-                          <h2 class="mb-3 bold-text text-center">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
-                            <div class="mb-5 content_description"><p>{!! $cat_data[0]->cat_main_desc !!}</p></div>
-                          </div>
+                        @if ($range_data->isNotEmpty())
+                            @if ($cat_data[0]->cat_id=='6' || $cat_data[0]->cat_id=='2')
+                              <div class="col-md-12 general-text-color">
+                                <!-- <h3 class="text-center mb-4">Grades</h3> -->
+                                <h3 class="text-center mb-4 bold-text">{{ trim($cat_data[0]->cat_name,"s") }} Range</h3>
+                                <div class="mb-5 content_description"><p>{{ $cat_data[0]->cat_main_desc }}</p></div>
+                              </div>
 
+                            @elseif ($range_data[0]->range_id==2 && ($cat_data[0]->cat_id=='4' || $cat_data[0]->cat_id=='5'))
+                              <div class="col-md-12 general-text-color">
+                                <h2 class="mb-3 bold-text text-center">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
+                                <div class="mb-5 content_description text-center">{!! $cat_data[0]->cat_main_desc !!}</div>
+                              </div>
+                            
+                            @elseif ($range_data[0]->range_id==2 && ($cat_data[0]->cat_id=='8' || $cat_data[0]->cat_id=='9'))
+                              <div class="col-md-12 general-text-color">
+                                <h2 class="mb-3 bold-text text-center">{{ preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) }}</h2>
+                                  <div class="mb-5 content_description"><p>{!! $cat_data[0]->cat_main_desc !!}</p></div>
+                                </div>
+
+                            @elseif ($range_data[0]->range_id==5 )
+                              <div class="col-md-12 general-text-color">
+                                <h2 class="mb-3 bold-text text-center">{!! preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) !!}</h2>
+                              </div>
                           @else
                           <div class="col-md-12 general-text-color">
-                              @php
-                                $originalString = $cat_name;
-                                $search = "®";
-                                $html = "<sup>®</sup>"; // Sup tag
-                                $cat_name = Helper::insertHTMLAtStringPosition($originalString, $search, $html);
-                              @endphp
                             <h2 class="text-center mb-5 bold-text">{!! preg_replace('/<br\W*?\/?>/', ' ', $cat_name.' '.$cat_range) !!}</h2>
                               <div class="mb-5 content_description"><p>{!! $cat_data[0]->cat_main_desc !!}</p></div>
                               @if(count($cat_desc))
@@ -739,11 +744,17 @@ tbody {
                                                             @foreach($ext_thimb as $index => $val)
                                                               <div class="outer-cellulose-content">
                                                                 <div class="cellulose-item"><span class="arrow"></span>{{'Ø '. $val->et_diameter}}</div>
-                                                                      @php 
-                                                                        $new_index = ''; 
-                                                                        $visibility=''; 
-                                                                      @endphp
-                                                                    <div class="parent-cellulose-item">
+                                                                @php $diameter = explode("-",$val->et_diameter); @endphp
+
+                                                                  @if ($diameter[0] <= $filter_val)
+                                                                      @if(isset($diameter[1]))
+                                                                        @if($diameter[1] >= $filter_val)
+                                                                            @php $visibility = 'open'; @endphp
+                                                                        @endif
+                                                                      @endif
+                                                                  @endif
+                                                                  
+                                                                    <div class="parent-cellulose-item {{$visibility}}">
                                                                           <?php $ranges = DB::table('extraction_thimble_ranges as er')
                                                                                           ->where('er.et_id', $val->id)->get();
                                                                             ?>
@@ -755,11 +766,11 @@ tbody {
                                                                                     <div>{{ $data->er_prod_code }}</div>
                                                                                   </div>
                                                                                 @if($filter_val==$data->er_diameter)
-                                                                                  @php  $new_index = $index; @endphp
-                                                                                    
+                                                                                  @php $new_index = $index; @endphp
                                                                                 @endif
                                                                             @endforeach
                                                                       </div>
+                                                                    @php $visibility = ''; @endphp
                                                                 </div>
                                                             @endforeach
                                     </div>
@@ -1013,6 +1024,7 @@ tbody {
 
 
                 @if($range_data[0]->prod_id!='5' && $cat_data[0]->cat_id!='5' && $cat_data[0]->cat_id!='123')
+                
                   @if($cat_tags->isNotEmpty())
                   <section class="site-section lighter-bg " id="other-product">
                       <div class="container">
@@ -1027,20 +1039,20 @@ tbody {
                               <div class="card-header">
                                 <div class="row text-center image-list">
                                     
-                                      @foreach($cat_tags as $index=> $tags)
-                                        <div class="col-md-4 ranges_prod">
-                                          <a href="{{ URL($tags->cat_url) }}">
-                                            @if($tags->cat_image!='')
-                                              <img src="{{ url('assets/images/j-quant.png'); }}" alt="{{$tags->cat_name}}" class="img-fluid tab_hover" style="height:300px;" />
-                                            @else
-                                              <img src="{{ url('assets/images/j-quant.png'); }}" alt="image{{$index}}" class="img-fluid tab_hover" style="height:300px;" />
-                                            @endif
-                                          </a>
-                                            <div class="prod_name">
-                                              <label class="bold-text" style="margin:20px 0 0;">{!! $tags->cat_name !!}</label></br>
-                                              <label class="bold-text">{!! $tags->cat_ranges !!}</label>
-                                            </div>
-                                        </div>
+                                      @foreach($cat_random_three as $index => $data)
+                                          <div class="col-md-4 ranges_prod">
+                                            <a href="{{ URL($data->cat_url) }}">
+                                              @if($data->cat_image!='')
+                                                <img src="{{ url('assets/images/j-quant.png'); }}" alt="{{$data->cat_name}}" class="img-fluid tab_hover" style="height:300px;" />
+                                              @else
+                                                <img src="{{ url('assets/images/j-quant.png'); }}" alt="image{{$index}}" class="img-fluid tab_hover" style="height:300px;" />
+                                              @endif
+                                            </a>
+                                              <div class="prod_name">
+                                                <label class="bold-text" style="margin:20px 0 0;">{!! str_replace('<br/>', ' ',$data->cat_name) !!}</label></br>
+                                                <label class="bold-text">{!! $data->cat_ranges !!}</label>
+                                              </div>
+                                          </div>
                                       @endforeach
                                     
                                 </div>

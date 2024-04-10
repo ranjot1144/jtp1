@@ -14,6 +14,8 @@
         </div>
     </section>
 
+    
+
 
     <section class="site-section gradient-left-to-right text-center" id="oem_gradient_section">
         <div class="container">
@@ -38,28 +40,28 @@
         <div class="container" style="max-width:1440px;">
             <div class="row justify-content-center align-items-center" style="min-height: 250px; height: 30vh;">
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/product/oem/OEM_UK.png'); }}" alt="Made In UK Image" class="img-fluid mr-2" style="width:15%;"/>
+                    <img src="{{ URL('assets/images/product/oem/OEM_UK.png'); }}" alt="Made In UK Image" class="img-fluid mr-2" style="width:20%;"/>
                     <div>
                         <p class="bold-text mb-0">Made In UK</p>
                         <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/product/oem/OEM_Quality.png'); }}" alt="High Quality Image" class="img-fluid  mr-2" style="width:15%;"/>
+                    <img src="{{ URL('assets/images/product/oem/OEM_Quality.png'); }}" alt="High Quality Image" class="img-fluid  mr-2" style="width:20%;"/>
                     <div>
                         <p class="bold-text mb-0">High Quality</p>
                         <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/product/oem/OEM_original.png'); }}" alt="Original Image" class="img-fluid mr-2" style="width:15%;"/>
+                    <img src="{{ URL('assets/images/product/oem/OEM_original.png'); }}" alt="Original Image" class="img-fluid mr-2" style="width:20%;"/>
                     <div>
                         <p class="bold-text mb-0">Original</p>
                         <p class="mb-0">Test Strip & Filtration</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ URL('assets/images/product/oem/OEM_custom.png'); }}" alt="Custom Order Image" class="img-fluid mr-2" style="width:10%;"/>
+                    <img src="{{ URL('assets/images/product/oem/OEM_custom.png'); }}" alt="Custom Order Image" class="img-fluid mr-2" style="width:20%;"/>
                     <div>
                         <p class="bold-text mb-0">Custom Order</p>
                         <p class="mb-0">Test Strip & Filtration</p>

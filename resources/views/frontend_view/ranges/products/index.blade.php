@@ -72,9 +72,12 @@
                       <div class="row justify-content-center ">
                         
                         <div class="col-md-12 general-text-color">
-                          <p class="text-center mb-2">Johnson</p>
+                          <!-- <p class="text-center mb-2">Johnson</p> -->
                           <h2 class="mb-5 text-center"><b>{!! $range_data[0]->prod_name !!}</b></h2>
-                          <div class="content_description text-center">{!! $prod_desc_data[0]->pd_desc !!}</div>
+                            @if(isset($prod_desc_data[0]->pd_desc))
+                              <div class="content_description text-center">{!! $prod_desc_data[0]->pd_desc !!}</div>
+                          @endif
+
                         </div>
                       </div>
                     </div>
@@ -83,23 +86,23 @@
 
                   <section class="site-section-hero " style="background-image: url(&quot;../../assets/images/filter_finder/filter_finder_background_strip.jpg&quot;); height: 25vh; background-position: center; min-height:250px;" data-stellar-background-ratio="0.5" id="test-strip-filteration"> 
                     <div class="container">
-                        <div class="row justify-content-center align-items-center" style="min-height: 250px; height: 30vh;">
-
-                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <div class="row" style="min-height: 250px; height: 30vh;">
+                            
+                            <div class="col-md-4 d-flex justify-content-center align-items-center mt-3 mb-3">
                                 <img src="{{ URL('assets/images/small_images/step_one.png'); }}" alt="Made In UK Image" class="img-fluid mr-2"/>
                                 <div class="text-white">
                                     <p>Step One</p>
                                     <p>Select Manufacturer</p>
                                 </div>
                             </div>
-                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                            <div class="col-md-4 d-flex justify-content-center align-items-center mb-3">
                                 <img src="{{ URL('assets/images/small_images/step_two.png'); }}" alt="High Quality Image" class="img-fluid mr-2" />
                                 <div class="text-white">
                                     <p>Step Two</p>
                                     <p>Select a Grade</p>
                                 </div>
                             </div>
-                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                            <div class="col-md-4 d-flex justify-content-center align-items-center mb-3">
                                 <img src="{{ URL('assets/images/small_images/step_three.png'); }}" alt="Original Image" class="img-fluid mr-2"/>
                                 <div class="text-white">
                                     <p>Step Three</p>
@@ -257,7 +260,7 @@
                 @endif
               @endif
 
-              
+              @if($range_data[0]->prod_id!='5')
                 <section class="site-section lighter-bg content-padding" id="prod_content_section">
                     <div class="container">
                       <div class="row justify-content-center ">
@@ -418,6 +421,7 @@
                       </div>
                     </div>
                 </section>
+              @endif
                 
                 <?php } } ?>
               

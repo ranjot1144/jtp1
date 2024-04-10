@@ -79,8 +79,7 @@
             <div class="row justify-content-center">
             
                 <div class="col-md-12 text-center">
-                    <h2 class="themeTextColor bold-text mb-5">We offers a range of science education tests <br/>for water, soil and air sampling.</h2>
-                    <p>{{ $range_data[0]->prod_desc }}</p>
+                    <h2 class="themeTextColor bold-text mb-5">{{ $range_data[0]->prod_detail }}</h2>
                 </div>
 
                 <div class="col-md-12">
@@ -90,47 +89,42 @@
                                     <div class="col-md-12 general-text-color">
                                         <div class="accordion-div">
                                             @php $last_index = 0; @endphp
-                                            @if (count($cat_tags_data))
-                                                @foreach ($cat_tags_data as $index => $cat_item)
-                                                    <button class="accordion accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> {{ $cat_item->cat_name }}</button>
+
+
+                                            @if (count($tags))
+                                                @foreach ($tags as $index => $prod_item)
+                                                    <button class="accordion accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> {!! str_replace("<br/>", " ", $prod_item->prod_name) !!}</button>
                                                     <div class="panel">
                                                         @php
-                                                            $panel_cat_data = DB::table('subcategory as sc')
-                                                                ->select('sc.id as subcat_id','sc.sub_cat_name','sc.subcat_url')
-                                                                ->where('sc.cat_id', $cat_item->cat_id)
-                                                                ->get();
+                                                                $c_tags = explode(",",$prod_item->c_id);
+                                                                $cat_tags_data = DB::table('category as c')
+                                                                        ->select('c.id as cat_id','c.cat_name','c.cat_url')
+                                                                        ->whereIn('c.id', $c_tags)
+                                                                        ->get();
                                                         @endphp
-                                                        @if($panel_cat_data->isNotEmpty())
-                                                            @foreach($panel_cat_data as $i => $pd)
-                                                                <p class="mt-3"><a href="{{ url($pd->subcat_url) }}">{{$pd->sub_cat_name}}</a></p>
+
+                                                        @if (count($cat_tags_data))
+                                                            @foreach ($cat_tags_data as $index => $ctags)
+                                                                <p class="mt-3"><a href="{{ $ctags->cat_url }}">{{  str_replace("<br/>", " ", $ctags->cat_name) }}</a></p>
                                                             @endforeach
                                                         @endif
+
+                                                        @php
+                                                                $sc_tags = explode(",",$prod_item->sc_id);
+                                                                $subCat_tags_data = DB::table('subcategory as sc')
+                                                                        ->select('sc.id as sub_cat_id','sc.sub_cat_name','sc.subcat_url')
+                                                                        ->whereIn('sc.id', $sc_tags)
+                                                                        ->get();
+                                                        @endphp
+
+                                                        @if (count($subCat_tags_data))
+                                                            @foreach ($subCat_tags_data as $index => $sctags)
+                                                                <p class="mt-3"><a href="{{ $sctags->subcat_url }}">{{  str_replace("<br/>", " ", $sctags->sub_cat_name) }}</a></p>
+                                                            @endforeach
+                                                        @endif
+                                                        
                                                     </div>
                                                     
-                                                    @php $last_index = $index; @endphp
-                                                @endforeach
-                                            @endif 
-
-                                            @if (count($prod_tags_data))
-                                                @foreach ($prod_tags_data as $index => $prod_item)
-                                                    <button class="accordion accordion collapsed toggle_tr" aria-expended="true"><span class="arrow down"></span> {{ $prod_item->prod_name }}</button>
-                                                    <div class="panel">
-                                                        @php
-                                                            $panel_prod_data = DB::table('category as c')
-                                                                                ->select('c.id as cat_id','c.cat_name','c.cat_url')
-                                                                                ->where('c.prod_id', $prod_item->prod_id)
-                                                                                ->get();
-                                                        @endphp
-
-                                                        @if($panel_prod_data->isNotEmpty())
-                                                            @foreach($panel_prod_data as $ppd)
-                                                                @php $cat_name = str_replace("<br/>", " ", $ppd->cat_name); @endphp
-                                                                
-                                                                <p class="mt-3"><a href="{{ url($ppd->cat_url) }}">{{ $cat_name }}</a></p>
-                                                                
-                                                            @endforeach
-                                                        @endif
-                                                    </div>
                                                 @endforeach
                                             @endif 
                                         </div>
