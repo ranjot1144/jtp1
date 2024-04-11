@@ -72,7 +72,7 @@
 
                         <div class="carousel-item active">
                           <!-- <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/Total_Chlorine_Johnson.jpg')}}" alt="First slide"> -->
-                          <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_1.jpg')}}" alt="First slide">
+                          <img class="d-block w-100 carousel-img-fit" src="{{ asset('assets/images/product/slider_1.jpg') }}" alt="totalChlorine Img">
                           <div class="row carousel-ban-text-adj">
                             <!-- <div class="row col-12">
                               <h1 class="col-12 carousel-header-adj bold-text">Total Chlorine 200</h1>
@@ -83,7 +83,7 @@
                       </div>
                       
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_2.jpg')}}" alt="Second slide">
+                        <img class="d-block w-100 carousel-img-fit" src="{{ asset('assets/images/product/slider_2.jpg')}}" alt="Oil Quality image">
                           <div class="row carousel-ban-text-adj">
                             <!-- <div class="row col-12">
                               <h1 class="col-12 carousel-header-adj bold-text">Oil Quality Test Strips</h1>
@@ -95,7 +95,7 @@
 
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_3.jpg')}}" alt="Third slide">
+                        <img class="d-block w-100 carousel-img-fit" src="{{ asset('assets/images/product/slider_3.jpg')}}" alt="Urine Test image">
                         <!-- <div class="row carousel-ban-text-adj">
                           <div class="row col-12">
                             <h1 class="col-12 carousel-header-adj bold-text">Urine Test Strips</h1>
@@ -106,7 +106,7 @@
                       </div>
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_4.jpg')}}" alt="Fourth slide">
+                        <img class="d-block w-100 carousel-img-fit" src="{{ asset('assets/images/product/slider_4.jpg')}}" alt="VTK kolor">
                         <!-- <div class="row carousel-ban-text-adj">
                           <div class="row col-12">
                             <h1 class="col-12 carousel-header-adj bold-text text-white">Most Simple Version of</h1>
@@ -117,7 +117,7 @@
                       </div>
 
                       <div class="carousel-item">
-                        <img class="d-block w-100 carousel-img-fit" src="{{URL('assets/images/product/slider_5.jpg')}}" alt="Fifth slide">
+                        <img class="d-block w-100 carousel-img-fit" src="{{ asset('assets/images/product/slider_5.jpg')}}" alt="OEM Image">
                         <!-- <div class="row carousel-ban-text-adj">
                           <div class="row col-12 text-uppercase">
                             <h1 class="col-12 carousel-header-adj bold-text">LAUNCH <span class="text-white">Your</span></h1>
@@ -172,7 +172,7 @@
                                         @if($range_data[$i]->range_image=='')
                                           <img src="{{ asset('assets/images/product/filter-boxes.png') }}" alt="Landing_images" />
                                         @else
-                                          <img src="{{ URL($range_data[$i]->range_image) }}" alt="<?php echo $range_data[$i]->range_name; ?>" />
+                                          <img src="{{ URL($range_data[$i]->range_image) }}" alt="{{ $range_data[$i]->range_name.'_image'; }}" />
                                         @endif
                                   
                                       <div class="text">
@@ -224,7 +224,7 @@
                       
                       <div class="row columns_margin_bottom_20">
                         
-                        <div class="col-md-4 col-lg-4 mb-4" style="padding-right:15px;">
+                        <div class="col-md-4 col-lg-4 mb-4">
                             <div class="img_hover">
                                 <a href="{{ URL('/product/industries') }}">
                                   <img src="{{ asset('assets/images/product/Industries.jpg') }}" alt="industry_image" />
@@ -239,7 +239,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-lg-4 mb-4"  style="padding-right:15px;">
+                        <div class="col-md-4 col-lg-4 mb-4">
                             <div class="img_hover">
                               <a href="{{ URL('/product/industries') }}">
                                 <img src="{{ asset('assets/images/product/Catalogues.jpg') }}" alt="catalogue_image" />
@@ -259,7 +259,7 @@
                                 <img src="{{ asset('assets/images/product/Knowledge_hub.jpg') }}" alt="knowledge_image" />
                                   <div class="left-text text text-white" >
                                       <h2 class="bold-text">Knowledge Hub</h2>
-                                      <text>A fresh real of knowledge</text>
+                                      <text>A fresh realm of knowledge</text>
                                       <p class="nsr22" style="font-weight:200;">Click to View</p>
                                     </div>
                                 <div class="overlay"></div>

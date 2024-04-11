@@ -336,19 +336,29 @@ header .sidebar-bottom .sidebar_rel .social_icons a svg {
         background-attachment: initial !important;
     }
 
-    /* .carousel-img-fit {
-        object-fit: fill;
-        min-height: 400px;
-    } */
-
     .carousel-ban-text-adj {
-        bottom: 130px;
-        margin-left: 50px;
+        /* bottom: 80px; */
+        margin-left: 25px;
     }
 
+    h2 {
+        font-size: 25px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    .nsr22 {
+        font-size: 15px;
+    }
 
     .miscellaneous h2 {
         font-size: 25px;
+    }
+
+    h1 {
+        font-size: 30px;
     }
 
     #meet .text {
@@ -398,6 +408,26 @@ header .sidebar-bottom .sidebar_rel .social_icons a svg {
 }
 
 @media only screen and (max-width: 767px) {
+
+    .carousel-ban-text-adj {
+        width: 50%;
+        margin-left: 10px;
+    }
+
+    #blue-banner .col-md-8 {
+        text-align: center;
+    }
+
+    #blue-banner .col-md-3 {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    #blue-banner img {
+        width: 100%;
+        vertical-align: top;
+    }
+
     #industry_body .teaser.hover_icon {
         margin: auto;
         width: 25%;
@@ -1441,8 +1471,8 @@ header .sidebar-bottom .sidebar_rel .social_icons a svg {
         min-height: 150px;
     }
 
-    #range-slider .carousel-img-fit {
-        min-height: 350px !important;
+    .carousel-ban-text-adj {
+        bottom: 10px;
     }
 
 

@@ -60,12 +60,10 @@
                                                                 ->where('cp.cat_id', $value->cat_id)
                                                                 ->get();
                                             @endphp
-                                            @if ($range_data[0]->prod_id=='19')
                                             <tr>
                                                 <td class="bold-text">Description</td>
                                                 <td colspan="3">{!! $value->cat_main_desc !!}</td>
                                             </tr>
-                                            @endif
                                             <tr >
                                                 <td>{!! $value->cat_name !!} </td>
                                                 <td>{!! $cat_des[0]->cp_graduation !!}</td>
@@ -133,7 +131,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <img alt="check20logo" src="{{ URL('assets/images/product/Check2Ologo.png') }}" />
+                            <img alt="check20logo" src="{{ asset('assets/images/product/Check2Ologo.png') }}" />
                         </div>
                     </div>
 

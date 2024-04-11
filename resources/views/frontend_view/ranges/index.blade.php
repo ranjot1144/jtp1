@@ -52,37 +52,37 @@
 
                 <?php if($range_data[0]->prod_id=='1') {  ?>
                 <div class="carousel-item active">
-                  <img class="d-block w-100 carousel-img-fit" src="{{ URL('/assets/images/product/filtration/banner/rapid_test_banner.jpg') }}" alt="First slide" >
-                  <div class="row carousel-ban-text-adj">
+                  <img class="d-block w-100 carousel-img-fit" src="{{ asset('/assets/images/product/rapid/Rapid_Tests_banner.jpg') }}" alt="First slide" >
+                  <!-- <div class="row carousel-ban-text-adj">
                     <div class="row col-12">
                       <h1 class="col-12 carousel-header-adj"><b>Rapid Tests</b></h1>
                       <h2 class="col-12 carousel-paragraph themeTextColor">Quick, Accurate & Easy </h2>
                       <p class="nsr22" style="font-weight:200;">Industry leading results </p>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
 
                 <div class="carousel-item">
-                  <img class="d-block w-100 carousel-img-fit" src="{{ URL('/assets/images/slider_2.png') }}" alt="Second slide">
-                  <div class="row carousel-ban-text-adj">
+                  <img class="d-block w-100 carousel-img-fit" src="{{ asset('/assets/images/product/rapid/Total_Chlorine_banner.jpg') }}" alt="Second slide">
+                  <!-- <div class="row carousel-ban-text-adj">
                     <div class="row col-12">
                       <h1 class="col-12 carousel-header-adj">Lorem Ipsum</h1>
                       <p class="col-12 carousel-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elite. </p>
                       <a href="/internet" class="btn btn-primary btn-large col-md-3">Neque porro</a>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
 
                 <div class="carousel-item">
-                  <img class="d-block w-100 carousel-img-fit" src="{{ URL('/assets/images/slider_3.png') }}" alt="Third slide">
-                  <div class="row carousel-ban-text-adj">
+                  <img class="d-block w-100 carousel-img-fit" src="{{ asset('/assets/images/product/rapid/Oil_quality_test_banner.jpg') }}" alt="Third slide">
+                  <!-- <div class="row carousel-ban-text-adj">
                       <div class="row col-12">
                         <h1 class="col-12 carousel-header-adj">Lorem Ipsum</h1>
                         <p class="col-12 carousel-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                         <a href="/#" class="btn btn-primary btn-large col-md-3">Neque porro</a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <?php }else if($range_data[0]->prod_id=='2') { ?>
                   <div class="carousel-item active">
@@ -127,7 +127,7 @@
                   <div class="overlay"></div>
                         <div class="row carousel-ban-text-adj">
                     <div class="row col-12">
-                      <h1 class="col-12 carousel-header-adj"><b>Visual test Kits=</b></h1>
+                      <h1 class="col-12 carousel-header-adj"><b>Visual test Kits</b></h1>
                       <h2 class="col-12 carousel-paragraph themeTextColor">Columetric & Titrimetric </h2>
                       <p class="nsr22" style="font-weight:200;">Water Analysis with distinctive color reactions </p>
                     </div>
@@ -288,7 +288,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <img alt="check20logo" src="{{ URL('assets/images/product/Check2Ologo.png') }}" />
+                                <img alt="check20logo" src="{{ asset('assets/images/product/Check2Ologo.png') }}" />
                             </div>
                         </div>
 
